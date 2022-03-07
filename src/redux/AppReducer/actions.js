@@ -1,6 +1,7 @@
 import {
     SET_LANGUAGE,
-    SET_DATA
+    SET_DATA,
+    SET_PRODUCTS, SET_REGIONS,
 } from './types';
 
 export function setLanguage(language) {
@@ -14,5 +15,20 @@ export function setData(platform) {
     return {
         type: SET_DATA,
         payload: platform,
+    };
+}
+
+export function setProducts(products) {
+    return {
+        type: SET_PRODUCTS,
+        payload: products,
+    };
+}
+
+
+export function setRegions(regions) {
+    return {
+        type: SET_REGIONS,
+        payload: regions,
     };
 }
