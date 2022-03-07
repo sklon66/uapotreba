@@ -1,0 +1,10 @@
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1130px;
+    justify-content: space-between;
+}
+
+.tableContainer {
+    min-width: 70%;
+}
