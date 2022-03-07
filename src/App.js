@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import {useSelector} from "react-redux";
-import {selectLanguage} from "./redux/AppReducer/selectors.ts";
+import { useDispatch, useSelector } from "react-redux";
+import { selectLanguage } from "./redux/AppReducer/selectors.ts";
 import {
   Container,
   Card,
@@ -22,17 +22,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // services
 import { SelectColumnFilter } from './services/filters';
+import {getData} from "./api/apiData";
 
 
 const App = () => {
   const [data, setData] = useState([]);
   const language = useSelector(selectLanguage);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const doFetch = async () => {
       const response = await fetch('https://randomuser.me/api/?results=100');
       const body = await response.json();
       const contacts = body.results;
+      getData(dispatch);
       // console.log(contacts);
       setData(contacts);
     };
