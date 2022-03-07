@@ -3,9 +3,14 @@ import {
     SET_DATA, SET_PRODUCTS, SET_REGIONS
 } from './types';
 
+// constants
+import { PRODUCTS_LIST, REGIONS_LIST } from "../../constants/constants";
+
 const initialState = {
     language: localStorage.getItem('language') || 'ua',
     data: localStorage.getItem('data') ? JSON.parse(localStorage.getItem('data')) : null,
+    product: PRODUCTS_LIST,
+    regions: REGIONS_LIST,
 };
 
 const AppReducer = (state = initialState, action) => {
