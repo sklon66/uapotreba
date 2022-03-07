@@ -9,7 +9,10 @@ export const getData = (dispatch) => {
                 dispatch(setDataRedux(data));
             }
             else {
-                console.log("Error")
+                console.log("Fetch error")
             }
         })
+        .catch((error) => {
+            console.log(error)
+        });
 }
