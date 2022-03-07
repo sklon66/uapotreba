@@ -7,7 +7,7 @@ import {
   usePagination,
 } from 'react-table';
 import { Table, Row, Col, Button, Input, CustomInput } from 'reactstrap';
-import { Filter, DefaultColumnFilter } from './filters';
+import { Filter, DefaultColumnFilter } from '../../services/filters';
 
 const TableContainer = ({ columns, data, renderRowSubComponent }) => {
   const {
@@ -131,6 +131,7 @@ const TableContainer = ({ columns, data, renderRowSubComponent }) => {
         </Col>
         <Col md={2}>
           <CustomInput
+            id="select"
             type='select'
             value={pageSize}
             onChange={onChangeInSelect}
