@@ -9,10 +9,19 @@ import {
   CardBody,
   CardTitle,
 } from 'reactstrap';
-import TableContainer from './TableContainer';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { SelectColumnFilter } from './filters';
+
+
+// components
+import TableContainer from './components/TableContainer';
+import Checklist from "./components/Checklist";
 import Text from "./components/Text/Text";
+
+
+// styles
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+// services
+import { SelectColumnFilter } from './services/filters';
 
 
 const App = () => {
@@ -24,7 +33,7 @@ const App = () => {
       const response = await fetch('https://randomuser.me/api/?results=100');
       const body = await response.json();
       const contacts = body.results;
-      console.log(contacts);
+      // console.log(contacts);
       setData(contacts);
     };
     doFetch();
@@ -125,11 +134,12 @@ const App = () => {
   return (
     <Container style={{ marginTop: 100 }}>
       <Text language={language} />
-      <TableContainer
-        columns={columns}
-        data={data}
-        renderRowSubComponent={renderRowSubComponent}
-      />
+      <Checklist />
+        {/*<TableContainer*/}
+        {/*  columns={columns}*/}
+        {/*  data={data}*/}
+        {/*  renderRowSubComponent={renderRowSubComponent}*/}
+        {/*/>*/}
     </Container>
   );
 };
