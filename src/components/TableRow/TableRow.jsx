@@ -4,9 +4,11 @@ import React from 'react';
 import styles from './TableRow.module.css'
 
 // components
-import Text from "../Text/Text";
+import Text from "../Text";
+import CriticalIndicator from "../CriticalIndicator";
 
 function TableRow ({onClick, name, criticality, helpData, contact}) {
+
     const onClickHandler = () => {
         onClick?.();
     }
@@ -17,7 +19,7 @@ function TableRow ({onClick, name, criticality, helpData, contact}) {
                 <Text text={name}/>
             </div>
             <div className={styles.criticality}>
-                <Text text={criticality}/>
+                <CriticalIndicator level={criticality}/>
             </div>
             <div className={styles.helpData}>
                 <Text text={helpData}/>
@@ -26,9 +28,7 @@ function TableRow ({onClick, name, criticality, helpData, contact}) {
                 <Text text={contact}/>
             </div>
             {
-                onClick ? (
-                    <div className={styles.arrow}>></div>
-                ) : null
+                onClick && <div className={styles.arrow}>></div>
             }
         </div>
     );

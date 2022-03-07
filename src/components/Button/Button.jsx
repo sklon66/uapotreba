@@ -1,12 +1,14 @@
 import React from 'react';
 
-function Button ({onClick}) {
+function Button ({onClick, text}) {
     const onClickHandler = () => {
         onClick?.()
     }
 
+    console.log('text', text)
+
     return (
-        <button onClick={onClickHandler}/>
+        <button onClick={onClickHandler}>{text}</button>
     );
 }
 

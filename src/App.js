@@ -24,6 +24,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { SelectColumnFilter } from './services/filters';
 import { getData } from "./api/apiData";
 import { useData } from "./hooks/useData";
+import Home from "./pages/Home";
+import Header from "./components/Header";
+import Legend from "./components/Legend";
 
 
 const App = () => {
@@ -44,7 +47,7 @@ const App = () => {
     doFetch();
   }, []);
 
-  useData();
+  // useData();
 
   const renderRowSubComponent = (row) => {
     const {
@@ -139,15 +142,20 @@ const App = () => {
   );
 
   return (
-    <Container style={{ marginTop: 100 }}>
-      <Text language={language} />
-      <Checklist />
-        {/*<TableContainer*/}
-        {/*  columns={columns}*/}
-        {/*  data={data}*/}
-        {/*  renderRowSubComponent={renderRowSubComponent}*/}
-        {/*/>*/}
-    </Container>
+      <>
+        <Header/>
+        <Legend/>
+        <Container style={{ marginTop: 100 }}>
+          <Text language={language} />
+
+            {/*<TableContainer*/}
+            {/*  columns={columns}*/}
+            {/*  data={data}*/}
+            {/*  renderRowSubComponent={renderRowSubComponent}*/}
+            {/*/>*/}
+            <Home />
+        </Container>
+      </>
   );
 };
 

@@ -3,12 +3,10 @@ import React from 'react';
 // components
 import Text from "../../components/Text";
 import Table from "../../components/Table";
-import FilterComponent from "../../components/FilterComponent";
+import Checklist from "../../components/Checklist";
 
 // styles
 import styles from './HomeContainer.module.css'
-
-
 
 function HomeContainer () {
     const mocData = [
@@ -44,7 +42,7 @@ function HomeContainer () {
             <div className={styles.container}>
                 <div className={styles.filterContainer}>
                     <Text text='Потреби' />
-                    <FilterComponent />
+                    <Checklist />
                 </div>
                 <div className={styles.tableContainer}>
                     <Table iterableData={mocData} withPagination/>

@@ -8,6 +8,7 @@ import TableRow from "../../components/TableRow";
 import Pagination from "../../components/Pagination";
 
 function Table ({iterableData, withPagination}) {
+
     return (
         <div className={styles.tableContainer}>
             <div className={styles.tableBody}>
@@ -22,7 +23,7 @@ function Table ({iterableData, withPagination}) {
                 </div>
             </div>
             {
-                withPagination && <Pagination />
+                withPagination && <Pagination pageCount={iterableData.length}/>
             }
 
         </div>

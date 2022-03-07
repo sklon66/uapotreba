@@ -8,3 +8,7 @@
 .tableContainer {
     min-width: 70%;
 }
+
+.red {
+    color: red;
+}
