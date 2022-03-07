@@ -1,4 +1,4 @@
-import { setData as setDataRedux } from "../redux/AppReducer/actions";
+import { setData } from "../redux/AppReducer/actions.js";
 
 export const getData = (dispatch) => {
 
@@ -6,7 +6,7 @@ export const getData = (dispatch) => {
         .then(function (response) { return response.json(); })
         .then(function (data) {
             if (data?.length > 0) {
-                dispatch(setDataRedux(data));
+                dispatch(setData(data));
             }
             else {
                 console.log("Fetch error")
