@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { selectLanguage } from "./redux/AppReducer/selectors.ts";
+import { selectLanguage } from "./redux/AppReducer/selectors.js";
 import {
   Container,
   Card,
@@ -22,7 +22,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // services
 import { SelectColumnFilter } from './services/filters';
-import {getData} from "./api/apiData";
+import { getData } from "./api/apiData";
+import { useData } from "./hooks/useData";
 
 
 const App = () => {
@@ -42,6 +43,8 @@ const App = () => {
     };
     doFetch();
   }, []);
+
+  useData();
 
   const renderRowSubComponent = (row) => {
     const {

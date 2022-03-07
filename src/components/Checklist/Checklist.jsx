@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 
+// actions
+import { setProducts } from "../../redux/AppReducer/actions";
+
+// components
+import Checkbox from "../Checkbox";
+
 // styles
 import "./Checklist.css";
-import Checkbox from "../Checkbox";
-import {Catalogues} from "./mock";
+
+// data
+import { Catalogues } from "../../mock";
 
 function Checklist() {
     const [isCheckAll, setIsCheckAll] = useState(false);
