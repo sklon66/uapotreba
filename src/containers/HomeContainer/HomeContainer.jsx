@@ -1,4 +1,6 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
 
 // components
 import Text from "../../components/Text";
@@ -9,6 +11,9 @@ import Checklist from "../../components/Checklist";
 import styles from './HomeContainer.module.css'
 import { useSelector } from "react-redux";
 import { selectData } from "../../redux/AppReducer/selectors";
+
+//helpers
+import {handleRegionClick} from "../../services/helpers";
 
 function HomeContainer () {
     const data = useSelector(selectData);

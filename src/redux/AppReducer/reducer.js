@@ -1,6 +1,6 @@
 import {
     SET_LANGUAGE,
-    SET_DATA, SET_PRODUCTS, SET_REGIONS, SET_ACTIVE_PRODUCTS
+    SET_DATA, SET_PRODUCTS, SET_REGIONS, SET_CURRENT_REGION, SET_ACTIVE_PRODUCTS
 } from './types';
 
 // constants
@@ -11,6 +11,7 @@ const initialState = {
     data: localStorage.getItem('data') ? JSON.parse(localStorage.getItem('data')) : null,
     products: PRODUCTS_LIST,
     regions: REGIONS_LIST,
+    currentRegion: null,
 };
 
 const AppReducer = (state = initialState, action) => {
@@ -25,6 +26,8 @@ const AppReducer = (state = initialState, action) => {
             return { ...state, activeProducts: action.payload };
         case SET_REGIONS:
             return { ...state, regions: action.payload };
+        case SET_CURRENT_REGION:
+            return { ...state, currentRegion: action.payload };
         default:
             return state;
     }
