@@ -10,20 +10,18 @@ import Checkbox from "../Checkbox";
 import "./Checklist.css";
 
 // data
-import { Catalogues } from "../../mock";
+import { useSelector } from "react-redux";
+import { selectProducts } from "../../redux/AppReducer/selectors";
 
 function Checklist() {
+    const productList = useSelector(selectProducts);
     const [isCheckAll, setIsCheckAll] = useState(false);
     const [isCheck, setIsCheck] = useState([]);
-    const [list, setList] = useState([]);
+    const [list, setList] = useState(productList);
     const [search, setSearch] = useState("");
 
-    useEffect(() => {
-        setList(Catalogues);
-    }, []);
-
     const filterSearchResults = (value) => {
-        const newList =  Catalogues.filter(el => el?.name.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+        const newList =  productList.filter(el => el?.name.toLowerCase().indexOf(value.toLowerCase()) !== -1);
         setList([...newList]);
     }
 
@@ -34,7 +32,7 @@ function Checklist() {
 
     const handleSelectAll = e => {
         setIsCheckAll(!isCheckAll);
-        setIsCheck(list.map(li => li.id));
+        setIsCheck(list?.map(li => li.id));
         if (isCheckAll) {
             setIsCheck([]);
         }
@@ -48,7 +46,7 @@ function Checklist() {
         }
     };
 
-    const catalog = list.map(({ id, name }) => {
+    const catalog = list?.map(({ id, name }) => {
         return (
             <label className={isCheck.includes(id) ? "checked-item" : "not-checked-item"} key={id}>
                 <Checkbox

@@ -9,7 +9,7 @@ import { PRODUCTS_LIST, REGIONS_LIST } from "../../constants/constants";
 const initialState = {
     language: localStorage.getItem('language') || 'ua',
     data: localStorage.getItem('data') ? JSON.parse(localStorage.getItem('data')) : null,
-    product: PRODUCTS_LIST,
+    products: PRODUCTS_LIST,
     regions: REGIONS_LIST,
 };
 
