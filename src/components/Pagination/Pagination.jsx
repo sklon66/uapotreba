@@ -1,17 +1,14 @@
 import React from 'react';
 
-// constants
-import {MAX_ROWS_PER_PAGE} from "../../constants/constants";
-
 // styles
 import styles from './Pagination.module.css';
 
 // components
 import Button from "../../components/Button";
 
-function Pagination ({pageCount, onPageButtonClick}) {
+function Pagination ({pageCount, onPageButtonClick, maxItemPerPage}) {
 
-    const BUTTON_COUNT = Math.ceil(pageCount / MAX_ROWS_PER_PAGE);
+    const BUTTON_COUNT = Math.ceil(pageCount / maxItemPerPage);
 
     const clickHandler = (targetPage) => {
         onPageButtonClick?.(targetPage)
@@ -20,9 +17,8 @@ function Pagination ({pageCount, onPageButtonClick}) {
     return (
         <div className={styles.paginationBox}>
             {
-                [...Array(BUTTON_COUNT)].map((item) => {
-                    console.log('item', item)
-                    return <Button onClick={() => clickHandler(Array(BUTTON_COUNT)[item])} text={Array(BUTTON_COUNT)[item]}/>
+                [...Array(BUTTON_COUNT)].map((item, index) => {
+                    return <Button onClick={() => clickHandler(index + 1)} text={index + 1}/>
                 })
 
             }
