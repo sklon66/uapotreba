@@ -20,11 +20,11 @@ function HomeContainer () {
 
     return (
         <div>
-            <Text text='Гуманітарна допомога в Україні' />
-            <Text text='Області, що найбільше потребуть допомогу' />
+            <Text text='humanitarian_help' />
+            <Text text='regions_needs' />
             <div className={styles.container}>
                 <div className={styles.filterContainer}>
-                    <Text text='Потреби' />
+                    <Text text='needs' />
                     <Checklist />
                 </div>
                 <div className={styles.tableContainer}>

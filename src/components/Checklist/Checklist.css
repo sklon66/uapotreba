@@ -31,7 +31,7 @@
 }
 
 .allProducts {
-    margin-left: 5px;
+    margin: 0 0 0 5px;
 }
 
 .list-container {
@@ -45,6 +45,7 @@
     line-height: 14px;
     padding: 12px;
     margin: 0 -12px;
+    display: flex;
 }
 
 .checked-item input,
