@@ -22,7 +22,7 @@ function Table ({iterableData, withPagination}) {
             <div className={styles.tableBody}>
                 <div className={styles.rows}>
                     {
-                        iterableData===null ? <Loader /> :
+                        !iterableData ? <Loader /> :
                         iterableData?.map((row, index) => {
                             return (
                                 <TableRow key={index} name={row.region} criticality={row.regionNeed} cities={row.cities} onClick={()=>handleRegionClick(row.region,dispatch,navigate)} />
