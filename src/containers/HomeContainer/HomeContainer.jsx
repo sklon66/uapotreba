@@ -1,4 +1,6 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
 
 // components
 import Text from "../../components/Text";
@@ -8,31 +10,37 @@ import Checklist from "../../components/Checklist";
 // styles
 import styles from './HomeContainer.module.css'
 
+//helpers
+import {handleRegionClick} from "../../services/helpers";
+
 function HomeContainer () {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const mocData = [
         {
             name: 'Чернігівська',
             criticality: 5,
             helpData: '4 (1)',
-            onClick: () => console.log('Чернігівська click'),
+            onClick: () => handleRegionClick('Чернігівська', dispatch, navigate),
         },
         {
             name: 'Харківська',
             criticality: 5,
             helpData: '10 (5)',
-            onClick: () => console.log('Харківська click'),
+            onClick: () => handleRegionClick('Харківська', dispatch, navigate),
         },
         {
             name: 'Київська',
             criticality: 4,
             helpData: '12',
-            onClick: () => console.log('Київська click'),
+            onClick: () => handleRegionClick('Київська', dispatch, navigate),
         },
         {
             name: 'Херсонська',
             criticality: 3,
             helpData: '8',
-            onClick: () => console.log('Херсонська click'),
+            onClick: () => handleRegionClick('Херсонська', dispatch, navigate),
         }
     ]
     return (
