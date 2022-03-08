@@ -30,6 +30,7 @@ import Region from "./pages/Region";
 import City from "./pages/City";
 import Header from "./components/Header";
 import Legend from "./components/Legend";
+import Footer from "./components/Footer";
 
 
 const App = () => {
@@ -158,6 +159,7 @@ const App = () => {
                 </Routes>
             </Router>
         </Container>
+        <Footer />
       </>
   );
 };

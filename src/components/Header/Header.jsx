@@ -13,7 +13,7 @@ function Header () {
             <div className={styles.logoWrap}>
                 <Logo />
             </div>
-            <Text text='Потреба'/>
+            <Text text='potreba'/>
         </header>
     );
 };

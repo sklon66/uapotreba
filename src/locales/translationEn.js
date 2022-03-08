@@ -24,7 +24,7 @@ export const KEYS_EN = {
     'Приправи': 'Presentation',
     'Фрукти': 'Fruits',
     'Сири': 'Serminate',
-    'Колбаса': 'Sausage',
+    'Ковбаса': 'Sausage',
     'Мʼясо': 'Meat',
     'Молочні вироби': 'Dairy products',
     'Заморожені продукти': 'Frozen Foods',

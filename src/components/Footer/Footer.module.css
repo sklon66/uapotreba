@@ -1,0 +1,37 @@
+.footer {
+    display: flex;
+    background-color: #FCFCFC;
+    padding: 16px 40px;
+    box-sizing: border-box;
+    flex-direction: column;
+}
+
+.fullLogoWrap{
+    display: flex;
+}
+
+.logoWrap {
+    margin-right: 12px;
+}
+
+.topContent {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 48px;
+}
+
+.bottomContent {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.footerText {
+    margin: 0 52px 0 0;
+    color: var(--footer-text-color);
+}
+
+.phone,.phone:hover {
+    color: var(--footer-text-color);
+    text-transform: none;
+    margin: 0 52px 0 0;
+}
