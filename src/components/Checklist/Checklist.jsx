@@ -11,10 +11,13 @@ import Checkbox from "../Checkbox";
 import "./Checklist.css";
 
 // selectors
-import { selectProducts } from "../../redux/AppReducer/selectors";
+import {selectLanguage, selectProducts} from "../../redux/AppReducer/selectors";
+import Text from "../Text";
 
 function Checklist() {
     const productList = useSelector(selectProducts);
+    const language = useSelector(selectLanguage);
+
     const dispatch = useDispatch();
 
     const [isCheckAll, setIsCheckAll] = useState(false);
@@ -67,7 +70,7 @@ function Checklist() {
                     handleClick={handleClick}
                     isChecked={isCheckedId.includes(id)}
                 />
-                {name}
+                <Text text={name} />
             </label>
         );
     });
@@ -75,7 +78,7 @@ function Checklist() {
     return (
             <div className="checkList">
                 <label className="searchAll">
-                    <span className="allProducts">Усі продукти</span>
+                    <p className="allProducts"><Text text='all_products' /></p>
                     <Checkbox
                         name="selectAll"
                         id="selectAll"
@@ -87,7 +90,7 @@ function Checklist() {
                     type="text"
                     className="searchInput"
                     value={search}
-                    placeholder="Пошук продукту..."
+                    placeholder={language==='ua' ? "Пошук" : "Search"}
                     onChange={(e) => handleSearch(e.target.value)}
                 />
                 <div className="list-container">
