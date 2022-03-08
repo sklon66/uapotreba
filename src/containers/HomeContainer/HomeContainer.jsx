@@ -16,9 +16,6 @@ import { selectData } from "../../redux/AppReducer/selectors";
 import {handleRegionClick} from "../../services/helpers";
 
 function HomeContainer () {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-
     const data = useSelector(selectData);
 
     return (

@@ -19,13 +19,13 @@ function Pagination ({pageCount, onPageButtonClick}) {
 
     return (
         <div className={styles.paginationBox}>
-            {
-                [...Array(BUTTON_COUNT)].map((item) => {
-                    console.log('item', item)
-                    return <Button onClick={() => clickHandler(Array(BUTTON_COUNT)[item])} text={Array(BUTTON_COUNT)[item]}/>
-                })
+            {/*{*/}
+            {/*    [...Array(BUTTON_COUNT)]?.map((item) => {*/}
+            {/*        console.log('item', item)*/}
+            {/*        return <Button onClick={() => clickHandler(Array(BUTTON_COUNT)[item])} text={Array(BUTTON_COUNT)[item]}/>*/}
+            {/*    })*/}
 
-            }
+            {/*}*/}
         </div>
     );
 }
