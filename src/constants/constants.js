@@ -48,3 +48,5 @@ export const REGIONS_LIST = [
     'Тернопільська',
     'Чернігівська',
 ];
+
+export const MAX_ROWS_PER_PAGE = 15;

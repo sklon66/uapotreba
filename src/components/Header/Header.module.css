@@ -1,0 +1,12 @@
+.header {
+    display: flex;
+    min-height: 56px;
+    background-color: #FCFCFC;
+    padding: 12px 40px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.logoWrap {
+    margin-right: 12px;
+}

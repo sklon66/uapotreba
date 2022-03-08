@@ -1,0 +1,32 @@
+.criticalClasses {
+    display: flex;
+    justify-content: space-between;
+    width: 54px;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #DEDEDE;
+}
+
+.criticalClasses.first .dot:first-child {
+    background-color: #F7441D;
+}
+
+.criticalClasses.second .dot:nth-child(-n+2) {
+    background-color: #F7441D;
+}
+
+.criticalClasses.third .dot:nth-child(-n+3) {
+    background-color: #F7441D;
+}
+
+.criticalClasses.fourth .dot:nth-child(-n+4) {
+    background-color: #F7441D;
+}
+
+.criticalClasses.fifth .dot:nth-child(-n+5) {
+    background-color: #F7441D;
+}

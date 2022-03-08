@@ -50,7 +50,7 @@ function Checklist() {
 
     const catalog = list.map(({ id, name }) => {
         return (
-            <div className={isCheck.includes(id) ? "checked-item" : "not-checked-item"} key={id}>
+            <label className={isCheck.includes(id) ? "checked-item" : "not-checked-item"} key={id}>
                 <Checkbox
                     key={id}
                     name={name}
@@ -59,13 +59,13 @@ function Checklist() {
                     isChecked={isCheck.includes(id)}
                 />
                 {name}
-            </div>
+            </label>
         );
     });
 
     return (
             <div className="checkList">
-                <div className="searchAll">
+                <label className="searchAll">
                     <span className="allProducts">Усі продукти</span>
                     <Checkbox
                         name="selectAll"
@@ -73,7 +73,7 @@ function Checklist() {
                         handleClick={handleSelectAll}
                         isChecked={isCheckAll}
                     />
-                </div>
+                </label>
                 <input
                     type="text"
                     className="searchInput"
