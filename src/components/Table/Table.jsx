@@ -16,7 +16,7 @@ function Table ({iterableData, withPagination}) {
                     {
                         iterableData?.map((row, index) => {
                             return (
-                                <TableRow key={index} name={row.name} criticality={row.criticality} helpData={row.helpData} onClick={row.onClick} />
+                                <TableRow key={index} name={row.region} criticality={row.regionNeed} cities={row.cities} onClick={row.onClick} />
                             )
                         })
                     }
