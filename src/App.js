@@ -152,9 +152,9 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
 
-                    <Route path="/region_:name" element={<Region />} />
+                    <Route path="/region-:name" element={<Region />} />
 
-                    <Route path="/city_:name" element={<City />} />
+                    <Route path="/city-:name" element={<City />} />
                 </Routes>
             </Router>
         </Container>
