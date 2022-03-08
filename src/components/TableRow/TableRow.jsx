@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 // styles
 import styles from './TableRow.module.css'
@@ -7,7 +7,14 @@ import styles from './TableRow.module.css'
 import Text from "../Text";
 import CriticalIndicator from "../CriticalIndicator";
 
-function TableRow ({onClick, name, criticality, helpData, contact}) {
+function TableRow ({onClick, name, criticality, cities, contact}) {
+
+    const [blockedCities, setBlockedCities] = useState([]);
+
+    useEffect(() => {
+        const blocked = cities?.filter(city => city.blocked === 'blocked')
+        setBlockedCities(blocked?.length);
+    },[cities])
 
     const onClickHandler = () => {
         onClick?.();
@@ -21,8 +28,11 @@ function TableRow ({onClick, name, criticality, helpData, contact}) {
             <div className={styles.criticality}>
                 <CriticalIndicator level={criticality}/>
             </div>
-            <div className={styles.helpData}>
-                <Text text={helpData}/>
+            <div className={styles.cities}>
+                <Text text={cities?.length}/>
+                <span>
+                  <Text text={blockedCities}/>
+                </span>
             </div>
             <div className={styles.contact}>
                 <Text text={contact}/>

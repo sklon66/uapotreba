@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 // styles
 import styles from './Table.module.css'
@@ -12,7 +14,13 @@ import TableRow from "../../components/TableRow";
 import Pagination from "../../components/Pagination";
 import Button from "../../components/Button";
 
+//helpers
+import { handleRegionClick } from "../../services/helpers";
+import Loader from "../Loader";
+
 function Table ({iterableData, withPagination}) {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [maxRowsPerPage, setMaxRowsPerPage] = useState(MAX_ROWS_PER_PAGE);
     const [currentPage, setCurrentPage] = useState(2);
@@ -50,9 +58,10 @@ function Table ({iterableData, withPagination}) {
             <div className={styles.tableBody}>
                 <div className={styles.rows}>
                     {
+                        !iterableData ? <Loader /> :
                         iterableData?.map((row, index) => {
                             return (
-                                index < maxRowsPerPage && <TableRow key={index} name={row.name} criticality={row.criticality} helpData={row.helpData} onClick={row.onClick} />
+                                <TableRow key={index} name={row.region} criticality={row.regionNeed} cities={row.cities} onClick={()=>handleRegionClick(row.region,dispatch,navigate)} />
                             )
                         })
                     }
@@ -60,7 +69,8 @@ function Table ({iterableData, withPagination}) {
             </div>
             <Button text='more' onClick={addRowsPerPage}/>
             {
-                withPagination && <Pagination onPageButtonClick={findDiapasonPerPage} pageCount={iterableData.length} maxItemPerPage={maxRowsPerPage}/>
+                withPagination && <Pagination onPageButtonClick={findDiapasonPerPage} pageCount={iterableData?.length}/>
+
             }
 
         </div>

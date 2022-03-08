@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { selectLanguage } from "./redux/AppReducer/selectors.js";
 import {
   Container,
@@ -25,6 +26,8 @@ import { SelectColumnFilter } from './services/filters';
 import { getData } from "./api/apiData";
 import { useData } from "./hooks/useData";
 import Home from "./pages/Home";
+import Region from "./pages/Region";
+import City from "./pages/City";
 import Header from "./components/Header";
 import Legend from "./components/Legend";
 
@@ -36,18 +39,10 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const doFetch = async () => {
-      const response = await fetch('https://randomuser.me/api/?results=100');
-      const body = await response.json();
-      const contacts = body.results;
       getData(dispatch);
-      // console.log(contacts);
-      setData(contacts);
-    };
-    doFetch();
   }, []);
 
-  // useData();
+  useData();
 
   const renderRowSubComponent = (row) => {
     const {
@@ -146,14 +141,22 @@ const App = () => {
         <Header/>
         <Legend/>
         <Container style={{ marginTop: 100 }}>
-          <Text language={language} />
+            <Router>
+              <Text language={language} />
 
-            {/*<TableContainer*/}
-            {/*  columns={columns}*/}
-            {/*  data={data}*/}
-            {/*  renderRowSubComponent={renderRowSubComponent}*/}
-            {/*/>*/}
-            <Home />
+                {/*<TableContainer*/}
+                {/*  columns={columns}*/}
+                {/*  data={data}*/}
+                {/*  renderRowSubComponent={renderRowSubComponent}*/}
+                {/*/>*/}
+                <Routes>
+                    <Route path="/" element={<Home />} />
+
+                    <Route path="/region-:name" element={<Region />} />
+
+                    <Route path="/city-:name" element={<City />} />
+                </Routes>
+            </Router>
         </Container>
       </>
   );

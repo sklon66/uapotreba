@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 // actions
-import { setProducts } from "../../redux/AppReducer/actions";
+import { setActiveProducts } from "../../redux/AppReducer/actions";
 
 // components
 import Checkbox from "../Checkbox";
@@ -9,21 +10,30 @@ import Checkbox from "../Checkbox";
 // styles
 import "./Checklist.css";
 
-// data
-import { Catalogues } from "../../mock";
+// selectors
+import { selectProducts } from "../../redux/AppReducer/selectors";
 
 function Checklist() {
+    const productList = useSelector(selectProducts);
+
+    const dispatch = useDispatch();
+
     const [isCheckAll, setIsCheckAll] = useState(false);
-    const [isCheck, setIsCheck] = useState([]);
-    const [list, setList] = useState([]);
+    const [isCheckedId, setCheckedId] = useState([]);
+    const [list, setList] = useState(productList);
     const [search, setSearch] = useState("");
 
     useEffect(() => {
-        setList(Catalogues);
-    }, []);
+        const checkedProduct = productList
+            .filter((x) => {
+          return isCheckedId.includes(x.id)
+        })
+            .map(el => el.name);
+        dispatch(setActiveProducts(checkedProduct))
+    }, [isCheckedId, isCheckAll]);
 
     const filterSearchResults = (value) => {
-        const newList =  Catalogues.filter(el => el?.name.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+        const newList =  productList.filter(el => el?.name.toLowerCase().indexOf(value.toLowerCase()) !== -1);
         setList([...newList]);
     }
 
@@ -34,29 +44,29 @@ function Checklist() {
 
     const handleSelectAll = e => {
         setIsCheckAll(!isCheckAll);
-        setIsCheck(list.map(li => li.id));
+        setCheckedId(list?.map(li => li.id));
         if (isCheckAll) {
-            setIsCheck([]);
+            setCheckedId([]);
         }
     };
 
     const handleClick = e => {
         const { id, checked } = e.target;
-        setIsCheck([...isCheck, id]);
+        setCheckedId([...isCheckedId, id]);
         if (!checked) {
-            setIsCheck(isCheck.filter(item => item !== id));
+            setCheckedId(isCheckedId.filter(item => item !== id));
         }
     };
 
-    const catalog = list.map(({ id, name }) => {
+    const catalog = list?.map(({ id, name }) => {
         return (
-            <label className={isCheck.includes(id) ? "checked-item" : "not-checked-item"} key={id}>
+            <label className={isCheckedId.includes(id) ? "checked-item" : "not-checked-item"} key={id}>
                 <Checkbox
                     key={id}
                     name={name}
                     id={id}
                     handleClick={handleClick}
-                    isChecked={isCheck.includes(id)}
+                    isChecked={isCheckedId.includes(id)}
                 />
                 {name}
             </label>
