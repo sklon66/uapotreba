@@ -68,10 +68,10 @@ function Table ({iterableData, withPagination}) {
                 </div>
             </div>
             <Button text='more' onClick={addRowsPerPage}/>
-            {
-                withPagination && <Pagination onPageButtonClick={findDiapasonPerPage} pageCount={iterableData?.length}/>
-
-            }
+            {console.log(iterableData)}
+            {/*{*/}
+            {/*    withPagination && <Pagination onPageButtonClick={findDiapasonPerPage} pageCount={iterableData?.length}/>*/}
+            {/*}*/}
 
         </div>
     );

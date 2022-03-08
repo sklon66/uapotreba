@@ -15,7 +15,6 @@ import { selectProducts } from "../../redux/AppReducer/selectors";
 
 function Checklist() {
     const productList = useSelector(selectProducts);
-
     const dispatch = useDispatch();
 
     const [isCheckAll, setIsCheckAll] = useState(false);
