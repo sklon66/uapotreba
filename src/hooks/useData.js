@@ -9,8 +9,8 @@ export const useData = () => {
     const dispatch = useDispatch();
     const data = useSelector(selectData);
 
-    const regions = data.map((el) => {
-        return el.region;
+    const regions = data?.map((el) => {
+        return el?.region;
     })
     dispatch(setRegions(regions));
     console.log('data', data)
