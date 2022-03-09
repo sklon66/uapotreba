@@ -7,7 +7,7 @@ import styles from './TableRow.module.css'
 import Text from "../Text";
 import CriticalIndicator from "../CriticalIndicator";
 
-function TableRow ({onClick, name, criticality, cities, contact}) {
+function TableRow ({region, product, name, criticality, cities, contact, perOneDayNeed, rowClick}) {
 
     const [blockedCities, setBlockedCities] = useState([]);
 
@@ -17,28 +17,43 @@ function TableRow ({onClick, name, criticality, cities, contact}) {
     },[cities])
 
     const onClickHandler = () => {
-        onClick?.();
+        rowClick?.();
     }
 
     return (
         <div className={styles.rowBody} onClick={onClickHandler}>
             <div className={styles.name}>
-                <Text text={name}/>
+                <Text text={region || product || name}/>
             </div>
             <div className={styles.criticality}>
                 <CriticalIndicator level={criticality}/>
             </div>
-            <div className={styles.cities}>
-                <Text text={cities?.length}/>
-                <span>
-                  <Text text={blockedCities}/>
-                </span>
-            </div>
-            <div className={styles.contact}>
-                <Text text={contact}/>
-            </div>
             {
-                onClick && <div className={styles.arrow}>></div>
+                !!cities && (
+                    <div className={styles.cities}>
+                        <Text text={cities?.length}/>
+                        <span className={styles.red}>
+                          <Text text={blockedCities}/>
+                        </span>
+                    </div>
+                )
+            }
+            {/*{*/}
+            {/*    !!contact && (*/}
+            {/*        <div className={styles.contact}>*/}
+            {/*            <Text text={contact}/>*/}
+            {/*        </div>*/}
+            {/*    )*/}
+            {/*}*/}
+            {
+                perOneDayNeed && (
+                    <div className={styles.perOneDayNeed}>
+                        <Text text={perOneDayNeed}/>
+                    </div>
+                )
+            }
+            {
+                rowClick && <div className={styles.arrow}>></div>
             }
         </div>
     );

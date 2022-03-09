@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // components
 import Text from "../../components/Text";
@@ -9,14 +9,27 @@ import Checklist from "../../components/Checklist";
 
 // styles
 import styles from './HomeContainer.module.css'
-import { useSelector } from "react-redux";
-import { selectData } from "../../redux/AppReducer/selectors";
 
-//helpers
-import {handleRegionClick} from "../../services/helpers";
+
+// redux
+import { selectData } from "../../redux/AppReducer/selectors";
+import {setCurrentRegion} from "../../redux/AppReducer/actions";
+
+// translation
+import {KEYS_EN} from "../../locales/translationEn";
+import Loader from "../../components/Loader";
 
 function HomeContainer () {
     const data = useSelector(selectData);
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const onRowClickHandler = (region) => {
+        dispatch(setCurrentRegion(region));
+
+        navigate(`/region-${KEYS_EN[region]}`);
+    }
 
     return (
         <div>
@@ -28,7 +41,7 @@ function HomeContainer () {
                     <Checklist />
                 </div>
                 <div className={styles.tableContainer}>
-                    <Table iterableData={data} withPagination/>
+                    <Table iterableData={data} withPagination onRowClick={onRowClickHandler}/>
                 </div>
             </div>
         </div>

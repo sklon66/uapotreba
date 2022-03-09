@@ -19,3 +19,11 @@
     text-overflow: ellipsis;
     overflow: hidden;
 }
+
+.arrow {
+    text-align: end;
+}
+
+.red {
+    color: red;
+}
