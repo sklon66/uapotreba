@@ -6,10 +6,12 @@ const selectLanguage = createSelector(selectApp, (app) => app.language);
 const selectData = createSelector(selectApp, (app) => app.data);
 const selectProducts = createSelector(selectApp, (app) => app.products);
 const selectCurrentRegion = createSelector(selectApp, (app) => app.currentRegion);
+const selectCurrentCity = createSelector(selectApp, (app) => app.currentCity);
 
 export {
     selectLanguage,
     selectData,
     selectProducts,
     selectCurrentRegion,
+    selectCurrentCity,
 };

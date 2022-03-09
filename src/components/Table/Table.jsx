@@ -56,7 +56,18 @@ function Table ({iterableData, withPagination, onRowClick}) {
                         !iterableData ? <Loader /> :
                         iterableData?.map((row, index) => {
                             return (
-                                <TableRow key={index} region={row.region} product={row.product} name={row.name} criticality={row.criticality} cities={row.cities} contact={row.contact} perOneDayNeed={row.perOneDayNeed} rowClick={() => onRowClick(row.region || row.city)}/>
+                                <TableRow
+                                    key={index}
+                                    region={row.region}
+                                    product={row.product}
+                                    name={row.name}
+                                    criticality={row.criticality}
+                                    cities={row.cities}
+                                    contact={row.contact}
+                                    perOneDayNeed={row.perOneDayNeed}
+                                    rowClick={() => {
+                                        onRowClick(row.region || row.name)
+                                    }}/>
                             )
                         })
                     }
