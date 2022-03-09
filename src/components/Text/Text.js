@@ -16,7 +16,7 @@ function Text({text}) {
 
     const translated = language === 'ua' ? KEYS_UA[text] : KEYS_EN[text]
 
-    return <p className={styles.textStyle}>{translated ? translated : text}</p>;
+    return <span className={styles.textStyle}>{translated ? translated : text}</span>;
 }
 
 export default Text;

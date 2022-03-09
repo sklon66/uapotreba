@@ -78,7 +78,7 @@ function Checklist() {
     return (
             <div className="checkList">
                 <label className="searchAll">
-                    <p className="allProducts"><Text text='all_products' /></p>
+                    <div className="allProducts"><Text text='all_products' /></div>
                     <Checkbox
                         name="selectAll"
                         id="selectAll"
