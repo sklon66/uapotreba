@@ -33,7 +33,7 @@ function TableRow ({region, product, name, criticality, cities, contact, perOneD
                     <div className={styles.cities}>
                         <Text text={cities?.length}/>
                         <div className={styles.red}>
-                          <Text text={blockedCities}/>
+                          (<Text text={blockedCities}/>)
                         </div>
                     </div>
                 )

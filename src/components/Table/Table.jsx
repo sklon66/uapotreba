@@ -12,6 +12,7 @@ import TableRow from "../../components/TableRow";
 import Pagination from "../../components/Pagination";
 import Button from "../../components/Button";
 import Loader from "../../components/Loader";
+import Text from "../Text";
 
 function Table ({iterableData, withPagination, onRowClick}) {
     const [maxRowsPerPage, setMaxRowsPerPage] = useState(MAX_ROWS_PER_PAGE);
@@ -50,9 +51,6 @@ function Table ({iterableData, withPagination, onRowClick}) {
         <div className={styles.tableContainer}>
             <div className={styles.tableBody}>
                 <div className={styles.rows}>
-                    <div className={styles.tableheading}>
-
-                    </div>
                     {
                         !iterableData ? <Loader /> :
                         iterableData?.map((row, index) => {
@@ -74,7 +72,7 @@ function Table ({iterableData, withPagination, onRowClick}) {
                     }
                 </div>
             </div>
-            <Button text='more' onClick={addRowsPerPage}/>
+            {/*<Button text='more' onClick={addRowsPerPage}/>*/}
             {/*{*/}
             {/*    withPagination && <Pagination onPageButtonClick={findDiapasonPerPage} pageCount={iterableData?.length}/>*/}
             {/*}*/}

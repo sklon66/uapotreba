@@ -20,7 +20,6 @@ function SelectLanguage () {
     const lang = useSelector(selectLanguage)
 
     const [language, setLanguage] = useState(lang);
-    const [languageList, setLanguageList] = useState([]);
 
     const updateHotLanguage = event => {
         dispatch(setLanguageRedux(event.target.value))
@@ -32,7 +31,7 @@ function SelectLanguage () {
             <select className={styles.select} value={language} onChange={updateHotLanguage} id="languages">
                 {LANGUAGES_LIST.map((lang) => (
                     <option key={lang.value} value={lang.value}>
-                        {lang.emoji} {lang.name}
+                        {lang.emoji}{' '}{lang.name}
                     </option>
                 ))}
             </select>

@@ -45,14 +45,32 @@ function HomeContainer () {
 
     return (
         <div>
-            <Text text='humanitarian_help' />
-            <Text text='regions_needs' />
+            <div className={styles.titlesContainer}>
+                <h1 className={styles.title}>
+                    <Text text='humanitarian_help' />
+                </h1>
+                <h2 className={styles.subtitle}>
+                    <Text text='regions_needs' />
+                </h2>
+            </div>
             <div className={styles.container}>
                 <div className={styles.filterContainer}>
-                    <Text text='needs' />
+                    <div className={styles.filterHeading}>
+                        <Text text='needs' />
+                    </div>
                     <Checklist />
                 </div>
                 <div className={styles.tableContainer}>
+                    <div className={styles.tableheading}>
+                        <Text text='region'/>
+                        <Text text='criticality'/>
+                        <div>
+                            <Text text='number_cities_towns'/>
+                            <div className={styles.tableheadingRed}>
+                                (<Text text='with_blockade'/>)
+                            </div>
+                        </div>
+                    </div>
                     <Table iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
                 </div>
             </div>

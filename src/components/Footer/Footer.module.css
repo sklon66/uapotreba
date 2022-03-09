@@ -27,11 +27,11 @@
 
 .footerText {
     margin: 0 52px 0 0;
-    color: var(--footer-text-color);
+    color: var(--main-text-color);
 }
 
 .phone,.phone:hover {
-    color: var(--footer-text-color);
+    color: var(--main-text-color);
     text-transform: none;
     margin: 0 52px 0 0;
 }

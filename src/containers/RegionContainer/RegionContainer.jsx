@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 // styles
-import styles from "../HomeContainer/HomeContainer.module.css";
+import styles from "./RegionContainer.module.css";
 
 // components
 import Text from "../../components/Text";
@@ -28,7 +28,6 @@ function RegionContainer () {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
 
     useEffect(()=>{
         data?.forEach((item) => {
@@ -57,13 +56,29 @@ function RegionContainer () {
     }
 
     return (
-        <div className={styles.container}>
-            <div className={styles.filterContainer}>
-                <Text text='Потреби' />
-                <Checklist />
+        <div>
+            <div className={styles.titlesContainer}>
+                <h1 className={styles.title}>
+                    <Text text={currentRegion} />
+                </h1>
             </div>
-            <div className={styles.tableContainer}>
-                <Table iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
+            <div className={styles.container}>
+                <div className={styles.filterContainer}>
+                    <div className={styles.filterHeading}>
+                        <Text text='needs' />
+                    </div>
+                    <Checklist />
+                </div>
+                <div className={styles.tableContainer}>
+                    <div className={styles.tableheading}>
+                        <Text text='city_town'/>
+                        <Text text='criticality'/>
+                        <div>
+                            <Text text='Залишок від норми на 5 днів, %'/>
+                        </div>
+                    </div>
+                    <Table iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
+                </div>
             </div>
         </div>
     );
