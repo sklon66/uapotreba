@@ -23,6 +23,7 @@ function Table ({iterableData, withPagination, onRowClick}) {
 
     },[maxRowsPerPage])
 
+
     const setPage = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
@@ -58,15 +59,15 @@ function Table ({iterableData, withPagination, onRowClick}) {
                             return (
                                 <TableRow
                                     key={index}
-                                    region={row.region}
-                                    product={row.product}
-                                    name={row.name}
-                                    criticality={row.criticality}
-                                    cities={row.cities}
-                                    contact={row.contact}
-                                    perOneDayNeed={row.perOneDayNeed}
+                                    region={row?.region}
+                                    product={row?.product}
+                                    name={row?.name}
+                                    criticality={row?.criticality}
+                                    cities={row?.cities}
+                                    contact={row?.contact}
+                                    perOneDayNeed={row?.perOneDayNeed}
                                     rowClick={() => {
-                                        onRowClick(row.region || row.name)
+                                        onRowClick(row?.region || row?.name)
                                     }}/>
                             )
                         })

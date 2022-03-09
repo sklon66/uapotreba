@@ -1,6 +1,6 @@
-import React from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 // styles
 import styles from "../HomeContainer/HomeContainer.module.css";
@@ -12,25 +12,43 @@ import Table from "../../components/Table";
 
 
 // selector
-import {selectCurrentRegion, selectData} from "../../redux/AppReducer/selectors";
+import { selectCurrentRegion, selectData } from "../../redux/AppReducer/selectors";
 
 // translate
-import {KEYS_EN} from "../../locales/translationEn";
-import {setCurrentCity} from "../../redux/AppReducer/actions";
+import { KEYS_EN } from "../../locales/translationEn";
+import { setCurrentCity } from "../../redux/AppReducer/actions";
 
 
 function RegionContainer () {
     const currentRegion = useSelector(selectCurrentRegion)
     const data = useSelector(selectData);
 
+    const [sortedData, setSortedData] = useState([]);
+    const [regionData, setRegionData] = useState([]);
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    let regionData = [];
 
-    data.forEach((item) => {
-        if (item.region === currentRegion) regionData = item;
-    })
+    useEffect(()=>{
+        data?.forEach((item) => {
+            if (item.region === currentRegion) {
+                setRegionData(item)
+            }
+        })
+    },[data]);
+
+
+    useEffect(() => {
+        const sorted = sortFromHighestToLowestPriority(regionData?.cities)
+        setSortedData(sorted)
+    },[regionData]);
+
+    const sortFromHighestToLowestPriority = (array) => {
+        return array?.sort((a, b) => {
+            return b?.cityNeed - a?.cityNeed;
+        });
+    }
 
     const onRowClickHandler = (city) => {
         dispatch(setCurrentCity(city));
@@ -45,7 +63,7 @@ function RegionContainer () {
                 <Checklist />
             </div>
             <div className={styles.tableContainer}>
-                <Table iterableData={regionData.cities} withPagination onRowClick={onRowClickHandler}/>
+                <Table iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
             </div>
         </div>
     );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 
@@ -17,13 +17,25 @@ import {setCurrentRegion} from "../../redux/AppReducer/actions";
 
 // translation
 import {KEYS_EN} from "../../locales/translationEn";
-import Loader from "../../components/Loader";
 
 function HomeContainer () {
     const data = useSelector(selectData);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    const [sortedData, setSortedData] = useState(data);
+
+    useEffect(()=> {
+        const sorted = sortFromHighestToLowestPriority(data)
+        setSortedData(sorted)
+    },[data]);
+
+    const sortFromHighestToLowestPriority = (array) => {
+        return array?.sort((a, b) => {
+            return b?.regionNeed - a?.regionNeed;
+        });
+    }
 
     const onRowClickHandler = (region) => {
         dispatch(setCurrentRegion(region));
@@ -41,7 +53,7 @@ function HomeContainer () {
                     <Checklist />
                 </div>
                 <div className={styles.tableContainer}>
-                    <Table iterableData={data} withPagination onRowClick={onRowClickHandler}/>
+                    <Table iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
                 </div>
             </div>
         </div>
