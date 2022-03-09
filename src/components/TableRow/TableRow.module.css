@@ -20,6 +20,15 @@
     overflow: hidden;
 }
 
+.criticality {
+    display: flex;
+    align-items: center;
+}
+
+.cities {
+    display: flex;
+}
+
 .arrow {
     text-align: end;
 }

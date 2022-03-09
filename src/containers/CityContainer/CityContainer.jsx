@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "../HomeContainer/HomeContainer.module.css";
+import styles from "./CityContainer.module.css";
 import Text from "../../components/Text";
 import Checklist from "../../components/Checklist";
 import Table from "../../components/Table";
@@ -32,13 +32,29 @@ function CityContainer () {
     console.log('cityData', cityData)
 
     return (
-        <div className={styles.container}>
-            <div className={styles.filterContainer}>
-                <Text text='Потреби' />
-                <Checklist />
+        <div>
+            <div className={styles.titlesContainer}>
+                <h1 className={styles.title}>
+                    <Text text={currentCity} />
+                </h1>
             </div>
-            <div className={styles.tableContainer}>
-                <Table iterableData={cityData.needs}/>
+            <div className={styles.container}>
+                <div className={styles.filterContainer}>
+                    <div className={styles.filterHeading}>
+                        <Text text='needs' />
+                    </div>
+                    <Checklist />
+                </div>
+                <div className={styles.tableContainer}>
+                    <div className={styles.tableheading}>
+                        <Text text='city_town'/>
+                        <Text text='criticality'/>
+                        <div>
+                            <Text text='Залишок від норми на 5 днів, %'/>
+                        </div>
+                    </div>
+                    <Table iterableData={cityData.needs}/>
+                </div>
             </div>
         </div>
     );

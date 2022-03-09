@@ -32,9 +32,9 @@ function TableRow ({region, product, name, criticality, cities, contact, perOneD
                 !!cities && (
                     <div className={styles.cities}>
                         <Text text={cities?.length}/>
-                        <span className={styles.red}>
-                          <Text text={blockedCities}/>
-                        </span>
+                        <div className={styles.red}>
+                          (<Text text={blockedCities}/>)
+                        </div>
                     </div>
                 )
             }
