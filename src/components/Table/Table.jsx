@@ -33,6 +33,8 @@ function Table ({iterableData, withPagination, onRowClick}) {
         setMaxRowsPerPage(maxRowsPerPage + MAX_ROWS_PER_PAGE )
     }
 
+    console.log('iterableData', iterableData)
+
     const findDiapasonPerPage = (step) => {
         setPage(step)
 
@@ -60,7 +62,7 @@ function Table ({iterableData, withPagination, onRowClick}) {
                                     region={row?.region}
                                     product={row?.product}
                                     name={row?.name}
-                                    criticality={row?.criticality}
+                                    criticality={row?.regionNeed || row?.cityNeed || row?.productNeed}
                                     cities={row?.cities}
                                     contact={row?.contact}
                                     perOneDayNeed={row?.perOneDayNeed}
