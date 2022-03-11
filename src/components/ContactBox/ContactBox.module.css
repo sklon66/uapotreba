@@ -3,3 +3,17 @@
     padding: 20px 24px;
     background-color: #FBFBFB;
 }
+
+.contactList {
+    display: flex;
+    flex-direction: column;
+}
+
+.textWrapper {
+    margin-bottom: 16px;
+}
+
+.link {
+    font-size: 14px;
+    line-height: 22px;
+}

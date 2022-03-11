@@ -9,8 +9,6 @@ import CriticalIndicator from "../CriticalIndicator";
 
 function TableRow ({region, product, name, criticality, cities, contact, perOneDayNeed, rowClick, isClick}) {
 
-    console.log('contact', contact)
-
     const [blockedCities, setBlockedCities] = useState([]);
 
     useEffect(() => {
