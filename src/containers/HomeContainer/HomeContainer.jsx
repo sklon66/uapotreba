@@ -12,7 +12,7 @@ import styles from './HomeContainer.module.css'
 
 
 // redux
-import { selectData } from "../../redux/AppReducer/selectors";
+import { selectData} from "../../redux/AppReducer/selectors";
 import {setCurrentRegion} from "../../redux/AppReducer/actions";
 
 // translation
@@ -43,6 +43,8 @@ function HomeContainer () {
         navigate(`/region-${KEYS_EN[region]}`);
     }
 
+    console.log('setSortedData', sortedData)
+
     return (
         <div>
             <div className={styles.titlesContainer}>
@@ -71,7 +73,7 @@ function HomeContainer () {
                             </div>
                         </div>
                     </div>
-                    <Table isClick iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
+                    <Table withContact isClick iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
                 </div>
             </div>
         </div>
