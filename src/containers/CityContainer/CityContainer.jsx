@@ -20,16 +20,9 @@ function CityContainer () {
         if (item.region === currentRegion) regionData = item;
     })
 
-    console.log('regionData', regionData)
-
     regionData.cities.forEach((item) => {
-        console.log('item -0-', item.needs)
         if (item.name === currentCity) cityData = item;
     })
-
-    console.log('regionData', regionData)
-
-    console.log('cityData', cityData)
 
     return (
         <div>

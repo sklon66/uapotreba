@@ -60,7 +60,7 @@ function Table ({iterableData, withPagination, onRowClick}) {
                                     region={row?.region}
                                     product={row?.product}
                                     name={row?.name}
-                                    criticality={row?.criticality}
+                                    criticality={row?.regionNeed || row?.cityNeed || row?.productNeed}
                                     cities={row?.cities}
                                     contact={row?.contact}
                                     perOneDayNeed={row?.perOneDayNeed}
