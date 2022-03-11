@@ -7,7 +7,7 @@ import styles from './TableRow.module.css'
 import Text from "../Text";
 import CriticalIndicator from "../CriticalIndicator";
 
-function TableRow ({region, product, name, criticality, cities, contact, perOneDayNeed, rowClick}) {
+function TableRow ({region, product, name, criticality, cities, contact, perOneDayNeed, rowClick, isClick}) {
 
     const [blockedCities, setBlockedCities] = useState([]);
 
@@ -38,13 +38,13 @@ function TableRow ({region, product, name, criticality, cities, contact, perOneD
                     </div>
                 )
             }
-            {/*{*/}
-            {/*    !!contact && (*/}
-            {/*        <div className={styles.contact}>*/}
-            {/*            <Text text={contact}/>*/}
-            {/*        </div>*/}
-            {/*    )*/}
-            {/*}*/}
+            {
+                !!contact && (
+                    <div className={styles.contact}>
+                        <Text text={contact}/>
+                    </div>
+                )
+            }
             {
                 perOneDayNeed && (
                     <div className={styles.perOneDayNeed}>
@@ -53,7 +53,7 @@ function TableRow ({region, product, name, criticality, cities, contact, perOneD
                 )
             }
             {
-                rowClick && <div className={styles.arrow}>></div>
+                (isClick && !!rowClick) && <div className={styles.arrow}>></div>
             }
         </div>
     );

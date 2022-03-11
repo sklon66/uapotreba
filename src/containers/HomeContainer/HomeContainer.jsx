@@ -71,7 +71,7 @@ function HomeContainer () {
                             </div>
                         </div>
                     </div>
-                    <Table iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
+                    <Table isClick iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
                 </div>
             </div>
         </div>

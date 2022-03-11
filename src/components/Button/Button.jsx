@@ -5,8 +5,6 @@ function Button ({onClick, text}) {
         onClick?.()
     }
 
-    // console.log('text', text)
-
     return (
         <button onClick={onClickHandler}>{text}</button>
     );

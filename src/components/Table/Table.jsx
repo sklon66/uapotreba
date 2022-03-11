@@ -9,12 +9,10 @@ import { MAX_ROWS_PER_PAGE } from "../../constants/constants";
 
 // components
 import TableRow from "../../components/TableRow";
-import Pagination from "../../components/Pagination";
-import Button from "../../components/Button";
 import Loader from "../../components/Loader";
-import Text from "../Text";
 
-function Table ({iterableData, withPagination, onRowClick}) {
+
+function Table ({iterableData, withPagination, onRowClick, isClick}) {
     const [maxRowsPerPage, setMaxRowsPerPage] = useState(MAX_ROWS_PER_PAGE);
     const [currentPage, setCurrentPage] = useState(2);
     const [rowsIndexToShow, setRowsIndexToShow] = useState(Array.from(Array(maxRowsPerPage).keys()));
@@ -23,7 +21,6 @@ function Table ({iterableData, withPagination, onRowClick}) {
         setRowsIndexToShow(Array.from(Array(maxRowsPerPage).keys()))
 
     },[maxRowsPerPage])
-
 
     const setPage = (pageNumber) => {
         setCurrentPage(pageNumber)
@@ -64,6 +61,7 @@ function Table ({iterableData, withPagination, onRowClick}) {
                                     cities={row?.cities}
                                     contact={row?.contact}
                                     perOneDayNeed={row?.perOneDayNeed}
+                                    isClick={isClick}
                                     rowClick={() => {
                                         onRowClick(row?.region || row?.name)
                                     }}/>
