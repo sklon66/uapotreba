@@ -48,7 +48,7 @@ function CityContainer () {
                             <Text text='Оптимальна потреба, т'/>
                         </div>
                     </div>
-                    <Table onRowClick={false} iterableData={cityData.needs}/>
+                    <Table iterableData={cityData.needs}/>
                 </div>
             </div>
         </div>
