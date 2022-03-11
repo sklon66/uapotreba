@@ -26,6 +26,10 @@ function Checklist() {
     const [list, setList] = useState(productList);
     const [search, setSearch] = useState("");
 
+    useEffect(() => {
+        setList(productList);
+    },[productList])
+
 
     const filterSearchResults = (value) => {
         const newList =  productList.filter(el => el?.name.toLowerCase().indexOf(value.toLowerCase()) !== -1);
@@ -52,13 +56,12 @@ function Checklist() {
         dispatch(setActiveProduct(allProductChecked));
     }
 
-    const catalog = list?.map(({ id, name }) => {
+    const catalog = list?.map((name) => {
         return (
-            <label className={isChecked(name, isCheckedName) ? "checked-item" : "not-checked-item"} key={id}>
+            <label className={isChecked(name, isCheckedName) ? "checked-item" : "not-checked-item"} key={name}>
                 <Checkbox
-                    key={id}
+                    key={name}
                     value={name}
-                    id={id}
                     type="radio"
                     handleClick={handleChange}
                     isChecked={isChecked(name, isCheckedName)}

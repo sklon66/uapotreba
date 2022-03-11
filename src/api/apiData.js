@@ -1,12 +1,14 @@
-import { setData } from "../redux/AppReducer/actions.js";
+import { setData, setProducts } from "../redux/AppReducer/actions.js";
 
 export const getData = (dispatch) => {
 
-    fetch(`https://script.google.com/macros/s/AKfycbzTPuqLLkpYdusQb3dE9P8aDyoc39S8NQH-3hyenObNBWWUj3cKgOjRgnB3EduNOF8O/exec`)
+    fetch(`https://script.google.com/macros/s/AKfycbyoxZ-GJjWpxFpw3ixGrI2upjMJyzK7HEcsOyBMVEvTPT8JY-IvPaD0bFqS7aqYQ14J/exec`)
         .then(function (response) { return response.json(); })
         .then(function (data) {
-            if (data?.length > 0) {
-                dispatch(setData(data));
+            if (data) {
+                console.log('recieved data from API', data)
+                dispatch(setData(data?.citiesInfo));
+                dispatch(setProducts(data?.allProducts));
             }
             else {
                 console.log("Fetch error")
