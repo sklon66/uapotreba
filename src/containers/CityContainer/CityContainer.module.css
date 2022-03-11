@@ -13,7 +13,7 @@
 }
 
 .tableContainer {
-    min-width: 70%;
+    width: 100%;
 }
 
 .red {
@@ -52,7 +52,6 @@
 }
 
 .tableheading > *:last-child {
-    width: 80%;
     display: flex;
 }
 

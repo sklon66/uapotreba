@@ -1,11 +1,16 @@
 import React from 'react';
+import { useSelector} from "react-redux";
+
+// styles
 import styles from "./CityContainer.module.css";
+
+// components
 import Text from "../../components/Text";
 import Checklist from "../../components/Checklist";
 import Table from "../../components/Table";
-import {useDispatch, useSelector} from "react-redux";
+
+// redux
 import {selectCurrentCity, selectCurrentRegion, selectData} from "../../redux/AppReducer/selectors";
-import {useNavigate} from "react-router-dom";
 
 function CityContainer () {
     const currentRegion = useSelector(selectCurrentRegion)
@@ -32,21 +37,18 @@ function CityContainer () {
                 </h1>
             </div>
             <div className={styles.container}>
-                <div className={styles.filterContainer}>
-                    <div className={styles.filterHeading}>
-                        <Text text='needs' />
-                    </div>
-                    <Checklist />
-                </div>
                 <div className={styles.tableContainer}>
                     <div className={styles.tableheading}>
                         <Text text='city_town'/>
                         <Text text='criticality'/>
                         <div>
-                            <Text text='Залишок від норми на 5 днів, %'/>
+                            <Text text='Потреба на 1 день, т'/>
+                        </div>
+                        <div>
+                            <Text text='Оптимальна потреба, т'/>
                         </div>
                     </div>
-                    <Table iterableData={cityData.needs}/>
+                    <Table onRowClick={false} iterableData={cityData.needs}/>
                 </div>
             </div>
         </div>

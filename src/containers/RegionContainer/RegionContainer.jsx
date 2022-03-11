@@ -17,6 +17,7 @@ import { selectCurrentRegion, selectData } from "../../redux/AppReducer/selector
 // translate
 import { KEYS_EN } from "../../locales/translationEn";
 import { setCurrentCity } from "../../redux/AppReducer/actions";
+import ContactBox from "../../components/ContactBox";
 
 
 function RegionContainer () {
@@ -61,6 +62,9 @@ function RegionContainer () {
                 <h1 className={styles.title}>
                     <Text text={currentRegion} />
                 </h1>
+                <div className={styles.contactBoxWrapper}>
+                    <ContactBox title='Контакти по області' contactList={regionData?.contacts} />
+                </div>
             </div>
             <div className={styles.container}>
                 <div className={styles.filterContainer}>
@@ -73,11 +77,9 @@ function RegionContainer () {
                     <div className={styles.tableheading}>
                         <Text text='city_town'/>
                         <Text text='criticality'/>
-                        <div>
-                            <Text text='Залишок від норми на 5 днів, %'/>
-                        </div>
+                        <Text text='Контакт' />
                     </div>
-                    <Table iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
+                    <Table isClick iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
                 </div>
             </div>
         </div>
