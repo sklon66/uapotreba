@@ -9,11 +9,11 @@ function CriticalIndicator ({level}) {
     const cx = classNames.bind(styles)
     const criticalClasses = cx({
         criticalClasses: true,
-        first: +level === 1,
-        second: +level === 2,
+        first: +level === 5,
+        second: +level === 4,
         third: +level === 3,
-        fourth: +level === 4,
-        fifth: +level === 5,
+        fourth: +level === 2,
+        fifth: +level === 1,
     })
 
     return (
