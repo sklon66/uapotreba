@@ -17,6 +17,7 @@ import {setCurrentRegion} from "../../redux/AppReducer/actions";
 
 // translation
 import {KEYS_EN} from "../../locales/translationEn";
+import About from "../../components/About";
 
 function HomeContainer () {
     const data = useSelector(selectData);
@@ -76,6 +77,7 @@ function HomeContainer () {
                     <Table withContact isClick iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
                 </div>
             </div>
+            <About />
         </div>
     );
 };
