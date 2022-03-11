@@ -1,7 +1,7 @@
 import {
     SET_LANGUAGE,
     SET_DATA,
-    SET_PRODUCTS, SET_REGIONS, SET_ACTIVE_PRODUCTS,
+    SET_PRODUCTS, SET_REGIONS, SET_ACTIVE_PRODUCT,
     SET_CURRENT_REGION,
     SET_CURRENT_CITY,
 } from './types';
@@ -27,10 +27,10 @@ export function setProducts(products) {
     };
 }
 
-export function setActiveProducts(activeProducts) {
+export function setActiveProduct(activeProduct) {
     return {
-        type: SET_ACTIVE_PRODUCTS,
-        payload: activeProducts,
+        type: SET_ACTIVE_PRODUCT,
+        payload: activeProduct,
     };
 }
 
