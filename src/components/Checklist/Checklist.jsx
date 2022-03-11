@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 // actions
-import { setActiveProducts } from "../../redux/AppReducer/actions";
+import { setActiveProduct } from "../../redux/AppReducer/actions";
 
 // components
 import Checkbox from "../Checkbox";
@@ -18,21 +18,14 @@ function Checklist() {
     const productList = useSelector(selectProducts);
     const language = useSelector(selectLanguage);
 
+    const allProductChecked = 'all';
+
     const dispatch = useDispatch();
 
-    const [isCheckAll, setIsCheckAll] = useState(false);
-    const [isCheckedId, setCheckedId] = useState([]);
+    const [isCheckedName, setCheckedName] = useState(allProductChecked);
     const [list, setList] = useState(productList);
     const [search, setSearch] = useState("");
 
-    useEffect(() => {
-        const checkedProduct = productList
-            .filter((x) => {
-          return isCheckedId.includes(x.id)
-        })
-            .map(el => el.name);
-        dispatch(setActiveProducts(checkedProduct))
-    }, [isCheckedId, isCheckAll]);
 
     const filterSearchResults = (value) => {
         const newList =  productList.filter(el => el?.name.toLowerCase().indexOf(value.toLowerCase()) !== -1);
@@ -44,31 +37,31 @@ function Checklist() {
         filterSearchResults(value);
     }
 
-    const handleSelectAll = e => {
-        setIsCheckAll(!isCheckAll);
-        setCheckedId(list?.map(li => li.id));
-        if (isCheckAll) {
-            setCheckedId([]);
-        }
+    const handleChange = e => {
+        const { value } = e.target;
+        setCheckedName(value);
+        dispatch(setActiveProduct(value));
     };
 
-    const handleClick = e => {
-        const { id, checked } = e.target;
-        setCheckedId([...isCheckedId, id]);
-        if (!checked) {
-            setCheckedId(isCheckedId.filter(item => item !== id));
-        }
-    };
+    const isChecked = (name, value) => {
+        return name === value;
+    }
+
+    const clearAll = () => {
+        setCheckedName(allProductChecked);
+        dispatch(setActiveProduct(allProductChecked));
+    }
 
     const catalog = list?.map(({ id, name }) => {
         return (
-            <label className={isCheckedId.includes(id) ? "checked-item" : "not-checked-item"} key={id}>
+            <label className={isChecked(name, isCheckedName) ? "checked-item" : "not-checked-item"} key={id}>
                 <Checkbox
                     key={id}
-                    name={name}
+                    value={name}
                     id={id}
-                    handleClick={handleClick}
-                    isChecked={isCheckedId.includes(id)}
+                    type="radio"
+                    handleClick={handleChange}
+                    isChecked={isChecked(name, isCheckedName)}
                 />
                 <Text text={name} />
             </label>
@@ -80,17 +73,16 @@ function Checklist() {
                 <label className="searchAll">
                     <div className="allProducts"><Text text='all_products' /></div>
                     <Checkbox
-                        name="selectAll"
-                        id="selectAll"
-                        handleClick={handleSelectAll}
-                        isChecked={isCheckAll}
+                        type="radio"
+                        handleClick={clearAll}
+                        isChecked={isChecked(allProductChecked, isCheckedName)}
                     />
                 </label>
                 <input
                     type="text"
                     className="searchInput"
                     value={search}
-                    placeholder={language==='ua' ? "Пошук" : "Search"}
+                    placeholder={language === 'ua' ? "Пошук" : "Search"}
                     onChange={(e) => handleSearch(e.target.value)}
                 />
                 <div className="list-container">

@@ -1,6 +1,6 @@
 import {
     SET_LANGUAGE,
-    SET_DATA, SET_PRODUCTS, SET_REGIONS, SET_CURRENT_REGION, SET_ACTIVE_PRODUCTS, SET_CURRENT_CITY
+    SET_DATA, SET_PRODUCTS, SET_REGIONS, SET_CURRENT_REGION, SET_ACTIVE_PRODUCT, SET_CURRENT_CITY
 } from './types';
 
 // constants
@@ -13,6 +13,7 @@ const initialState = {
     regions: REGIONS_LIST,
     currentRegion: null,
     currentCity: null,
+    activeProducts: 'all',
 };
 
 const AppReducer = (state = initialState, action) => {
@@ -23,7 +24,7 @@ const AppReducer = (state = initialState, action) => {
             return { ...state, data: action.payload };
         case SET_PRODUCTS:
             return { ...state, products: action.payload };
-        case SET_ACTIVE_PRODUCTS:
+        case SET_ACTIVE_PRODUCT:
             return { ...state, activeProducts: action.payload };
         case SET_REGIONS:
             return { ...state, regions: action.payload };
