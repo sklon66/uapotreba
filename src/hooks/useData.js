@@ -13,5 +13,4 @@ export const useData = () => {
         return el?.region;
     })
     dispatch(setRegions(regions));
-    console.log('data', data)
 };
