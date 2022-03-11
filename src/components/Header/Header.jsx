@@ -5,15 +5,15 @@ import styles from './Header.module.css';
 
 // components
 import Text from "../Text";
-import Logo from "../Logo";
+import SelectLanguage from "../SelectLanguage";
 
 function Header () {
     return (
         <header className={styles.header}>
-            <div className={styles.logoWrap}>
-                <Logo />
+            <div className={styles.fullLogoWrap}>
+                <Text text='Need.ua'/>
             </div>
-            <Text text='potreba'/>
+            <SelectLanguage />
         </header>
     );
 };

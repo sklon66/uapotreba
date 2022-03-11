@@ -11,10 +11,6 @@ import { LANGUAGES_LIST } from "../../constants/constants";
 // styles
 import styles from './SelectLanguage.module.css';
 
-// components
-import Text from "../Text";
-import Logo from "../Logo";
-
 function SelectLanguage () {
     const dispatch = useDispatch();
     const lang = useSelector(selectLanguage)

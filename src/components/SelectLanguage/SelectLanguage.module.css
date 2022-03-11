@@ -1,4 +1,5 @@
 .select {
     border: none !important;
     outline: none;
+    background-color: transparent;
 }

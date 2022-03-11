@@ -51,12 +51,12 @@ export const MAX_ROWS_PER_PAGE = 15;
 export const LANGUAGES_LIST = [
     {
         value: 'ua',
-        name: 'Українська',
+        name: 'Укр',
         emoji: '🇺🇦',
     },
     {
         value: 'en',
-        name: 'English',
+        name: 'Eng',
         emoji: '🇬🇧',
     }
 ]
