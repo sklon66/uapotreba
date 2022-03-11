@@ -33,8 +33,6 @@ function Table ({iterableData, withPagination, onRowClick}) {
         setMaxRowsPerPage(maxRowsPerPage + MAX_ROWS_PER_PAGE )
     }
 
-    console.log('iterableData', iterableData)
-
     const findDiapasonPerPage = (step) => {
         setPage(step)
 
