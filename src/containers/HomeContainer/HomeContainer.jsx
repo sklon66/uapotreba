@@ -33,7 +33,7 @@ function HomeContainer () {
 
     const sortFromHighestToLowestPriority = (array) => {
         return array?.sort((a, b) => {
-            return b?.regionNeed - a?.regionNeed;
+            return a?.regionNeed - b?.regionNeed;
         });
     }
 

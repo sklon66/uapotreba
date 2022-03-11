@@ -46,7 +46,7 @@ function RegionContainer () {
 
     const sortFromHighestToLowestPriority = (array) => {
         return array?.sort((a, b) => {
-            return b?.cityNeed - a?.cityNeed;
+            return a?.cityNeed - b?.cityNeed;
         });
     }
 
