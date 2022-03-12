@@ -57,7 +57,7 @@ function RegionContainer () {
     }
 
     return (
-        <div>
+        <div className={styles.regionContainer}>
             <div className={styles.titlesContainer}>
                 <h1 className={styles.title}>
                     <Text text={currentRegion} />
