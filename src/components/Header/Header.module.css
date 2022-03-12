@@ -1,12 +1,17 @@
 .header {
     display: flex;
+    justify-content: space-between;
     min-height: 56px;
-    background-color: #FCFCFC;
+    background-color: var(--white-color);
     padding: 12px 40px;
     box-sizing: border-box;
     align-items: center;
 }
 
-.logoWrap {
-    margin-right: 12px;
+.fullLogoWrap{
+    display: flex;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 32px;
+    color: var(--title-color);
 }

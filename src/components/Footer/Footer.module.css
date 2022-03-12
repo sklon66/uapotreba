@@ -1,13 +1,17 @@
 .footer {
     display: flex;
-    background-color: #FCFCFC;
-    padding: 16px 40px;
+    background-color: var(--footer-header-background-color);
+    padding: 32px 40px;
     box-sizing: border-box;
     flex-direction: column;
 }
 
 .fullLogoWrap{
     display: flex;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 32px;
+    color: var(--title-color);
 }
 
 .logoWrap {
@@ -17,21 +21,121 @@
 .topContent {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 48px;
+    margin-bottom: 32px;
+}
+
+.ideaSection {
+    padding: 32px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #DEDEDE;
+    border-bottom: 1px solid #DEDEDE;
+}
+
+.ideaTextBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footerTitle {
+    margin: 0 0 8px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 32px;
+    color: var(--title-color);
+}
+
+.footerSubtitle {
+    margin: 0;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 32px;
+    color: var(--main-text-color);
+}
+
+.feedbackBtn {
+    padding: 20px 88px;
+    background-color: #5B5A62;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 32px;
+    color: var(--white-color);
+}
+
+.linksSection {
+    padding: 40px 0;
+}
+
+.linkTitle {
+    margin-bottom: 20px;
+    font-size: 20px;
+    line-height: 32px;
+    color: var(--title-color);
+}
+
+.cardsBlock {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footerCard {
+    padding: 8px 16px;
+    background: #FDFCFC;
+    width: calc(100% - 36px - 75%);
+}
+
+.cardTitle {
+    margin: 0;
+    font-family: 'Roboto';
+    font-size: 16px;
+    line-height: 32px;
+    color: var(--main-text-color);
+}
+
+.cardBottom {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.linkText {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: calc(100% - 38px);
+    white-space: nowrap;
+    display: inline-block;
+    font-family: 'Roboto';
+    font-size: 16px;
+    line-height: 32px;
 }
 
 .bottomContent {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottomContentLeft {
+    display: flex;
+    align-items: center;
+}
+
+.facebook {
+    margin-right: 52px;
 }
 
 .footerText {
-    margin: 0 52px 0 0;
     color: var(--main-text-color);
+    font-family: 'Roboto';
 }
 
 .phone,.phone:hover {
     color: var(--main-text-color);
+    font-family: 'Roboto';
     text-transform: none;
     margin: 0 52px 0 0;
 }

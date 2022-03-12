@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 
 //redux
 import { selectLanguage } from "../../redux/AppReducer/selectors";
@@ -10,10 +10,6 @@ import { LANGUAGES_LIST } from "../../constants/constants";
 
 // styles
 import styles from './SelectLanguage.module.css';
-
-// components
-import Text from "../Text";
-import Logo from "../Logo";
 
 function SelectLanguage () {
     const dispatch = useDispatch();
