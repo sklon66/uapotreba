@@ -4,7 +4,7 @@ import React from 'react';
 import styles from './Header.module.css';
 
 // components
-import Text from "../Text";
+import Text from "../../components/Text";
 import SelectLanguage from "../../components/SelectLanguage";
 
 function Header () {

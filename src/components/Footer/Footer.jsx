@@ -8,8 +8,8 @@ import { selectLanguage } from "../../redux/AppReducer/selectors";
 import styles from './Footer.module.css';
 
 // components
-import Text from "../Text";
-import SelectLanguage from "../SelectLanguage";
+import Text from "../../components/Text";
+import SelectLanguage from "../../components/SelectLanguage";
 
 //img
 import facebook from '../../assets/img/iconsFacebook.svg'
