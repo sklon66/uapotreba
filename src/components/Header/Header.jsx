@@ -5,7 +5,7 @@ import styles from './Header.module.css';
 
 // components
 import Text from "../Text";
-import SelectLanguage from "../SelectLanguage";
+import SelectLanguage from "../../components/SelectLanguage";
 
 function Header () {
     return (

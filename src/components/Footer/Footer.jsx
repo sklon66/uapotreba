@@ -47,7 +47,7 @@ function Footer () {
                         cardsContent.map((card)=>(
                             <div className={styles.footerCard}>
                                 <p className={styles.cardTitle}>
-                                    {card.title}
+                                    <Text text={card.title} />
                                 </p>
                                 <p className={styles.cardBottom}>
                                     <a className={styles.linkText} target='_blank' rel="noreferrer" href={card.link}>

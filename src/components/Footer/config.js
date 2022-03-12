@@ -3,19 +3,19 @@ export const getContent = (language) => {
 
     return [
             {
-                title: isUa ? 'Допомога' : 'Help',
+                title: 'Допомога',
                 link: 'https://www.ukrainenow.org/refuge#can-anything'
             },
             {
-                title: isUa ? 'Перевезення товарів по Україні' : 'Engевезення товарів по Україні',
+                title: 'Перевезення товарів по Україні',
                 link: 'https://pomich.org/shippers'
             },
             {
-                title: isUa ? 'Перевезеня товарів з-за кордону' : 'Engевезеня товарів з-за кордону',
+                title: 'Перевезеня товарів з-за кордону',
                 link: 'https://razom-ua.com/'
             },
             {
-                title: isUa ? 'Cервіси/фонди/організації' : 'Engвіси/фонди/організації',
+                title: 'Cервіси/фонди/організації',
                 link: isUa ?
                     'https://docs.google.com/document/d/1iMMN4r8HUYVF2_tDZF5FGLKpnVEVQT283O17gOhHScY/edit?usp=sharing'
                     :
