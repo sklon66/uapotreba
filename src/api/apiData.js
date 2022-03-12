@@ -2,7 +2,7 @@ import { setData, setProducts } from "../redux/AppReducer/actions.js";
 
 export const getData = (dispatch) => {
 
-    fetch(`https://script.google.com/macros/s/AKfycbyCJlPIWMJD6tiTK2P6zaeheulvi6mHnjnSra3Gyz0txxrpUEVK5hINaPe3uf840Jnu/exec`)
+    fetch(`https://script.google.com/macros/s/AKfycbyq1rwEIuBx42Lv281qivOnLGAfaSZZbuMt-j0sFUVTMXk3FHdPfNiEAjVdpBM7eCLR/exec`)
         .then(function (response) { return response.json(); })
         .then(function (data) {
             if (data) {
