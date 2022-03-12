@@ -1,0 +1,42 @@
+.aboutBox {
+    width: fit-content;
+    margin-top: 72px;
+    max-width: 900px;
+}
+
+.aboutBox > span {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 32px;
+    color: #303236;
+}
+
+.contentWrapper {
+    display: flex;
+    margin-top: 24px;
+}
+
+.textWrapper {
+    width: 537px;
+    margin-right: 40px;
+}
+
+.textWrapper > *:not(:last-child) {
+    margin-bottom: 16px;
+    display: block;
+}
+
+.textWrapper > * {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 32px;
+    color: #5A5A5A;
+}
+
+.imageWrapper {
+    width: 322px;
+}
+
+.imageWrapper img {
+    max-width: 100%;
+}

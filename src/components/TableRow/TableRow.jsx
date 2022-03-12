@@ -7,7 +7,7 @@ import styles from './TableRow.module.css'
 import Text from "../Text";
 import CriticalIndicator from "../CriticalIndicator";
 
-function TableRow ({region, product, name, criticality, cities, contact, perOneDayNeed, rowClick, isClick}) {
+function TableRow ({region, product, name, criticality, cities, contact, perOneDayNeed, rowClick, isClick, withContact}) {
 
     const [blockedCities, setBlockedCities] = useState([]);
 
@@ -39,9 +39,9 @@ function TableRow ({region, product, name, criticality, cities, contact, perOneD
                 )
             }
             {
-                !!contact && (
+                !!withContact && (
                     <div className={styles.contact}>
-                        <Text text={contact}/>
+                        <a href={`tel:${contact}`}>{contact}</a>
                     </div>
                 )
             }

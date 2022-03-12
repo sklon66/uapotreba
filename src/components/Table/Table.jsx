@@ -12,7 +12,7 @@ import TableRow from "../../components/TableRow";
 import Loader from "../../components/Loader";
 
 
-function Table ({iterableData, withPagination, onRowClick, isClick}) {
+function Table ({iterableData, withPagination, onRowClick, isClick, withContact}) {
     const [maxRowsPerPage, setMaxRowsPerPage] = useState(MAX_ROWS_PER_PAGE);
     const [currentPage, setCurrentPage] = useState(2);
     const [rowsIndexToShow, setRowsIndexToShow] = useState(Array.from(Array(maxRowsPerPage).keys()));
@@ -59,12 +59,11 @@ function Table ({iterableData, withPagination, onRowClick, isClick}) {
                                     name={row?.name}
                                     criticality={row?.regionNeed || row?.cityNeed || row?.productNeed}
                                     cities={row?.cities}
-                                    contact={row?.contact}
+                                    contact={row?.contacts?.hum_center || row?.contacts?.red_cross}
                                     perOneDayNeed={row?.perOneDayNeed}
                                     isClick={isClick}
-                                    rowClick={() => {
-                                        onRowClick(row?.region || row?.name)
-                                    }}/>
+                                    withContact={withContact}
+                                    rowClick={() => onRowClick(row?.region || row?.name)}/>
                             )
                         })
                     }
