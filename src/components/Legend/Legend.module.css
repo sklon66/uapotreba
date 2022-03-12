@@ -1,6 +1,8 @@
 .imgWrapper {
     background-image: url("../../assets/img/hero.webp");
     width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
     height: 50vh;
     background-position: center;
     background-repeat: no-repeat;
