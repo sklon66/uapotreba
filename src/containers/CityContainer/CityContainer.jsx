@@ -30,7 +30,7 @@ function CityContainer () {
     })
 
     return (
-        <div>
+        <div className={styles.cityContainer}>
             <div className={styles.titlesContainer}>
                 <h1 className={styles.title}>
                     <Text text={currentCity} />

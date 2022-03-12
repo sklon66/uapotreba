@@ -6,10 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import Text from "../../components/Text";
 import Table from "../../components/Table";
 import Checklist from "../../components/Checklist";
+import Legend from "../../components/Legend";
+import About from "../../components/About";
 
 // styles
 import styles from './HomeContainer.module.css'
-
 
 // redux
 import { selectData} from "../../redux/AppReducer/selectors";
@@ -17,7 +18,9 @@ import {setCurrentRegion} from "../../redux/AppReducer/actions";
 
 // translation
 import {KEYS_EN} from "../../locales/translationEn";
-import About from "../../components/About";
+
+// img
+import dots from "../../assets/img/dots.svg"
 
 function HomeContainer () {
     const data = useSelector(selectData);
@@ -47,38 +50,50 @@ function HomeContainer () {
     console.log('setSortedData', sortedData)
 
     return (
-        <div>
-            <div className={styles.titlesContainer}>
-                <h1 className={styles.title}>
-                    <Text text='humanitarian_help' />
-                </h1>
-                <h2 className={styles.subtitle}>
-                    <Text text='regions_needs' />
-                </h2>
-            </div>
-            <div className={styles.container}>
-                <div className={styles.filterContainer}>
-                    <div className={styles.filterHeading}>
-                        <Text text='needs' />
-                    </div>
-                    <Checklist />
+        <>
+            <Legend/>
+
+            <div className={styles.homeContainer}>
+                <div className={styles.titlesContainer}>
+                    <h1 className={styles.title}>
+                        <Text text='humanitarian_help' />
+                    </h1>
+                    <h4 className={styles.disclaimer}>
+                        <Text text='Сервіс для волонтерів та фондів для ефективного розподілу допомоги' />
+                    </h4>
+                    <h2 className={styles.subtitle}>
+                        <Text text='regions_needs' />
+                    </h2>
+                    <p className={styles.subtitleDisclaimer}>
+                        <img className={styles.disclaimerDots} alt='dots' src={dots}/>
+                        <Text text='– рівень критичності'/>
+                    </p>
                 </div>
-                <div className={styles.tableContainer}>
-                    <div className={styles.tableheading}>
-                        <Text text='region'/>
-                        <Text text='criticality'/>
-                        <div>
-                            <Text text='number_cities_towns'/>
-                            <div className={styles.tableheadingRed}>
-                                (<Text text='with_blockade'/>)
+                <div className={styles.container}>
+                    <div className={styles.filterContainer}>
+                        <div className={styles.filterHeading}>
+                            <Text text='needs' />
+                        </div>
+                        <Checklist />
+                    </div>
+                    <div className={styles.tableContainer}>
+                        <div className={styles.tableheading}>
+                            <Text text='region'/>
+                            <Text text='criticality'/>
+                            <div>
+                                <Text text='number_cities_towns'/>
+                                <div className={styles.tableheadingRed}>
+                                    (<Text text='with_blockade'/>)
+                                </div>
                             </div>
                         </div>
+                        <Table withContact isClick iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
                     </div>
-                    <Table withContact isClick iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
                 </div>
+                <About />
             </div>
-            <About />
-        </div>
+        </>
+
     );
 };
 
