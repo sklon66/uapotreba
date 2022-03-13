@@ -2,6 +2,14 @@ import React, { useEffect } from 'react';
 import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+// pages
+import Home from "./pages/Home";
+import Region from "./pages/Region";
+import City from "./pages/City";
+
+// components
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 // styles
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,11 +17,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // services
 import { getData } from "./api/apiData";
 import { useData } from "./hooks/useData";
-import Home from "./pages/Home";
-import Region from "./pages/Region";
-import City from "./pages/City";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import ScrollToTop from "./services/ScrollToTop";
 
 
 const App = () => {
@@ -29,6 +33,7 @@ const App = () => {
       <>
         <Header/>
         <Router>
+            <ScrollToTop />
             <Routes>
                 <Route path="/" element={<Home />} />
 

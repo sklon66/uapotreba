@@ -14,6 +14,7 @@ import SelectLanguage from "../../components/SelectLanguage";
 //img
 import facebook from '../../assets/img/iconsFacebook.svg'
 import arrow from '../../assets/img/Arrow.svg'
+import comeBack from '../../assets/img/comeBackAlive.svg'
 
 //config
 import { getContent } from "./config";
@@ -33,15 +34,24 @@ function Footer () {
             </div>
             <div className={styles.ideaSection}>
                 <div className={styles.ideaTextBlock}>
-                    <p className={styles.footerTitle}><Text text='Маєте ідею?'/></p>
-                    <p className={styles.footerSubtitle}><Text text='Допоможіть нам покращити платформу'/></p>
+                    <p className={styles.footerTitle}><Text text='have_idea'/></p>
+                    <p className={styles.footerSubtitle}><Text text='help_us'/></p>
                 </div>
                 <a className={styles.feedbackBtn} target='_blank' rel="noreferrer" href='https://forms.gle/ZZy6MEBxejUTkKe27'>
-                    <Text text='Залишити відгук'/>
+                    <Text text='leave_feedback'/>
+                </a>
+            </div>
+            <div className={styles.donateSection}>
+                <div className={styles.donateTextBlock}>
+                    <p className={styles.footerTitle}><Text text='Захистимо Україну Разом'/></p>
+                </div>
+                <a className={styles.donateBtn} target='_blank' rel="noreferrer" href={language==='ua' ? 'https://www.comebackalive.in.ua/uk/donate' : 'https://www.comebackalive.in.ua/donate'}>
+                    <img className={styles.comeBackImg} alt='come_back_alive' src={comeBack} />
+                    <Text text='Підтримати ЗСУ'/>
                 </a>
             </div>
             <div className={styles.linksSection}>
-                <p className={styles.linkTitle}><Text text='Інші корисні сервіси'/></p>
+                <p className={styles.linkTitle}><Text text='other_services'/></p>
                 <div className={styles.cardsBlock}>
                     {
                         cardsContent.map((card)=>(
@@ -62,7 +72,7 @@ function Footer () {
             </div>
             <div className={styles.bottomContent}>
                 <div className={styles.bottomContentLeft}>
-                    <a className={styles.facebook} target='_blank' rel="noreferrer" href='https://www.google.com/'>
+                    <a className={styles.facebook} target='_blank' rel="noreferrer" href='https://www.facebook.com/needuacom'>
                         <img alt='facebook' src={facebook} />
                     </a>
                     <a className={styles.phone} href="tel:+380 (073) 574 45 33">+380 (073) 574 45 33</a>

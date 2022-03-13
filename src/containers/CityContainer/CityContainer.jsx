@@ -6,7 +6,6 @@ import styles from "./CityContainer.module.css";
 
 // components
 import Text from "../../components/Text";
-import Checklist from "../../components/Checklist";
 import Table from "../../components/Table";
 
 // redux
