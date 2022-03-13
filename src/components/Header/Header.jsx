@@ -10,9 +10,12 @@ import SelectLanguage from "../../components/SelectLanguage";
 function Header () {
     return (
         <header className={styles.header}>
-            <div className={styles.fullLogoWrap}>
-                <Text text='Need.ua'/>
-            </div>
+            <a className={styles.link} href='/'>
+                <div className={styles.fullLogoWrap}>
+                    <Text text='Need.ua'/>
+                </div>
+            </a>
+
             <SelectLanguage />
         </header>
     );

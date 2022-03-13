@@ -9,9 +9,9 @@ import styles from "./RegionContainer.module.css";
 import Text from "../../components/Text";
 import Checklist from "../../components/Checklist";
 import Table from "../../components/Table";
+import ContactBox from "../../components/ContactBox";
 
-
-// selector
+// redux
 import { selectActiveProduct, selectCurrentRegion, selectData } from "../../redux/AppReducer/selectors";
 
 // translate
@@ -19,7 +19,6 @@ import { KEYS_EN } from "../../locales/translationEn";
 import { setCurrentCity } from "../../redux/AppReducer/actions";
 import ContactBox from "../../components/ContactBox";
 
-// helpers
 import { sortFromHighestToLowestPriorityByProperty } from "../../services/helpers";
 
 
@@ -65,7 +64,7 @@ function RegionContainer () {
     }
 
     return (
-        <div>
+        <div className={styles.regionContainer}>
             <div className={styles.titlesContainer}>
                 <h1 className={styles.title}>
                     <Text text={currentRegion} />

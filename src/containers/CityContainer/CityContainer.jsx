@@ -6,7 +6,6 @@ import styles from "./CityContainer.module.css";
 
 // components
 import Text from "../../components/Text";
-import Checklist from "../../components/Checklist";
 import Table from "../../components/Table";
 
 // redux
@@ -30,7 +29,7 @@ function CityContainer () {
     })
 
     return (
-        <div>
+        <div className={styles.cityContainer}>
             <div className={styles.titlesContainer}>
                 <h1 className={styles.title}>
                     <Text text={currentCity} />

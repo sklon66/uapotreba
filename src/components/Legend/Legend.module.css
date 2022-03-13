@@ -1,11 +1,26 @@
 .imgWrapper {
-    display: flex;
-    justify-content: center;
-    margin: 32px 0 0;
+    background-image: url("../../assets/img/hero.webp");
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 50vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: -1;
 }
 
-.img {
-    height: 108px;
-    width: 100%;
-    max-width: 1130px;
+@media (max-width: 768px) {
+    .imgWrapper {
+        background-image: url("../../assets/img/heroSmall.webp");
+        height: 25vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .imgWrapper {
+        background-image: url("../../assets/img/heroSmall.webp");
+        height: 15vh;
+    }
 }
