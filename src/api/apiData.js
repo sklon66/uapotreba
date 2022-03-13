@@ -3,9 +3,13 @@ import { setData, setProducts } from "../redux/AppReducer/actions.js";
 
 export const getData = (dispatch) => {
 
-    fetch(`https://script.google.com/macros/s/AKfycbyq1rwEIuBx42Lv281qivOnLGAfaSZZbuMt-j0sFUVTMXk3FHdPfNiEAjVdpBM7eCLR/exec`)
-        .then(function (response) { return response.json(); })
+    fetch(`https://uapotreba-back.herokuapp.com`)
+        .then(function (response) { 
+            console.log("response", response)
+            return response.json();
+        })
         .then(function (data) {
+        
             if (data) {
                 dispatch(setData(data?.citiesInfo));
                 dispatch(setProducts(data?.allProducts));
@@ -19,7 +23,7 @@ export const getData = (dispatch) => {
             console.log(error)
         });
 
-    dispatch(setData(mockedData.data));
+    // dispatch(setData(mockedData.data));
 
 }
 
