@@ -1,5 +1,5 @@
 .rowBodyMobile {
-    display: none;
+    display: none !important;
 }
 
 .rowBodyDesktop,
@@ -58,7 +58,7 @@
     }
 
     .rowBodyMobile {
-        display: flex;
+        display: flex !important;
     }
 
     .rowBodyMobile > * {
