@@ -7,9 +7,11 @@ import styles from "./CityContainer.module.css";
 // components
 import Text from "../../components/Text";
 import Table from "../../components/Table";
+import ContactBox from "../../components/ContactBox";
 
 // redux
 import {selectCurrentCity, selectCurrentRegion, selectData} from "../../redux/AppReducer/selectors";
+
 
 function CityContainer () {
     const currentRegion = useSelector(selectCurrentRegion)
@@ -34,11 +36,14 @@ function CityContainer () {
                 <h1 className={styles.title}>
                     <Text text={currentCity} />
                 </h1>
+                <div className={styles.contactBoxWrapper}>
+                    <ContactBox title='Контакти по області' contactList={regionData?.contacts} />
+                </div>
             </div>
             <div className={styles.container}>
                 <div className={styles.tableContainer}>
                     <div className={styles.tableheading}>
-                        <Text text='city_town'/>
+                        <Text text='продукт'/>
                         <Text text='criticality'/>
                         <div>
                             <Text text='Потреба на 1 день, т'/>

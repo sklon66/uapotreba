@@ -34,6 +34,10 @@
     margin-left: auto;
 }
 
+.contact {
+    min-width: fit-content;
+}
+
 .red {
     color: red;
 }

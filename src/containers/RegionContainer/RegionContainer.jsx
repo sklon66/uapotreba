@@ -84,7 +84,8 @@ function RegionContainer () {
                     <div className={styles.tableheading}>
                         <Text text='city_town'/>
                         <Text text='criticality'/>
-                        <Text text='Контакт' />
+                        <Text text='Потреба на 1 день, т'/>
+                        <Text text='Оптмальна потреба, т'/>
                     </div>
                     <Table isClick iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
                 </div>

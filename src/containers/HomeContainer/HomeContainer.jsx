@@ -13,8 +13,9 @@ import About from "../../components/About";
 import styles from './HomeContainer.module.css'
 
 // redux
+import { selectData} from "../../redux/AppReducer/selectors";
+import { setCurrentRegion } from "../../redux/AppReducer/actions";
 import { selectActiveProduct, selectData, selectNeedsObject } from "../../redux/AppReducer/selectors";
-import {setCurrentRegion} from "../../redux/AppReducer/actions";
 
 // translation
 import {KEYS_EN} from "../../locales/translationEn";
@@ -90,6 +91,9 @@ function HomeContainer () {
                                     (<Text text='with_blockade'/>)
                                 </div>
                             </div>
+                            <Text text='Потреба на 1 день, т'/>
+                            <Text text='Оптмальна потреба, т'/>
+                            <Text text='Контакт'/>
                         </div>
                         <Table withContact isClick iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
                     </div>

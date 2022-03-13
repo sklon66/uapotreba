@@ -55,6 +55,8 @@
 
 .tableheading > * {
     width: 33%;
+    white-space: nowrap;
+    padding-right: 30px;
 }
 
 .tableheading > *:last-child {
