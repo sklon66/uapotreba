@@ -11,12 +11,13 @@ import Checkbox from "../Checkbox";
 import "./Checklist.css";
 
 // selectors
-import {selectLanguage, selectProducts} from "../../redux/AppReducer/selectors";
+import { selectActiveProduct, selectLanguage, selectProducts } from "../../redux/AppReducer/selectors";
 import Text from "../Text";
 
 function Checklist() {
     const productList = useSelector(selectProducts);
     const language = useSelector(selectLanguage);
+    const activeProduct = useSelector(selectActiveProduct);
 
     const allProductChecked = 'all';
 
@@ -29,6 +30,11 @@ function Checklist() {
     useEffect(() => {
         setList(productList);
     },[productList])
+
+    useEffect(() => {
+        setCheckedName(activeProduct);
+        dispatch(setActiveProduct(activeProduct));
+    },[])
 
 
     const filterSearchResults = (value) => {

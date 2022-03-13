@@ -12,17 +12,21 @@ import Table from "../../components/Table";
 
 
 // selector
-import { selectCurrentRegion, selectData } from "../../redux/AppReducer/selectors";
+import { selectActiveProduct, selectCurrentRegion, selectData } from "../../redux/AppReducer/selectors";
 
 // translate
 import { KEYS_EN } from "../../locales/translationEn";
 import { setCurrentCity } from "../../redux/AppReducer/actions";
 import ContactBox from "../../components/ContactBox";
 
+// helpers
+import { sortFromHighestToLowestPriorityByProperty } from "../../services/helpers";
+
 
 function RegionContainer () {
     const currentRegion = useSelector(selectCurrentRegion)
     const data = useSelector(selectData);
+    const activeProduct = useSelector(selectActiveProduct);
 
     const [sortedData, setSortedData] = useState([]);
     const [regionData, setRegionData] = useState([]);
@@ -40,15 +44,19 @@ function RegionContainer () {
 
 
     useEffect(() => {
-        const sorted = sortFromHighestToLowestPriority(regionData?.cities)
-        setSortedData(sorted)
-    },[regionData]);
+        if (activeProduct === 'all') {
+            const sorted = sortFromHighestToLowestPriorityByProperty(regionData?.cities, 'cityNeed');
+            setSortedData(sorted);
+            // console.log('sorted', sorted)
+        } else {
+            // const res = regionData?.cities.map((city) => {
+            //     city
+            // })
 
-    const sortFromHighestToLowestPriority = (array) => {
-        return array?.sort((a, b) => {
-            return a?.cityNeed - b?.cityNeed;
-        });
-    }
+            // console.log('res', res);
+        }
+
+    },[regionData]);
 
     const onRowClickHandler = (city) => {
         dispatch(setCurrentCity(city));
