@@ -11,13 +11,14 @@ import Checklist from "../../components/Checklist";
 import Table from "../../components/Table";
 import ContactBox from "../../components/ContactBox";
 
-// redux
+// selectors
 import { selectActiveProduct, selectCurrentRegion, selectData } from "../../redux/AppReducer/selectors";
 
 // translate
 import { KEYS_EN } from "../../locales/translationEn";
+
+// actions
 import { setCurrentCity } from "../../redux/AppReducer/actions";
-import ContactBox from "../../components/ContactBox";
 
 import { sortFromHighestToLowestPriorityByProperty } from "../../services/helpers";
 
@@ -46,7 +47,6 @@ function RegionContainer () {
         if (activeProduct === 'all') {
             const sorted = sortFromHighestToLowestPriorityByProperty(regionData?.cities, 'cityNeed');
             setSortedData(sorted);
-            // console.log('sorted', sorted)
         } else {
             // const res = regionData?.cities.map((city) => {
             //     city
