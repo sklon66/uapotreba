@@ -44,16 +44,8 @@ function RegionContainer () {
 
 
     useEffect(() => {
-        if (activeProduct === 'all') {
-            const sorted = sortFromHighestToLowestPriorityByProperty(regionData?.cities, 'cityNeed');
-            setSortedData(sorted);
-        } else {
-            // const res = regionData?.cities.map((city) => {
-            //     city
-            // })
-
-            // console.log('res', res);
-        }
+        const sorted = sortFromHighestToLowestPriorityByProperty(regionData?.cities, 'cityNeed');
+        setSortedData(sorted);
 
     },[regionData]);
 

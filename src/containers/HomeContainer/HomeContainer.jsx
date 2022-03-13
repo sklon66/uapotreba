@@ -13,7 +13,6 @@ import About from "../../components/About";
 import styles from './HomeContainer.module.css'
 
 // redux
-import { selectData} from "../../redux/AppReducer/selectors";
 import { setCurrentRegion } from "../../redux/AppReducer/actions";
 import { selectActiveProduct, selectData, selectNeedsObject } from "../../redux/AppReducer/selectors";
 
