@@ -28,6 +28,7 @@
     max-height: 187px;
     font-size: 14px;
     padding: 5px 12px;
+    margin-bottom: 12px;
 }
 
 .allProducts {
@@ -55,4 +56,11 @@
 
 .checked-item {
     background-color: #E6F7FF;
+}
+
+@media (max-width: 768px) {
+    .checkList {
+        max-width: 100%;
+        margin-bottom: 40px;
+    }
 }

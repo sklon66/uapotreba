@@ -54,8 +54,8 @@ function Footer () {
                 <p className={styles.linkTitle}><Text text='other_services'/></p>
                 <div className={styles.cardsBlock}>
                     {
-                        cardsContent.map((card)=>(
-                            <div className={styles.footerCard}>
+                        cardsContent.map((card, index)=>(
+                            <div className={styles.footerCard} key={index}>
                                 <p className={styles.cardTitle}>
                                     <Text text={card.title} />
                                 </p>

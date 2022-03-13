@@ -67,3 +67,14 @@
 .tableheadingRed {
     color: red;
 }
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .titlesContainer {
+        margin-bottom: 50px;
+    }
+}

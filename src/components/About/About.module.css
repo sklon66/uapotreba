@@ -2,13 +2,27 @@
     width: fit-content;
     margin-top: 72px;
     max-width: 900px;
+    padding: 24px 40px;
+    border: 1px solid #DEDEDE;
 }
 
 .aboutBox > span {
     font-weight: 400;
-    font-size: 20px;
-    line-height: 32px;
+    font-size: 40px;
+    line-height: 60px;
     color: #303236;
+    display: flex;
+    align-items: center;
+}
+
+.aboutBox > span:before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: #303236;
+    margin-right: 13px;
+    transform: rotate(45deg);
 }
 
 .contentWrapper {
@@ -39,4 +53,24 @@
 
 .imageWrapper img {
     max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .aboutBox {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .contentWrapper {
+        flex-direction: column;
+    }
+
+    .textWrapper {
+        margin-bottom: 40px;
+        width: 100%;
+    }
+
+    .imageWrapper {
+        width: 100%;
+    }
 }

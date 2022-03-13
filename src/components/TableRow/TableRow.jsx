@@ -21,49 +21,72 @@ function TableRow ({region, product, name, criticality, cities, contact, perOneD
     }
 
     return (
-        <div className={styles.rowBody} onClick={onClickHandler}>
-            <div className={styles.name}>
-                <Text text={region || product || name}/>
-            </div>
-            <div className={styles.criticality}>
-                <CriticalIndicator level={criticality}/>
-            </div>
-            {
-                !!cities && (
-                    <div className={styles.cities}>
-                        <Text text={cities?.length}/>
-                        <div className={styles.red}>
-                          (<Text text={blockedCities}/>)
+        <>
+            <div className={styles.rowBodyDesktop} onClick={onClickHandler}>
+                <div className={styles.name}>
+                    <Text text={region || product || name}/>
+                </div>
+                <div className={styles.criticality}>
+                    <CriticalIndicator level={criticality}/>
+                </div>
+                {
+                    perOneDayNeed && (
+                        <div className={styles.perOneDayNeed}>
+                            <Text text={perOneDayNeed}/>
                         </div>
-                    </div>
-                )
-            }
-            {
-                perOneDayNeed && (
-                    <div className={styles.perOneDayNeed}>
-                        <Text text={perOneDayNeed}/>
-                    </div>
-                )
-            }
-            {
-                optimalNeed && (
-                    <div className={styles.optimalNeed}>
-                        <Text text={optimalNeed}/>
-                    </div>
-                )
-            }
-            {
-                !!withContact && (
-                    <div className={styles.contact}>
-                        <a href={`tel:${contact}`}>{contact}</a>
-                    </div>
-                )
-            }
+                    )
+                }
+                {
+                    optimalNeed && (
+                        <div className={styles.optimalNeed}>
+                            <Text text={optimalNeed}/>
+                        </div>
+                    )
+                }
+                {
+                    !!withContact && (
+                        <div className={styles.contact}>
+                            <a href={`tel:${contact}`}>{contact}</a>
+                        </div>
+                    )
+                }
 
-            {
-                (isClick && !!rowClick) && <div className={styles.arrow}>></div>
-            }
-        </div>
+                {
+                    (isClick && !!rowClick) && <div className={styles.arrow}>></div>
+                }
+            </div>
+            <div className={styles.rowBodyMobile} onClick={onClickHandler}>
+                <div className={styles.tableGroup}>
+                    <Text text={region || product || name}/>
+                    <CriticalIndicator level={criticality}/>
+                </div>
+                <div className={styles.tableGroup}>
+                    <div className={styles.innerGroup}>
+                        {
+                            perOneDayNeed && (
+                                <div className={styles.perOneDayNeed}>
+                                    <Text text={perOneDayNeed}/>
+                                </div>
+                            )
+                        }
+                        {
+                            optimalNeed && (
+                                <div className={styles.optimalNeed}>
+                                    <Text text={optimalNeed}/>
+                                </div>
+                            )
+                        }
+                    </div>
+                    {
+                        !!withContact && (
+                            <div className={styles.contact}>
+                                <a href={`tel:${contact}`}>{contact}</a>
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
+        </>
     );
 }
 

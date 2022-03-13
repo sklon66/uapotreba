@@ -75,18 +75,22 @@ function HomeContainer () {
                         <Checklist />
                     </div>
                     <div className={styles.tableContainer}>
-                        <div className={styles.tableheading}>
+                        <div className={styles.tableHeadingDesktop}>
                             <Text text='region'/>
                             <Text text='criticality'/>
-                            <div>
-                                <Text text='number_cities_towns'/>
-                                <div className={styles.tableheadingRed}>
-                                    (<Text text='with_blockade'/>)
-                                </div>
-                            </div>
                             <Text text='Потреба на 1 день, т'/>
                             <Text text='Оптмальна потреба, т'/>
                             <Text text='Контакт'/>
+                        </div>
+                        <div className={styles.tableHeadingMobile}>
+                            <div className={styles.titleGroup}>
+                                <Text text='region'/>
+                                <Text text='criticality'/>
+                            </div>
+                            <div className={styles.titleGroup}>
+                                <Text text='Потреба на 1 день, т'/>
+                                <Text text='Оптмальна потреба, т'/>
+                            </div>
                         </div>
                         <Table withContact isClick iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
                     </div>

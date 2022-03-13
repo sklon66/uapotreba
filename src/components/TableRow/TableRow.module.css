@@ -1,4 +1,9 @@
-.rowBody {
+.rowBodyMobile {
+    display: none;
+}
+
+.rowBodyDesktop,
+.rowBodyMobile {
     display: flex;
     width: 100%;
     border-bottom: 1px solid #DEDEDE;
@@ -7,14 +12,18 @@
     cursor: pointer;
 }
 
-.rowBody > * {
+.rowBodyDesktop > *,
+.rowBodyMobile .tableGroup {
     flex-grow: 1;
     flex-basis: 0;
     overflow: hidden;
     padding: 0 8px;
+    display: flex;
+    align-items: center;
 }
 
-.rowBody > * > * {
+.rowBodyDesktop > * > *,
+.rowBodyMobile .tableGroup > * {
     max-width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -32,6 +41,7 @@
 .arrow {
     text-align: end;
     margin-left: auto;
+    max-width: fit-content;
 }
 
 .contact {
@@ -40,4 +50,32 @@
 
 .red {
     color: red;
+}
+
+@media (max-width: 768px) {
+    .rowBodyDesktop {
+        display: none;
+    }
+
+    .rowBodyMobile {
+        display: flex;
+    }
+
+    .rowBodyMobile > * {
+        width: 50%;
+    }
+
+    .tableGroup {
+        flex-direction: column;
+        align-items: start !important;
+        justify-content: space-between;
+    }
+
+    .innerGroup {
+        display: flex;
+    }
+
+    .innerGroup > *:not(:last-child) {
+        margin-right: 24px;
+    }
 }
