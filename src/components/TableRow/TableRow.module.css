@@ -73,6 +73,7 @@
 
     .innerGroup {
         display: flex;
+        flex-wrap: wrap;
     }
 
     .innerGroup > *:not(:last-child) {
