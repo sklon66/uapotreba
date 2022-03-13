@@ -1,3 +1,7 @@
+.tableHeadingMobile {
+    display: none;
+}
+
 .homeContainer {
     max-width: 1140px;
     margin: -228px auto 0;
@@ -70,9 +74,9 @@
     margin-bottom: 64px;
 }
 
-.tableheading {
+.tableHeadingDesktop {
     display: flex;
-    margin: 0 0 40px 15px;
+    margin: 0 0 40px 10px;
     width: 100%;
     justify-content: space-between;
     color: var(--main-text-color);
@@ -80,13 +84,14 @@
     line-height: 16px;
 }
 
-.tableheading > * {
+.tableHeadingDesktop > * {
     width: 33%;
+    padding: 0 5px;
+    white-space: nowrap;
 }
 
-.tableheading > *:last-child {
-    width: 80%;
-    display: flex;
+.tableHeadingDesktop > *:last-child {
+    width: 38%;
 }
 
 .tableheadingRed {
@@ -95,8 +100,39 @@
 
 
 @media (max-width: 768px) {
+    .tableHeadingMobile {
+        display: flex;
+        padding: 16px;
+    }
+
+    .titleGroup {
+        width: 50%;
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+    }
+
     .homeContainer {
         margin: 32px auto 0;
+    }
+
+    .container {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .tableHeadingDesktop {
+        display: none;
+    }
+
+    .container > *,
+    .filterHeading {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .titlesContainer {
+        margin-bottom: 50px;
     }
 
     .title {

@@ -64,3 +64,9 @@
 .tableheadingRed {
     color: red;
 }
+
+@media (max-width: 768px) {
+    .titlesContainer {
+        margin-bottom: 50px;
+    }
+}
