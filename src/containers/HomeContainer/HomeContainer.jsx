@@ -14,13 +14,14 @@ import styles from './HomeContainer.module.css'
 
 // redux
 import { selectData} from "../../redux/AppReducer/selectors";
-import {setCurrentRegion} from "../../redux/AppReducer/actions";
+import {setCurrentRegion, setData, setProducts} from "../../redux/AppReducer/actions";
 
 // translation
 import {KEYS_EN} from "../../locales/translationEn";
 
 // img
 import dots from "../../assets/img/dots.svg"
+import {MOC_DATA} from "../../constants/constants";
 
 function HomeContainer () {
     const data = useSelector(selectData);
@@ -47,7 +48,8 @@ function HomeContainer () {
         navigate(`/region-${KEYS_EN[region]}`);
     }
 
-    console.log('setSortedData', sortedData)
+    dispatch(setData(MOC_DATA.citiesInfo));
+    dispatch(setProducts(MOC_DATA.allProducts));
 
     return (
         <>
@@ -86,6 +88,9 @@ function HomeContainer () {
                                     (<Text text='with_blockade'/>)
                                 </div>
                             </div>
+                            <Text text='Потреба на 1 день, т'/>
+                            <Text text='Оптмальна потреба, т'/>
+                            <Text text='Контакт'/>
                         </div>
                         <Table withContact isClick iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
                     </div>

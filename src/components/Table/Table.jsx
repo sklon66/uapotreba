@@ -51,6 +51,7 @@ function Table ({iterableData, withPagination, onRowClick, isClick, withContact}
                     {
                         !iterableData ? <Loader /> :
                         iterableData?.map((row, index) => {
+                            console.log('row', row)
                             return (
                                 <TableRow
                                     key={index}
@@ -60,7 +61,8 @@ function Table ({iterableData, withPagination, onRowClick, isClick, withContact}
                                     criticality={row?.regionNeed || row?.cityNeed || row?.productNeed}
                                     cities={row?.cities}
                                     contact={row?.contacts?.hum_center || row?.contacts?.red_cross}
-                                    perOneDayNeed={row?.perOneDayNeed}
+                                    perOneDayNeed={row?.optRegNeedVolume || row?.cityNeedVolume1D}
+                                    optimalNeed={row?.regNeedVolume1D || row?.cityNeedVolume1D}
                                     isClick={isClick}
                                     withContact={withContact}
                                     rowClick={() => onRowClick(row?.region || row?.name)}/>

@@ -7,7 +7,7 @@ import styles from './TableRow.module.css'
 import Text from "../Text";
 import CriticalIndicator from "../CriticalIndicator";
 
-function TableRow ({region, product, name, criticality, cities, contact, perOneDayNeed, rowClick, isClick, withContact}) {
+function TableRow ({region, product, name, criticality, cities, contact, perOneDayNeed, optimalNeed, rowClick, isClick, withContact}) {
 
     const [blockedCities, setBlockedCities] = useState([]);
 
@@ -19,6 +19,8 @@ function TableRow ({region, product, name, criticality, cities, contact, perOneD
     const onClickHandler = () => {
         rowClick?.();
     }
+
+    console.log('perOneDayNeed', perOneDayNeed)
 
     return (
         <div className={styles.rowBody} onClick={onClickHandler}>
@@ -39,19 +41,27 @@ function TableRow ({region, product, name, criticality, cities, contact, perOneD
                 )
             }
             {
-                !!withContact && (
-                    <div className={styles.contact}>
-                        <a href={`tel:${contact}`}>{contact}</a>
-                    </div>
-                )
-            }
-            {
                 perOneDayNeed && (
                     <div className={styles.perOneDayNeed}>
                         <Text text={perOneDayNeed}/>
                     </div>
                 )
             }
+            {
+                optimalNeed && (
+                    <div className={styles.optimalNeed}>
+                        <Text text={optimalNeed}/>
+                    </div>
+                )
+            }
+            {
+                !!withContact && (
+                    <div className={styles.contact}>
+                        <a href={`tel:${contact}`}>{contact}</a>
+                    </div>
+                )
+            }
+
             {
                 (isClick && !!rowClick) && <div className={styles.arrow}>></div>
             }
