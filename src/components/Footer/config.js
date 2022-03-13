@@ -3,19 +3,19 @@ export const getContent = (language) => {
 
     return [
             {
-                title: 'Допомога',
+                title: 'help',
                 link: 'https://www.ukrainenow.org/refuge#can-anything'
             },
             {
-                title: 'Перевезення товарів по Україні',
+                title: 'transportation_ukraine',
                 link: 'https://pomich.org/shippers'
             },
             {
-                title: 'Перевезеня товарів з-за кордону',
+                title: 'transportation_abroad',
                 link: 'https://razom-ua.com/'
             },
             {
-                title: 'Cервіси/фонди/організації',
+                title: 'other_links',
                 link: isUa ?
                     'https://docs.google.com/document/d/1iMMN4r8HUYVF2_tDZF5FGLKpnVEVQT283O17gOhHScY/edit?usp=sharing'
                     :

@@ -61,20 +61,20 @@ function HomeContainer () {
                         <Text text='humanitarian_help' />
                     </h1>
                     <h4 className={styles.disclaimer}>
-                        <Text text='Сервіс для волонтерів та фондів для ефективного розподілу допомоги' />
+                        <Text text='about_service' />
                     </h4>
                     <h2 className={styles.subtitle}>
                         <Text text='regions_needs' />
                     </h2>
                     <p className={styles.subtitleDisclaimer}>
                         <img className={styles.disclaimerDots} alt='dots' src={dots}/>
-                        <Text text='– рівень критичності'/>
+                        <Text text='criticality_lev'/>
                     </p>
                 </div>
                 <div className={styles.container}>
                     <div className={styles.filterContainer}>
                         <div className={styles.filterHeading}>
-                            <Text text='needs' />
+                            <Text text='product_search' />
                         </div>
                         <Checklist />
                     </div>

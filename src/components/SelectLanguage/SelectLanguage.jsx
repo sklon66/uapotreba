@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from "react-redux";
 
 //redux
@@ -16,6 +16,10 @@ function SelectLanguage () {
     const lang = useSelector(selectLanguage)
 
     const [language, setLanguage] = useState(lang);
+
+    useEffect(()=>{
+        setLanguage(lang);
+    },[lang])
 
     const updateHotLanguage = event => {
         dispatch(setLanguageRedux(event.target.value))

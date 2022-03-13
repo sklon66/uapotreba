@@ -11,10 +11,12 @@
 }
 
 .filterHeading {
-    margin-bottom: 40px;
-    font-size: 12px;
-    line-height: 16px;
-    color: var(--main-text-color);
+    font-family: 'Tenor Sans';
+    font-size: 16px;
+    line-height: 28px;
+    margin-bottom: 24px;
+    color: #5B5A62;
+    max-width: 206px;
 }
 
 .tableContainer {
