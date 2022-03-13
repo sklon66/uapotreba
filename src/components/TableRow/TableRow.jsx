@@ -20,8 +20,6 @@ function TableRow ({region, product, name, criticality, cities, contact, perOneD
         rowClick?.();
     }
 
-    console.log('perOneDayNeed', perOneDayNeed)
-
     return (
         <div className={styles.rowBody} onClick={onClickHandler}>
             <div className={styles.name}>

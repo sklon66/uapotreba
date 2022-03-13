@@ -54,8 +54,6 @@ function RegionContainer () {
         navigate(`/city-${KEYS_EN[city]}`);
     }
 
-    console.log('regionData', regionData)
-
     return (
         <div className={styles.regionContainer}>
             <div className={styles.titlesContainer}>

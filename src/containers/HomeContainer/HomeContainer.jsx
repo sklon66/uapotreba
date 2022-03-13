@@ -14,14 +14,13 @@ import styles from './HomeContainer.module.css'
 
 // redux
 import { selectData} from "../../redux/AppReducer/selectors";
-import {setCurrentRegion, setData, setProducts} from "../../redux/AppReducer/actions";
+import { setCurrentRegion } from "../../redux/AppReducer/actions";
 
 // translation
 import {KEYS_EN} from "../../locales/translationEn";
 
 // img
 import dots from "../../assets/img/dots.svg"
-import {MOC_DATA} from "../../constants/constants";
 
 function HomeContainer () {
     const data = useSelector(selectData);
@@ -47,9 +46,6 @@ function HomeContainer () {
 
         navigate(`/region-${KEYS_EN[region]}`);
     }
-
-    dispatch(setData(MOC_DATA.citiesInfo));
-    dispatch(setProducts(MOC_DATA.allProducts));
 
     return (
         <>
