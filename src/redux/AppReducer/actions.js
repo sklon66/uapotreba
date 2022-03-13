@@ -3,7 +3,7 @@ import {
     SET_DATA,
     SET_PRODUCTS, SET_REGIONS, SET_ACTIVE_PRODUCT,
     SET_CURRENT_REGION,
-    SET_CURRENT_CITY,
+    SET_CURRENT_CITY, SET_NEEDS_OBJECT,
 } from './types';
 
 export function setLanguage(language) {
@@ -52,5 +52,12 @@ export function setCurrentCity(currentCity) {
     return {
         type: SET_CURRENT_CITY,
         payload: currentCity,
+    };
+}
+
+export function setNeedsObject(needsObj) {
+    return {
+        type: SET_NEEDS_OBJECT,
+        payload: needsObj,
     };
 }

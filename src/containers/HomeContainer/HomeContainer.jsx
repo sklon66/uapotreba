@@ -13,8 +13,8 @@ import About from "../../components/About";
 import styles from './HomeContainer.module.css'
 
 // redux
-import { selectData} from "../../redux/AppReducer/selectors";
 import { setCurrentRegion } from "../../redux/AppReducer/actions";
+import { selectActiveProduct, selectData, selectNeedsObject } from "../../redux/AppReducer/selectors";
 
 // translation
 import {KEYS_EN} from "../../locales/translationEn";
@@ -22,24 +22,30 @@ import {KEYS_EN} from "../../locales/translationEn";
 // img
 import dots from "../../assets/img/dots.svg"
 
+// helpers
+import { sortFromHighestToLowestPriorityByProperty } from "../../services/helpers";
+
 function HomeContainer () {
     const data = useSelector(selectData);
+    const activeProduct = useSelector(selectActiveProduct);
+    const needsObject = useSelector(selectNeedsObject);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const [sortedData, setSortedData] = useState(data);
 
-    useEffect(()=> {
-        const sorted = sortFromHighestToLowestPriority(data)
-        setSortedData(sorted)
-    },[data]);
+    useEffect(() => {
+        if (activeProduct === 'all') {
+            const sorted = sortFromHighestToLowestPriorityByProperty(data, 'regionNeed');
+            setSortedData(sorted);
+        } else {
+            const regionObjectWithNeeds = data.map((item, i) => Object.assign({}, item, needsObject[i]));
+            console.log('regionObjectWithNeeds', regionObjectWithNeeds)
+            setSortedData(regionObjectWithNeeds)
+        }
+    },[data, activeProduct, needsObject]);
 
-    const sortFromHighestToLowestPriority = (array) => {
-        return array?.sort((a, b) => {
-            return a?.regionNeed - b?.regionNeed;
-        });
-    }
 
     const onRowClickHandler = (region) => {
         dispatch(setCurrentRegion(region));

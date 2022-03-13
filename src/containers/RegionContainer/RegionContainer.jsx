@@ -11,16 +11,22 @@ import Checklist from "../../components/Checklist";
 import Table from "../../components/Table";
 import ContactBox from "../../components/ContactBox";
 
-// redux
-import { selectCurrentRegion, selectData } from "../../redux/AppReducer/selectors";
-import { setCurrentCity } from "../../redux/AppReducer/actions";
+// selectors
+import { selectActiveProduct, selectCurrentRegion, selectData } from "../../redux/AppReducer/selectors";
 
 // translate
 import { KEYS_EN } from "../../locales/translationEn";
 
+// actions
+import { setCurrentCity } from "../../redux/AppReducer/actions";
+
+import { sortFromHighestToLowestPriorityByProperty } from "../../services/helpers";
+
+
 function RegionContainer () {
     const currentRegion = useSelector(selectCurrentRegion)
     const data = useSelector(selectData);
+    const activeProduct = useSelector(selectActiveProduct);
 
     const [sortedData, setSortedData] = useState([]);
     const [regionData, setRegionData] = useState([]);
@@ -38,15 +44,10 @@ function RegionContainer () {
 
 
     useEffect(() => {
-        const sorted = sortFromHighestToLowestPriority(regionData?.cities)
-        setSortedData(sorted)
-    },[regionData]);
+        const sorted = sortFromHighestToLowestPriorityByProperty(regionData?.cities, 'cityNeed');
+        setSortedData(sorted);
 
-    const sortFromHighestToLowestPriority = (array) => {
-        return array?.sort((a, b) => {
-            return a?.cityNeed - b?.cityNeed;
-        });
-    }
+    },[regionData]);
 
     const onRowClickHandler = (city) => {
         dispatch(setCurrentCity(city));
