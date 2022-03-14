@@ -10,6 +10,7 @@
     padding: 4px 0 8px 0;
     margin-bottom: 24px;
     cursor: pointer;
+    font-family: 'Tenor Sans';
 }
 
 .rowBodyDesktop > *,
@@ -45,7 +46,7 @@
 }
 
 .contact {
-    min-width: fit-content;
+    white-space: nowrap;
 }
 
 .red {

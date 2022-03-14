@@ -73,11 +73,21 @@ function RegionContainer () {
                     <Checklist />
                 </div>
                 <div className={styles.tableContainer}>
-                    <div className={styles.tableheading}>
+                    <div className={styles.tableHeadingDesktop}>
                         <Text text='city_town'/>
                         <Text text='criticality'/>
                         <Text text='1d_need'/>
                         <Text text='opt_need'/>
+                    </div>
+                    <div className={styles.tableHeadingMobile}>
+                        <div className={styles.titleGroup}>
+                            <Text text='city_town'/>
+                            <Text text='criticality'/>
+                        </div>
+                        <div className={styles.titleGroup}>
+                            <Text text='1d_need'/>
+                            <Text text='opt_need'/>
+                        </div>
                     </div>
                     <Table isClick iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
                 </div>

@@ -42,13 +42,23 @@ function CityContainer () {
             </div>
             <div className={styles.container}>
                 <div className={styles.tableContainer}>
-                    <div className={styles.tableheading}>
-                        <Text text='продукт'/>
+                    <div className={styles.tableHeadingDesktop}>
+                        <Text text='product'/>
                         <Text text='criticality'/>
                         <div>
                             <Text text='1d_need'/>
                         </div>
                         <div>
+                            <Text text='opt_need'/>
+                        </div>
+                    </div>
+                    <div className={styles.tableHeadingMobile}>
+                        <div className={styles.titleGroup}>
+                            <Text text='product'/>
+                            <Text text='criticality'/>
+                        </div>
+                        <div className={styles.titleGroup}>
+                            <Text text='1d_need'/>
                             <Text text='opt_need'/>
                         </div>
                     </div>
