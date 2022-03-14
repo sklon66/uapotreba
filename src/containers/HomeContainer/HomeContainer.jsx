@@ -84,9 +84,9 @@ function HomeContainer () {
                         <div className={styles.tableHeadingDesktop}>
                             <Text text='region'/>
                             <Text text='criticality'/>
-                            <Text text='Потреба на 1 день, т'/>
-                            <Text text='Оптмальна потреба, т'/>
-                            <Text text='Контакт'/>
+                            <Text text='1d_need'/>
+                            <Text text='opt_need'/>
+                            <Text text='contact'/>
                         </div>
                         <div className={styles.tableHeadingMobile}>
                             <div className={styles.titleGroup}>
@@ -94,8 +94,8 @@ function HomeContainer () {
                                 <Text text='criticality'/>
                             </div>
                             <div className={styles.titleGroup}>
-                                <Text text='Потреба на 1 день, т'/>
-                                <Text text='Оптмальна потреба, т'/>
+                                <Text text='1d_need'/>
+                                <Text text='opt_need'/>
                             </div>
                         </div>
                         <Table withContact isClick iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>

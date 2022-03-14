@@ -47,7 +47,7 @@ function Footer () {
                 </div>
                 <a className={styles.donateBtn} target='_blank' rel="noreferrer" href={language==='ua' ? 'https://www.comebackalive.in.ua/uk/donate' : 'https://www.comebackalive.in.ua/donate'}>
                     <img className={styles.comeBackImg} alt='come_back_alive' src={comeBack} />
-                    <Text text='Підтримати ЗСУ'/>
+                    <Text text='donate_afu'/>
                 </a>
             </div>
             <div className={styles.linksSection}>
@@ -75,7 +75,7 @@ function Footer () {
                     <a className={styles.facebook} target='_blank' rel="noreferrer" href='https://www.facebook.com/needuacom'>
                         <img alt='facebook' src={facebook} />
                     </a>
-                    <a className={styles.phone} href="tel:+380 (073) 574 45 33">+380 (073) 574 45 33</a>
+                    <a className={styles.phone} href="mailto:support@potreba-ua.org">support@potreba-ua.org</a>
                 </div>
                 <p className={styles.footerText}>2022</p>
             </div>

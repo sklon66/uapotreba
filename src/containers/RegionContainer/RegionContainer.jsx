@@ -62,13 +62,13 @@ function RegionContainer () {
                     <Text text={currentRegion} />
                 </h1>
                 <div className={styles.contactBoxWrapper}>
-                    <ContactBox title='Контакти по області' contactList={regionData?.contacts} />
+                    <ContactBox title='regional_contacts' contactList={regionData?.contacts} />
                 </div>
             </div>
             <div className={styles.container}>
                 <div className={styles.filterContainer}>
                     <div className={styles.filterHeading}>
-                        <Text text='needs' />
+                        <Text text='product_search' />
                     </div>
                     <Checklist />
                 </div>
@@ -76,8 +76,8 @@ function RegionContainer () {
                     <div className={styles.tableheading}>
                         <Text text='city_town'/>
                         <Text text='criticality'/>
-                        <Text text='Потреба на 1 день, т'/>
-                        <Text text='Оптмальна потреба, т'/>
+                        <Text text='1d_need'/>
+                        <Text text='opt_need'/>
                     </div>
                     <Table isClick iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
                 </div>
