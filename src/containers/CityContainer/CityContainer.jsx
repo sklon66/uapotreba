@@ -37,7 +37,7 @@ function CityContainer () {
                     <Text text={currentCity} />
                 </h1>
                 <div className={styles.contactBoxWrapper}>
-                    <ContactBox title='Контакти по області' contactList={regionData?.contacts} />
+                    <ContactBox title='regional_contacts' contactList={regionData?.contacts} />
                 </div>
             </div>
             <div className={styles.container}>
@@ -46,10 +46,10 @@ function CityContainer () {
                         <Text text='продукт'/>
                         <Text text='criticality'/>
                         <div>
-                            <Text text='Потреба на 1 день, т'/>
+                            <Text text='1d_need'/>
                         </div>
                         <div>
-                            <Text text='Оптимальна потреба, т'/>
+                            <Text text='opt_need'/>
                         </div>
                     </div>
                     <Table iterableData={cityData.needs}/>

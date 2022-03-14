@@ -32,14 +32,14 @@ function TableRow ({region, product, name, criticality, cities, contact, perOneD
                 {
                     perOneDayNeed && (
                         <div className={styles.perOneDayNeed}>
-                            <Text text={perOneDayNeed}/>
+                            <Text text={Math.round(+perOneDayNeed)}/>
                         </div>
                     )
                 }
                 {
                     optimalNeed && (
                         <div className={styles.optimalNeed}>
-                            <Text text={optimalNeed}/>
+                            <Text text={Math.round(+optimalNeed)}/>
                         </div>
                     )
                 }
@@ -65,14 +65,14 @@ function TableRow ({region, product, name, criticality, cities, contact, perOneD
                         {
                             perOneDayNeed && (
                                 <div className={styles.perOneDayNeed}>
-                                    <Text text={perOneDayNeed}/>
+                                    <Text text={Math.round(+perOneDayNeed)}/>
                                 </div>
                             )
                         }
                         {
                             optimalNeed && (
                                 <div className={styles.optimalNeed}>
-                                    <Text text={optimalNeed}/>
+                                    <Text text={Math.round(+optimalNeed)}/>
                                 </div>
                             )
                         }
