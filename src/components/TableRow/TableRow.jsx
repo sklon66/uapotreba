@@ -24,7 +24,7 @@ function TableRow ({region, product, name, criticality, cities, contact, perOneD
         <>
             <div className={styles.rowBodyDesktop} onClick={onClickHandler}>
                 <div className={styles.name}>
-                    <Text text={region || product || name}/>
+                    <Text text={region || name || product}/>
                 </div>
                 <div className={styles.criticality}>
                     <CriticalIndicator level={criticality}/>

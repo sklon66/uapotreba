@@ -38,7 +38,7 @@ function Checklist() {
 
 
     const filterSearchResults = (value) => {
-        const newList =  productList.filter(el => el?.name.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+        const newList =  productList.filter(el => el?.name?.toLowerCase().indexOf(value.toLowerCase()) !== -1);
         setList([...newList]);
     }
 
@@ -62,7 +62,7 @@ function Checklist() {
         dispatch(setActiveProduct(allProductChecked));
     }
 
-    const catalog = list?.map((name) => {
+    const catalog = list?.map((name, index) => {
         return (
             <label className={isChecked(name, isCheckedName) ? "checked-item" : "not-checked-item"} key={name}>
                 <Checkbox

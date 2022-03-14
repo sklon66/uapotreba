@@ -8,6 +8,9 @@ import { selectActiveProduct, selectData } from "../redux/AppReducer/selectors";
 // action
 import { setNeedsObject, setRegions } from "../redux/AppReducer/actions";
 
+// helpers
+import { sortFromHighestToLowestPriorityByProperty } from "../services/helpers";
+
 
 export const useData = () => {
     const dispatch = useDispatch();
@@ -22,7 +25,7 @@ export const useData = () => {
 
     useEffect(() => {
         const result = getRegionNeedByProductName(data, activeProduct);
-        const sortedRegionsRegardingProductName = sortFromHighestToLowestAmount(result);
+        const sortedRegionsRegardingProductName = sortFromHighestToLowestPriorityByProperty(result, 'regionNeedsForSpecificProduts');
         dispatch(setNeedsObject(sortedRegionsRegardingProductName));
     },[activeProduct])
 
@@ -36,28 +39,26 @@ const getRegionNeedByProductName = (data, product) => {
 
         obj.region = region.region;
         obj.product = product;
-        obj.currentActiveProductNeedsForRegion = parseFloat(region?.cities?.reduce(function (previousValue, currentValue) {
+
+        const sumForRegionByProduct = Math.trunc(region?.cities?.reduce(function (previousValue, currentValue) {
 
             const b = currentValue?.needs?.filter((need) => {
                 if (need?.name === product) {
-                    return need?.productNeedVolume1D;
+                    return need?.productNeed;
                 }
             })
             const [obj] = b;
 
             if (previousValue >= 0) {
-                return previousValue + obj?.productNeedVolume1D;
+                return previousValue + obj?.productNeed;
             }
 
-        }, initialValue)?.toFixed(2));
+        }, initialValue));
+
+        obj.currentActiveProductNeedsForRegion = sumForRegionByProduct
+        obj.regionNeedsForSpecificProduts =
+            parseFloat((sumForRegionByProduct / (region?.cities?.length + 1)).toFixed(2));
 
         return obj;
-    });
-}
-
-
-const sortFromHighestToLowestAmount = (array) => {
-    return array?.sort((a, b) => {
-        return b?.currentActiveProductNeedsForRegion - a?.currentActiveProductNeedsForRegion;
     });
 }
