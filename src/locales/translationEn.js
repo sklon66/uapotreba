@@ -1,5 +1,6 @@
 export const KEYS_EN = {
     potreba: 'Potreba',
+    product: 'Product',
     humanitarian_help: 'Humanitarian help in Ukraine',
     regions_needs: 'Regions with the biggest needs',
     needs: 'Needs',
@@ -34,6 +35,7 @@ export const KEYS_EN = {
     transportation_ukraine: 'Transportation of goods in Ukraine',
     transportation_abroad: 'Transportation of goods from abroad',
     other_links: 'Services/Funds/Organizations',
+    protect_together: "Protect Ukraine Together",
     'Кондитерські вироби': 'Confectionery',
     'Крупи, макарони': 'Groats, Macaroni',
     'Консерви': 'Canned food',

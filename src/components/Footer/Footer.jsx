@@ -43,7 +43,7 @@ function Footer () {
             </div>
             <div className={styles.donateSection}>
                 <div className={styles.donateTextBlock}>
-                    <p className={styles.footerTitle}><Text text='Захистимо Україну Разом'/></p>
+                    <p className={styles.footerTitle}><Text text='protect_together'/></p>
                 </div>
                 <a className={styles.donateBtn} target='_blank' rel="noreferrer" href={language==='ua' ? 'https://www.comebackalive.in.ua/uk/donate' : 'https://www.comebackalive.in.ua/donate'}>
                     <img className={styles.comeBackImg} alt='come_back_alive' src={comeBack} />

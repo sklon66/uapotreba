@@ -1,5 +1,5 @@
 .tableHeadingMobile {
-    display: none;
+    display: none !important;
 }
 
 .homeContainer {
@@ -74,7 +74,8 @@
     margin-bottom: 64px;
 }
 
-.tableHeadingDesktop {
+.tableHeadingDesktop,
+.tableHeadingMobile {
     display: flex;
     margin: 0 0 40px 10px;
     width: 100%;
@@ -101,7 +102,7 @@
 
 @media (max-width: 768px) {
     .tableHeadingMobile {
-        display: flex;
+        display: flex !important;
         padding: 16px;
     }
 

@@ -1,3 +1,7 @@
+.tableHeadingMobile {
+    display: none !important;
+}
+
 .regionContainer {
     max-width: 1140px;
     margin: 16px auto 0;
@@ -45,7 +49,8 @@
     margin-bottom: 64px;
 }
 
-.tableheading {
+.tableHeadingDesktop,
+.tableHeadingMobile {
     display: flex;
     margin: 0 0 40px 15px;
     width: 100%;
@@ -55,13 +60,13 @@
     line-height: 16px;
 }
 
-.tableheading > * {
+.tableHeadingDesktop > * {
     width: 33%;
     white-space: nowrap;
     padding-right: 30px;
 }
 
-.tableheading > *:last-child {
+.tableHeadingDesktop > *:last-child {
     width: 80%;
     display: flex;
 }
@@ -71,6 +76,22 @@
 }
 
 @media (max-width: 768px) {
+    .tableHeadingDesktop {
+        display: none;
+    }
+
+    .tableHeadingMobile {
+        display: flex !important;
+        padding: 16px;
+    }
+
+    .titleGroup {
+        width: 50%;
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+    }
+
     .container {
         width: 100%;
         flex-direction: column;
