@@ -44,10 +44,38 @@ function RegionContainer () {
 
 
     useEffect(() => {
-        const sorted = sortFromHighestToLowestPriorityByProperty(regionData?.cities, 'cityNeed');
-        setSortedData(sorted);
 
-    },[regionData]);
+        if (activeProduct === 'all') {
+            const sorted = sortFromHighestToLowestPriorityByProperty(regionData?.cities, 'cityNeed');
+            setSortedData(sorted);
+            console.log('sorted by cityNeed (all products)', sorted)
+
+        } else {
+            const withNeeds = regionData?.cities?.map((city) => {
+                let cityInfo = {};
+
+                cityInfo.name = city.name;
+                cityInfo.product = activeProduct;
+                cityInfo.currentActiveProductNeedsForCity = 0;
+                const a = city?.needs?.filter((need) => {
+                    if (need?.name === activeProduct) {
+                        return need?.productNeed;
+                    }
+                })
+                const [value] = a;
+
+                cityInfo.currentActiveProductNeedsForCity = Math.trunc(value?.productNeed);
+
+                return cityInfo
+            })
+
+            const cityObjectWithNeeds = regionData?.cities?.map((item, i) => Object.assign({}, item, withNeeds[i]));
+            const sorted = sortFromHighestToLowestPriorityByProperty(cityObjectWithNeeds, 'currentActiveProductNeedsForCity');
+            setSortedData(sorted);
+            console.log(`sorted city level by product ${activeProduct}`, sorted)
+        }
+
+    },[regionData, activeProduct]);
 
     const onRowClickHandler = (city) => {
         dispatch(setCurrentCity(city));

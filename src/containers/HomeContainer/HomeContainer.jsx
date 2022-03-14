@@ -41,8 +41,8 @@ function HomeContainer () {
             setSortedData(sorted);
         } else {
             const regionObjectWithNeeds = data.map((item, i) => Object.assign({}, item, needsObject[i]));
-            console.log('regionObjectWithNeeds', regionObjectWithNeeds)
             setSortedData(regionObjectWithNeeds)
+            console.log(`sorted country level by product ${activeProduct}`, regionObjectWithNeeds)
         }
     },[data, activeProduct, needsObject]);
 
