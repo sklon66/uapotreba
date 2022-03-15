@@ -38,7 +38,7 @@ function Checklist() {
 
 
     const filterSearchResults = (value) => {
-        const newList =  productList.filter(el => el?.name?.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+        const newList =  productList.filter(el => el?.toLowerCase().includes(value));
         setList([...newList]);
     }
 

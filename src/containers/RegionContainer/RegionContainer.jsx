@@ -72,7 +72,7 @@ function RegionContainer () {
             const cityObjectWithNeeds = regionData?.cities?.map((item, i) => Object.assign({}, item, withNeeds[i]));
             const sorted = sortFromHighestToLowestPriorityByProperty(cityObjectWithNeeds, 'currentActiveProductNeedsForCity');
             setSortedData(sorted);
-            console.log(`sorted city level by product ${activeProduct}`, sorted)
+            // console.log(`sorted city level by product ${activeProduct}`, sorted)
         }
 
     },[regionData, activeProduct]);

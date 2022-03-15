@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector} from "react-redux";
 
 // styles
@@ -11,6 +11,7 @@ import ContactBox from "../../components/ContactBox";
 
 // redux
 import {selectCurrentCity, selectCurrentRegion, selectData} from "../../redux/AppReducer/selectors";
+import { sortFromHighestToLowestPriorityByProperty } from "../../services/helpers";
 
 
 function CityContainer () {
@@ -18,6 +19,7 @@ function CityContainer () {
     const currentCity = useSelector(selectCurrentCity)
     const data = useSelector(selectData);
 
+    const [sortedNeeds, setSortedNeeds] = useState([]);
 
     let regionData = [];
     let cityData = [];
@@ -29,6 +31,12 @@ function CityContainer () {
     regionData.cities.forEach((item) => {
         if (item.name === currentCity) cityData = item;
     })
+
+    useEffect(()=>{
+        const sorted = sortFromHighestToLowestPriorityByProperty(cityData?.needs, 'productNeed');
+        setSortedNeeds(sorted)
+    }, [cityData])
+
 
     return (
         <div className={styles.cityContainer}>
@@ -62,7 +70,7 @@ function CityContainer () {
                             <Text text='opt_need'/>
                         </div>
                     </div>
-                    <Table iterableData={cityData.needs}/>
+                    <Table iterableData={sortedNeeds}/>
                 </div>
             </div>
         </div>
