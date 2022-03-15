@@ -53,6 +53,8 @@ function HomeContainer () {
         navigate(`/region-${KEYS_EN[region]}`);
     }
 
+    console.log('sortedData', sortedData)
+
     return (
         <>
             <Legend/>

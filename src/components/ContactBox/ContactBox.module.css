@@ -9,6 +9,11 @@
     flex-direction: column;
 }
 
+.contactRow {
+    display: flex;
+    align-items: center;
+}
+
 .textWrapper {
     margin-bottom: 16px;
 }
@@ -16,4 +21,5 @@
 .link {
     font-size: 14px;
     line-height: 22px;
+    margin-left: 5px;
 }
