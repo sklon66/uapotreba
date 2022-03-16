@@ -25,6 +25,33 @@ import dots from "../../assets/img/dots.svg"
 // helpers
 import { sortFromHighestToLowestPriorityByProperty } from "../../services/helpers";
 
+const sortByCategory = (data, category) => {
+    if (category === "all") return data;
+    if (typeof category === "string") category = [category];
+    const returnedArr = [];
+    for (let index = 0; index < data.length; index++) {
+        const r = { ...data[index] };
+        if (category.lenth === 0) return r;
+        let regNeedVolume1D = 0;
+        r.cities = r.cities.map((c) => {
+            let cityNeedVolume1D = 0;
+            c.needs = c.needs.map((n) => {
+                if (category.find(e => e === n.name)) {
+                    cityNeedVolume1D += n.productNeedVolume1D;
+                    return n;
+                }
+                return n;
+            })
+            regNeedVolume1D += cityNeedVolume1D;
+            c.cityNeedVolume1D = cityNeedVolume1D;
+            return c;
+        });
+        r.regNeedVolume1D = regNeedVolume1D;
+        returnedArr.push(r);
+    }
+    return returnedArr;
+}
+
 function HomeContainer () {
     const data = useSelector(selectData);
     const activeProduct = useSelector(selectActiveProduct);
@@ -35,28 +62,16 @@ function HomeContainer () {
 
     const [sortedData, setSortedData] = useState(data);
 
+    const dataSorted = sortByCategory(data, activeProduct);
+
     useEffect(() => {
         if (activeProduct === 'all') {
             const sorted = sortFromHighestToLowestPriorityByProperty(data, 'regionNeed');
             setSortedData(sorted);
         } else {
-            const regionObjectWithNeeds = data.map((item, i) => {
-                // let temp = {
-                //     currentProductNeed1D: 0,
-                //     currentProductNeedOpt: 0,
-                // }
-                //
-                // item.cities[i]?.needs.map((ii) => {
-                //     temp.currentProductNeed1D = temp.currentProductNeed1D + ii?.productNeedVolume1D
-                //     temp.currentProductNeedOpt = temp.currentProductNeedOpt + ii?.optProductNeedVolume
-                // })
-                //
-                // item.currentProductNeed1D = temp.currentProductNeed1D
-                // item.currentProductNeedOpt = temp.currentProductNeedOpt
-
-                return Object.assign({}, item, needsObject[i])
+            const regionObjectWithNeeds = dataSorted.map((item, i) => {
+                return Object.assign({}, item, needsObject?.find((v) => v.region === item.region))
             });
-
             setSortedData(regionObjectWithNeeds)
         }
     },[data, activeProduct, needsObject]);
