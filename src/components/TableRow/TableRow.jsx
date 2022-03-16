@@ -30,21 +30,21 @@ function TableRow ({region, product, name, criticality, cities, contact, perOneD
                     <CriticalIndicator level={criticality}/>
                 </div>
                 {
-                    perOneDayNeed && (
+                    perOneDayNeed != undefined && (
                         <div className={styles.perOneDayNeed}>
                             <Text text={Math.round(+perOneDayNeed)}/>
                         </div>
                     )
                 }
                 {
-                    optimalNeed && (
+                    optimalNeed != undefined && (
                         <div className={styles.optimalNeed}>
                             <Text text={Math.round(+optimalNeed)}/>
                         </div>
                     )
                 }
                 {
-                    !!withContact && (
+                    withContact != undefined && (
                         <div className={styles.contact}>
                             <a href={`tel:${contact}`}>{contact}</a>
                         </div>
@@ -57,7 +57,7 @@ function TableRow ({region, product, name, criticality, cities, contact, perOneD
             </div>
             <div className={styles.rowBodyMobile} onClick={onClickHandler}>
                 <div className={styles.tableGroup}>
-                    <Text text={region || product || name}/>
+                    <Text text={region || name || product}/>
                     <CriticalIndicator level={criticality}/>
                 </div>
                 <div className={styles.tableGroup}>

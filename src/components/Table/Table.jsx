@@ -59,7 +59,7 @@ function Table ({iterableData, withPagination, onRowClick, isClick, withContact}
                                     name={row?.name}
                                     criticality={row?.regionNeed || row?.cityNeed || row?.productNeed}
                                     cities={row?.cities}
-                                    contact={row?.contacts?.hum_center || row?.contacts?.red_cross}
+                                    contact={row?.contacts?.phone_VCA || row?.contacts?.hum_center || row?.contacts?.red_cross}
                                     perOneDayNeed={row?.regNeedVolume1D || row?.cityNeedVolume1D || row?.productNeedVolume1D}
                                     optimalNeed={row?.optRegNeedVolume || row?.optCityNeedVolume || row?.optProductNeedVolume}
                                     isClick={isClick}

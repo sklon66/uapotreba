@@ -44,6 +44,7 @@ const getRegionNeedByProductName = (data, product) => {
 
             const b = currentValue?.needs?.filter((need) => {
                 if (need?.name === product) {
+
                     return need?.productNeed;
                 }
             })
