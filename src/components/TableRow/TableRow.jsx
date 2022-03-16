@@ -57,7 +57,7 @@ function TableRow ({region, product, name, criticality, cities, contact, perOneD
             </div>
             <div className={styles.rowBodyMobile} onClick={onClickHandler}>
                 <div className={styles.tableGroup}>
-                    <Text text={region || product || name}/>
+                    <Text text={region || name || product}/>
                     <CriticalIndicator level={criticality}/>
                 </div>
                 <div className={styles.tableGroup}>

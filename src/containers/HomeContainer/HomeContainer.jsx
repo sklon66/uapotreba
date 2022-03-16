@@ -40,9 +40,24 @@ function HomeContainer () {
             const sorted = sortFromHighestToLowestPriorityByProperty(data, 'regionNeed');
             setSortedData(sorted);
         } else {
-            const regionObjectWithNeeds = data.map((item, i) => Object.assign({}, item, needsObject[i]));
+            const regionObjectWithNeeds = data.map((item, i) => {
+                // let temp = {
+                //     currentProductNeed1D: 0,
+                //     currentProductNeedOpt: 0,
+                // }
+                //
+                // item.cities[i]?.needs.map((ii) => {
+                //     temp.currentProductNeed1D = temp.currentProductNeed1D + ii?.productNeedVolume1D
+                //     temp.currentProductNeedOpt = temp.currentProductNeedOpt + ii?.optProductNeedVolume
+                // })
+                //
+                // item.currentProductNeed1D = temp.currentProductNeed1D
+                // item.currentProductNeedOpt = temp.currentProductNeedOpt
+
+                return Object.assign({}, item, needsObject[i])
+            });
+
             setSortedData(regionObjectWithNeeds)
-            // console.log(`sorted country level by product ${activeProduct}`, regionObjectWithNeeds)
         }
     },[data, activeProduct, needsObject]);
 
@@ -52,8 +67,6 @@ function HomeContainer () {
 
         navigate(`/region-${KEYS_EN[region]}`);
     }
-
-    console.log('sortedData', sortedData)
 
     return (
         <>
