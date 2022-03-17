@@ -63,4 +63,15 @@
         max-width: 100%;
         margin-bottom: 40px;
     }
+
+    .list-container {
+        max-height: 136px;
+        overflow: hidden;
+        align-items: start;
+        overflow-y: scroll;
+    }
+}
+
+@media (max-width: 375px) {
+
 }

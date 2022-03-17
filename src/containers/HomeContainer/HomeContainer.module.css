@@ -154,3 +154,27 @@
         line-height: 40px;
     }
 }
+
+@media (max-width: 375px) {
+    .subtitleDisclaimer {
+        min-height: 170px;
+        padding: 20px 16px;
+        background: url('./img/earIco.svg') no-repeat #fafafa right bottom;
+        box-sizing: border-box;
+        display: flex;
+        align-items: end;
+    }
+
+    .subtitleDisclaimerTextWrapper {
+        align-self: center;
+    }
+
+    .subtitleDisclaimerTextWrapper > * {
+        font-size: 22px;
+        line-height: 28px;
+        word-break: break-word;
+        max-width: 160px;
+        color: #303236;
+        display: flex;
+    }
+}

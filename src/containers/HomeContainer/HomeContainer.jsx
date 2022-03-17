@@ -21,6 +21,7 @@ import {KEYS_EN} from "../../locales/translationEn";
 
 // img
 import dots from "../../assets/img/dots.svg"
+import criticalIco from './img/criticalIco.png'
 
 // helpers
 import { sortFromHighestToLowestPriorityByProperty } from "../../services/helpers";
@@ -61,8 +62,15 @@ function HomeContainer () {
     const dispatch = useDispatch();
 
     const [sortedData, setSortedData] = useState(data);
+    const [isMobile, setIsMobile] = useState(null);
 
     const dataSorted = sortByCategory(data, activeProduct);
+
+    useEffect(() => {
+        setIsMobile(window.innerWidth < 375)
+    }, [])
+
+    const indicatorIco = isMobile ? criticalIco : dots;
 
     useEffect(() => {
         if (activeProduct === 'all') {
@@ -99,8 +107,10 @@ function HomeContainer () {
                         <Text text='regions_needs' />
                     </h2>
                     <p className={styles.subtitleDisclaimer}>
-                        <img className={styles.disclaimerDots} alt='dots' src={dots}/>
-                        <Text text='criticality_lev'/>
+                        <img className={styles.disclaimerDots} alt='dots'src={indicatorIco}/>
+                        <div className={styles.subtitleDisclaimerTextWrapper}>
+                            <Text text='criticality_lev'/>
+                        </div>
                     </p>
                 </div>
                 <div className={styles.container}>

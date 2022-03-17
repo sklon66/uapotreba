@@ -8,11 +8,12 @@ import { setActiveProduct } from "../../redux/AppReducer/actions";
 import Checkbox from "../Checkbox";
 
 // styles
-import "./Checklist.css";
+import styles from './Checklist.module.css';
 
 // selectors
 import { selectActiveProduct, selectLanguage, selectProducts } from "../../redux/AppReducer/selectors";
 import Text from "../Text";
+import Button from "../Button";
 
 function Checklist() {
     const productList = useSelector(selectProducts);
@@ -62,6 +63,10 @@ function Checklist() {
         dispatch(setActiveProduct(allProductChecked));
     }
 
+    const mobileClickHandler = () => {
+
+    }
+
     const catalog = list?.map((name, index) => {
         return (
             <label className={isChecked(name, isCheckedName) ? "checked-item" : "not-checked-item"} key={name}>
@@ -78,9 +83,12 @@ function Checklist() {
     });
 
     return (
-            <div className="checkList">
-                <label className="searchAll">
-                    <div className="allProducts"><Text text='all_products' /></div>
+            <div className={styles.checkList}>
+                <label className={styles.mobileWrapper}>
+                    <Button onClick={mobileClickHandler}/>
+                </label>
+                <label className={styles.searchAll}>
+                    <div className={styles.allProducts}><Text text='all_products' /></div>
                     <Checkbox
                         type="radio"
                         handleClick={clearAll}
@@ -89,7 +97,7 @@ function Checklist() {
                 </label>
                 <input
                     type="text"
-                    className="searchInput"
+                    className={styles.searchInput}
                     value={search}
                     placeholder={language === 'ua' ? "Пошук" : "Search"}
                     onChange={(e) => handleSearch(e.target.value)}
