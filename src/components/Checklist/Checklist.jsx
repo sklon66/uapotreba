@@ -8,11 +8,12 @@ import { setActiveProduct } from "../../redux/AppReducer/actions";
 import Checkbox from "../Checkbox";
 
 // styles
-import "./Checklist.css";
+import styles from './Checklist.module.css';
 
 // selectors
 import { selectActiveProduct, selectLanguage, selectProducts } from "../../redux/AppReducer/selectors";
 import Text from "../Text";
+import Button from "../Button";
 
 function Checklist() {
     const productList = useSelector(selectProducts);
@@ -26,6 +27,7 @@ function Checklist() {
     const [isCheckedName, setCheckedName] = useState(allProductChecked);
     const [list, setList] = useState(productList);
     const [search, setSearch] = useState("");
+    const [isMobileWindow, setIsMobileWindow] = useState(true)
 
     useEffect(() => {
         setList(productList);
@@ -33,7 +35,8 @@ function Checklist() {
 
     useEffect(() => {
         setCheckedName(activeProduct);
-        dispatch(setActiveProduct(allProductChecked));
+        dispatch(setActiveProduct(activeProduct));
+        setIsMobileWindow(window.innerWidth > 768)
     },[])
 
 
@@ -95,7 +98,7 @@ function Checklist() {
                             })
                             : <div>Нічого не знайдено</div>
                         }
-                    
+
                 </div>
             </form>
         </div>

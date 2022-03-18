@@ -1,3 +1,9 @@
+// locales
+import { KEYS_EN } from "../locales/translationEn";
+import { KEYS_UA } from "../locales/translationUa";
+
+
+
 export const sortFromHighestToLowestPriorityByProperty = (array, property) => {
     return array?.sort(function (a, b) {
         return a[property] - b[property];
@@ -5,7 +11,6 @@ export const sortFromHighestToLowestPriorityByProperty = (array, property) => {
 }
 
 export const filterByCategory = (data, category, from) => {
-    // console.log(category, from);
     if (category === "all") return data;
     if (typeof category === "string") category = [category];
     const returnedArr = [];
@@ -46,4 +51,10 @@ export const filterByCategory = (data, category, from) => {
         returnedArr.push(r);
     }
     return returnedArr;
+}
+
+export const getTranslate = (text, language) => {
+    const translated = language === 'ua' ? KEYS_UA[text] : KEYS_EN[text]
+
+    return translated
 }

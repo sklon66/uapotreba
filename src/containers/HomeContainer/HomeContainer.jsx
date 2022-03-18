@@ -21,6 +21,7 @@ import {KEYS_EN} from "../../locales/translationEn";
 
 // img
 import dots from "../../assets/img/dots.svg"
+import criticalIco from './img/criticalIco.png'
 
 // helpers
 import { sortFromHighestToLowestPriorityByProperty, filterByCategory } from "../../services/helpers";
@@ -34,8 +35,15 @@ function HomeContainer () {
     const dispatch = useDispatch();
 
     const [sortedData, setSortedData] = useState(data);
+    const [isMobile, setIsMobile] = useState(null);
 
     const dataFiltred = filterByCategory(data, activeProduct, "home");
+
+    useEffect(() => {
+        setIsMobile(window.innerWidth < 768)
+    }, [])
+
+    const indicatorIco = isMobile ? criticalIco : dots;
 
     useEffect(() => {
         const sorted = sortFromHighestToLowestPriorityByProperty(dataFiltred, 'regionNeed');
@@ -65,8 +73,10 @@ function HomeContainer () {
                         <Text text='regions_needs' />
                     </h2>
                     <p className={styles.subtitleDisclaimer}>
-                        <img className={styles.disclaimerDots} alt='dots' src={dots}/>
-                        <Text text='criticality_lev'/>
+                        <img className={styles.disclaimerDots} alt='dots'src={indicatorIco}/>
+                        <div className={styles.subtitleDisclaimerTextWrapper}>
+                            <Text text='criticality_lev'/>
+                        </div>
                     </p>
                 </div>
                 <div className={styles.container}>
@@ -85,14 +95,11 @@ function HomeContainer () {
                             <Text text='contact'/>
                         </div>
                         <div className={styles.tableHeadingMobile}>
-                            <div className={styles.titleGroup}>
+                            <div className={styles.titleDevider}>
                                 <Text text='region'/>
-                                <Text text='criticality'/>
                             </div>
-                            <div className={styles.titleGroup}>
-                                <Text text='1d_need'/>
-                                <Text text='opt_need'/>
-                            </div>
+                            <Text text='need_in_tons'/>
+                            <Text text='criticality'/>
                         </div>
                         {
                             console.log('sortedData', sortedData)
