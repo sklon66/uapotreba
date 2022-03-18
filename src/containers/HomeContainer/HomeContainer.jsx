@@ -24,34 +24,7 @@ import dots from "../../assets/img/dots.svg"
 import criticalIco from './img/criticalIco.png'
 
 // helpers
-import { sortFromHighestToLowestPriorityByProperty } from "../../services/helpers";
-
-const sortByCategory = (data, category) => {
-    if (category === "all") return data;
-    if (typeof category === "string") category = [category];
-    const returnedArr = [];
-    for (let index = 0; index < data.length; index++) {
-        const r = { ...data[index] };
-        if (category.lenth === 0) return r;
-        let regNeedVolume1D = 0;
-        r.cities = r.cities.map((c) => {
-            let cityNeedVolume1D = 0;
-            c.needs = c.needs.map((n) => {
-                if (category.find(e => e === n.name)) {
-                    cityNeedVolume1D += n.productNeedVolume1D;
-                    return n;
-                }
-                return n;
-            })
-            regNeedVolume1D += cityNeedVolume1D;
-            c.cityNeedVolume1D = cityNeedVolume1D;
-            return c;
-        });
-        r.regNeedVolume1D = regNeedVolume1D;
-        returnedArr.push(r);
-    }
-    return returnedArr;
-}
+import { sortFromHighestToLowestPriorityByProperty, filterByCategory } from "../../services/helpers";
 
 function HomeContainer () {
     const data = useSelector(selectData);
@@ -64,7 +37,7 @@ function HomeContainer () {
     const [sortedData, setSortedData] = useState(data);
     const [isMobile, setIsMobile] = useState(null);
 
-    const dataSorted = sortByCategory(data, activeProduct);
+    const dataFiltred = filterByCategory(data, activeProduct, "home");
 
     useEffect(() => {
         setIsMobile(window.innerWidth < 768)
@@ -73,16 +46,9 @@ function HomeContainer () {
     const indicatorIco = isMobile ? criticalIco : dots;
 
     useEffect(() => {
-        if (activeProduct === 'all') {
-            const sorted = sortFromHighestToLowestPriorityByProperty(data, 'regionNeed');
-            setSortedData(sorted);
-        } else {
-            const regionObjectWithNeeds = dataSorted.map((item, i) => {
-                return Object.assign({}, item, needsObject?.find((v) => v.region === item.region))
-            });
-            setSortedData(regionObjectWithNeeds)
-        }
-    },[data, activeProduct, needsObject]);
+        const sorted = sortFromHighestToLowestPriorityByProperty(dataFiltred, 'regionNeed');
+        setSortedData(sorted);
+    },[dataFiltred, activeProduct, needsObject]);
 
 
     const onRowClickHandler = (region) => {
@@ -135,6 +101,9 @@ function HomeContainer () {
                             <Text text='need_in_tons'/>
                             <Text text='criticality'/>
                         </div>
+                        {
+                            console.log('sortedData', sortedData)
+                        }
                         <Table withContact isClick iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
                     </div>
                 </div>

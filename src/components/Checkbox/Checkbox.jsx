@@ -1,15 +1,19 @@
 import React from "react";
 
-const Checkbox = ({ id, name, handleClick, isChecked, type, value }) => {
+// styles
+import Text from '../../components/Text'
+
+const Checkbox = ({ value, handleChange, key }) => {
     return (
-        <input
-            id={id}
-            name={name}
-            value={value}
-            type={type}
-            onChange={handleClick}
-            checked={isChecked}
-        />
+        <label key={key}>
+            <input
+                name='product'
+                value={value}
+                type="radio"
+                onChange={handleChange}
+            />
+            <Text text={value} />
+        </label>
     );
 };
 

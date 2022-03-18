@@ -57,8 +57,8 @@ const getRegionNeedByProductName = (data, product) => {
         }, initialValue));
 
         obj.currentActiveProductNeedsForRegion = sumForRegionByProduct
-        obj.regionNeedsForSpecificProduts =
-            parseFloat((sumForRegionByProduct / (region?.cities?.length + 1)).toFixed(2));
+        // obj.regionNeedsForSpecificProduts =
+        //     parseFloat((sumForRegionByProduct / (region?.cities?.length + 1)).toFixed(2));
 
         return obj;
     });

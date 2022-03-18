@@ -20,60 +20,26 @@ import { KEYS_EN } from "../../locales/translationEn";
 // actions
 import { setCurrentCity } from "../../redux/AppReducer/actions";
 
-import { sortFromHighestToLowestPriorityByProperty } from "../../services/helpers";
+import { sortFromHighestToLowestPriorityByProperty, filterByCategory } from "../../services/helpers";
 
 
 function RegionContainer () {
     const currentRegion = useSelector(selectCurrentRegion)
     const data = useSelector(selectData);
-    const activeProduct = useSelector(selectActiveProduct);
+    let activeProduct = useSelector(selectActiveProduct);
 
     const [sortedData, setSortedData] = useState([]);
-    const [regionData, setRegionData] = useState([]);
+    const regionData = data.find(val => val.region === currentRegion);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    useEffect(()=>{
-        data?.forEach((item) => {
-            if (item.region === currentRegion) {
-                setRegionData(item)
-            }
-        })
-    },[data]);
+    filterByCategory(data, activeProduct, "city");
 
 
     useEffect(() => {
-
-        if (activeProduct === 'all') {
             const sorted = sortFromHighestToLowestPriorityByProperty(regionData?.cities, 'cityNeed');
             setSortedData(sorted);
-            console.log('sorted by cityNeed (all products)', sorted)
-
-        } else {
-            const withNeeds = regionData?.cities?.map((city) => {
-                let cityInfo = {};
-
-                cityInfo.name = city.name;
-                cityInfo.product = activeProduct;
-                cityInfo.currentActiveProductNeedsForCity = 0;
-                const a = city?.needs?.filter((need) => {
-                    if (need?.name === activeProduct) {
-                        return need?.productNeed;
-                    }
-                })
-                const [value] = a;
-
-                cityInfo.currentActiveProductNeedsForCity = Math.trunc(value?.productNeed);
-
-                return cityInfo
-            })
-
-            const cityObjectWithNeeds = regionData?.cities?.map((item, i) => Object.assign({}, item, withNeeds[i]));
-            const sorted = sortFromHighestToLowestPriorityByProperty(cityObjectWithNeeds, 'currentActiveProductNeedsForCity');
-            setSortedData(sorted);
-            // console.log(`sorted city level by product ${activeProduct}`, sorted)
-        }
 
     },[regionData, activeProduct]);
 

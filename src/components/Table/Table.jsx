@@ -44,6 +44,11 @@ function Table ({iterableData, withPagination, onRowClick, isClick, withContact}
         setRowsIndexToShow(targetRange)
     }
 
+    const checkIsRealValue = (value) => {
+        if (typeof value != 'undefined') {return value}else return false
+    }
+
+
     return (
         <div className={styles.tableContainer}>
             <div className={styles.tableBody}>
@@ -60,8 +65,8 @@ function Table ({iterableData, withPagination, onRowClick, isClick, withContact}
                                     criticality={row?.regionNeed || row?.cityNeed || row?.productNeed}
                                     cities={row?.cities}
                                     contact={row?.contacts?.phone_VCA || row?.contacts?.hum_center || row?.contacts?.red_cross}
-                                    perOneDayNeed={row?.regNeedVolume1D || row?.cityNeedVolume1D || row?.productNeedVolume1D}
-                                    optimalNeed={row?.optRegNeedVolume || row?.optCityNeedVolume || row?.optProductNeedVolume}
+                                    perOneDayNeed={checkIsRealValue(row?.regNeedVolume1D) || checkIsRealValue(row?.cityNeedVolume1D) || checkIsRealValue(row?.productNeedVolume1D)}
+                                    optimalNeed={checkIsRealValue(row?.optRegNeedVolume) || checkIsRealValue(row?.optCityNeedVolume) || checkIsRealValue(row?.optProductNeedVolume)}
                                     isClick={isClick}
                                     withContact={withContact}
                                     rowClick={() => onRowClick(row?.region || row?.name)}/>
