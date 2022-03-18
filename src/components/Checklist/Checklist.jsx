@@ -66,10 +66,10 @@ function Checklist() {
     }
 
     return (
-        <div className="checkList">
+        <div className={styles.checkList}>
             <form>
-                <label className="searchAll">
-                    <div className="allProducts"><Text text='all_products' /></div>
+                <label className={styles.searchAll}>
+                    <div className={styles.allProducts}><Text text='all_products' /></div>
                     <input
                         name='product'
                         value='all'
@@ -80,12 +80,12 @@ function Checklist() {
                 </label>
                 <input
                     type="text"
-                    className="searchInput"
+                    className={styles.searchInput}
                     value={search}
                     placeholder={language === 'ua' ? "Пошук" : "Search"}
                     onChange={(e) => handleSearch(e.target.value)}
                 />
-                <div className="list-container">
+                <div className={styles.listContainer}>
                         { list?.length > 0
                             ? list?.map((name, index) => {
                                 return (
