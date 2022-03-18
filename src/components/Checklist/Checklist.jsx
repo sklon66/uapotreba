@@ -33,7 +33,7 @@ function Checklist() {
 
     useEffect(() => {
         setCheckedName(activeProduct);
-        dispatch(setActiveProduct(activeProduct));
+        dispatch(setActiveProduct(allProductChecked));
     },[])
 
 
@@ -48,9 +48,9 @@ function Checklist() {
     }
 
     const handleChange = e => {
-        const { value } = e.target;
-        setCheckedName(value);
-        dispatch(setActiveProduct(value));
+        console.log(e)
+        setCheckedName(e);
+        dispatch(setActiveProduct(e));
     };
 
     const isChecked = (name, value) => {
@@ -62,29 +62,17 @@ function Checklist() {
         dispatch(setActiveProduct(allProductChecked));
     }
 
-    const catalog = list?.map((name, index) => {
-        return (
-            <label className={isChecked(name, isCheckedName) ? "checked-item" : "not-checked-item"} key={name}>
-                <Checkbox
-                    key={name}
-                    value={name}
-                    type="radio"
-                    handleClick={handleChange}
-                    isChecked={isChecked(name, isCheckedName)}
-                />
-                <Text text={name} />
-            </label>
-        );
-    });
-
     return (
-            <div className="checkList">
+        <div className="checkList">
+            <form>
                 <label className="searchAll">
                     <div className="allProducts"><Text text='all_products' /></div>
-                    <Checkbox
+                    <input
+                        name='product'
+                        value='all'
                         type="radio"
-                        handleClick={clearAll}
-                        isChecked={isChecked(allProductChecked, isCheckedName)}
+                        onChange={() => handleChange('all')}
+                        checked={activeProduct === 'all'}
                     />
                 </label>
                 <input
@@ -95,12 +83,22 @@ function Checklist() {
                     onChange={(e) => handleSearch(e.target.value)}
                 />
                 <div className="list-container">
-                    { list?.length > 0
-                        ? catalog
-                        : <div>Нічого не знайдено</div>
-                    }
+                        { list?.length > 0
+                            ? list?.map((name, index) => {
+                                return (
+                                    <Checkbox
+                                        key={index}
+                                        value={name}
+                                        handleChange={() => handleChange(name)}
+                                    />
+                                )
+                            })
+                            : <div>Нічого не знайдено</div>
+                        }
+                    
                 </div>
-            </div>
+            </form>
+        </div>
     );
 }
 
