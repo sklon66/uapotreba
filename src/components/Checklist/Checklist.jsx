@@ -51,56 +51,60 @@ function Checklist() {
     }
 
     const handleChange = e => {
-        console.log(e)
         setCheckedName(e);
         dispatch(setActiveProduct(e));
     };
 
-    const isChecked = (name, value) => {
-        return name === value;
-    }
-
-    const clearAll = () => {
-        setCheckedName(allProductChecked);
-        dispatch(setActiveProduct(allProductChecked));
+    const mobileClickHandler = () => {
+        setIsMobileWindow(!isMobileWindow);
     }
 
     return (
         <div className={styles.checkList}>
-            <form>
-                <label className={styles.searchAll}>
-                    <div className={styles.allProducts}><Text text='all_products' /></div>
-                    <input
-                        name='product'
-                        value='all'
-                        type="radio"
-                        onChange={() => handleChange('all')}
-                        checked={activeProduct === 'all'}
-                    />
-                </label>
-                <input
-                    type="text"
-                    className={styles.searchInput}
-                    value={search}
-                    placeholder={language === 'ua' ? "Пошук" : "Search"}
-                    onChange={(e) => handleSearch(e.target.value)}
-                />
-                <div className={styles.listContainer}>
-                        { list?.length > 0
-                            ? list?.map((name, index) => {
-                                return (
-                                    <Checkbox
-                                        key={index}
-                                        value={name}
-                                        handleChange={() => handleChange(name)}
-                                    />
-                                )
-                            })
-                            : <div>Нічого не знайдено</div>
-                        }
+            <div onClick={mobileClickHandler} className={styles.mobileWrapper}>
+                <Text text='filter_by_product' />
+            </div>
+            {
+                isMobileWindow ? (
+                    <div className={styles.mobileContentWrapper}>
+                        <div className={styles.shadow} onClick={mobileClickHandler}/>
+                        <form className={styles.filterContent}>
+                            <label className={styles.searchAll}>
+                                <Text text='all_products' />
+                                <input
+                                    name='product'
+                                    value='all'
+                                    type="radio"
+                                    onClick={() => handleChange('all')}
+                                    checked={activeProduct === 'all'}
+                                />
+                            </label>
+                            <input
+                                type="text"
+                                className={styles.searchInput}
+                                value={search}
+                                placeholder={language === 'ua' ? "Пошук" : "Search"}
+                                onChange={(e) => handleSearch(e.target.value)}
+                            />
+                            <div className={styles.listContainer}>
+                                    { list?.length > 0
+                                        ? list?.map((name, index) => {
+                                            return (
+                                                <Checkbox
+                                                    key={index}
+                                                    value={name}
+                                                    handleChange={() => handleChange(name)}
+                                                />
+                                            )
+                                        })
+                                        : <div>Нічого не знайдено</div>
+                                    }
 
-                </div>
-            </form>
+                            </div>
+                        </form>
+                    </div>
+                ) : null
+            }
         </div>
     );
 }
