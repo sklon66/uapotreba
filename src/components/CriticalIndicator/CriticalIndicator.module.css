@@ -30,3 +30,20 @@
 .criticalClasses.fifth .dot:nth-child(-n+5) {
     background-color: #F7441D;
 }
+
+@media (max-width: 768px) {
+
+    .criticalClasses {
+        height: 112px;
+        width: auto!important;
+        flex-direction: column-reverse;
+    }
+
+    .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 0;
+        transform: rotate(45deg);
+        background-color: #F8D5D1;
+    }
+}

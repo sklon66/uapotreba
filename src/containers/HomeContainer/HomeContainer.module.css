@@ -74,8 +74,7 @@
     margin-bottom: 64px;
 }
 
-.tableHeadingDesktop,
-.tableHeadingMobile {
+.tableHeadingDesktop {
     display: flex;
     margin: 0 0 40px 10px;
     width: 100%;
@@ -103,14 +102,29 @@
 @media (max-width: 768px) {
     .tableHeadingMobile {
         display: flex !important;
-        padding: 16px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 
-    .titleGroup {
-        width: 50%;
-        display: flex;
-        align-items: start;
-        flex-direction: column;
+    .titleDevider {
+        width: 100%;
+        border-bottom: 1px solid #B5B9AC;
+        padding-bottom: 10px;
+    }
+
+    .titleDevider > * {
+        font-family: 'Tenor Sans';
+        font-size: 22px;
+        line-height: 28px;
+        color: #303236;
+    }
+
+    .tableHeadingMobile > span {
+        font-size: 16px;
+        margin-top: 13px;
+        line-height: 19px;
+        color: #666666;
     }
 
     .homeContainer {
@@ -152,5 +166,27 @@
     .subtitle {
         font-size: 28px;
         line-height: 40px;
+    }
+
+    .subtitleDisclaimer {
+        min-height: 170px;
+        padding: 20px 16px;
+        background: url('./img/earIco.svg') no-repeat #fafafa right bottom;
+        box-sizing: border-box;
+        display: flex;
+        align-items: end;
+    }
+
+    .subtitleDisclaimerTextWrapper {
+        align-self: center;
+    }
+
+    .subtitleDisclaimerTextWrapper > * {
+        font-size: 22px;
+        line-height: 28px;
+        word-break: break-word;
+        max-width: 160px;
+        color: #303236;
+        display: flex;
     }
 }
