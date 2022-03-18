@@ -67,7 +67,7 @@ function HomeContainer () {
     const dataSorted = sortByCategory(data, activeProduct);
 
     useEffect(() => {
-        setIsMobile(window.innerWidth < 375)
+        setIsMobile(window.innerWidth < 768)
     }, [])
 
     const indicatorIco = isMobile ? criticalIco : dots;
@@ -129,14 +129,11 @@ function HomeContainer () {
                             <Text text='contact'/>
                         </div>
                         <div className={styles.tableHeadingMobile}>
-                            <div className={styles.titleGroup}>
+                            <div className={styles.titleDevider}>
                                 <Text text='region'/>
-                                <Text text='criticality'/>
                             </div>
-                            <div className={styles.titleGroup}>
-                                <Text text='1d_need'/>
-                                <Text text='opt_need'/>
-                            </div>
+                            <Text text='need_in_tons'/>
+                            <Text text='criticality'/>
                         </div>
                         <Table withContact isClick iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
                     </div>

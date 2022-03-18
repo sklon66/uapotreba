@@ -27,6 +27,7 @@ function Checklist() {
     const [isCheckedName, setCheckedName] = useState(allProductChecked);
     const [list, setList] = useState(productList);
     const [search, setSearch] = useState("");
+    const [isMobileWindow, setIsMobileWindow] = useState(true)
 
     useEffect(() => {
         setList(productList);
@@ -35,6 +36,7 @@ function Checklist() {
     useEffect(() => {
         setCheckedName(activeProduct);
         dispatch(setActiveProduct(activeProduct));
+        setIsMobileWindow(window.innerWidth > 768)
     },[])
 
 
@@ -64,14 +66,15 @@ function Checklist() {
     }
 
     const mobileClickHandler = () => {
-
+        console.log('mobileClickHandlerClick!')
+        setIsMobileWindow(!isMobileWindow);
     }
 
     const catalog = list?.map((name, index) => {
         return (
             <label className={isChecked(name, isCheckedName) ? "checked-item" : "not-checked-item"} key={name}>
                 <Checkbox
-                    key={name}
+                    key={index}
                     value={name}
                     type="radio"
                     handleClick={handleChange}
@@ -84,30 +87,39 @@ function Checklist() {
 
     return (
             <div className={styles.checkList}>
-                <label className={styles.mobileWrapper}>
-                    <Button onClick={mobileClickHandler}/>
-                </label>
-                <label className={styles.searchAll}>
-                    <div className={styles.allProducts}><Text text='all_products' /></div>
-                    <Checkbox
-                        type="radio"
-                        handleClick={clearAll}
-                        isChecked={isChecked(allProductChecked, isCheckedName)}
-                    />
-                </label>
-                <input
-                    type="text"
-                    className={styles.searchInput}
-                    value={search}
-                    placeholder={language === 'ua' ? "Пошук" : "Search"}
-                    onChange={(e) => handleSearch(e.target.value)}
-                />
-                <div className="list-container">
-                    { list?.length > 0
-                        ? catalog
-                        : <div>Нічого не знайдено</div>
-                    }
+                <div onClick={mobileClickHandler} className={styles.mobileWrapper}>
+                    <Text text='filter_by_product' />
                 </div>
+                {
+                    isMobileWindow ? (
+                        <div className={styles.mobileContentWrapper}>
+                            <div className={styles.shadow} onClick={mobileClickHandler}/>
+                            <div className={styles.filterContent} >
+                                <label className={styles.searchAll}>
+                                    <div className={styles.allProducts}><Text text='all_products' /></div>
+                                    <Checkbox
+                                        type="radio"
+                                        handleClick={clearAll}
+                                        isChecked={isChecked(allProductChecked, isCheckedName)}
+                                    />
+                                </label>
+                                <input
+                                    type="text"
+                                    className={styles.searchInput}
+                                    value={search}
+                                    placeholder={language === 'ua' ? "Пошук" : "Search"}
+                                    onChange={(e) => handleSearch(e.target.value)}
+                                />
+                                <div className={styles.listContainer}>
+                                    { list?.length > 0
+                                        ? catalog
+                                        : <div>Нічого не знайдено</div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    ) : null
+                }
             </div>
     );
 }

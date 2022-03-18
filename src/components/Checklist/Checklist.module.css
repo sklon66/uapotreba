@@ -1,3 +1,7 @@
+.mobileWrapper {
+    display: none;
+}
+
 .checkList {
     width: 100%;
     max-width: 207px;
@@ -35,7 +39,7 @@
     margin: 0 0 0 5px;
 }
 
-.list-container {
+.listContainer {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -64,14 +68,43 @@
         margin-bottom: 40px;
     }
 
-    .list-container {
+    .listContainer {
         max-height: 136px;
         overflow: hidden;
         align-items: start;
         overflow-y: scroll;
     }
-}
 
-@media (max-width: 375px) {
+    .mobileWrapper {
+        display: block;
+        margin-bottom: 10px;
+        font-family: 'Tenor Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+    }
+
+    .filterContent {
+        width: 100%;
+        position: fixed;
+        top: 50%;
+        left: 0;
+        z-index: 3;
+        transform: translate(0, -50%);
+        background-color: white;
+        padding: 36px 16px;
+    }
+
+    .shadow {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        background-color: #000;
+        opacity: 0.3;
+    }
 
 }
