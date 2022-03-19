@@ -12,6 +12,7 @@ export const getData = (dispatch) => {
             if (data) {
                 dispatch(setData(data?.citiesInfo));
                 dispatch(setProducts(data?.allProducts));
+                console.log('fetch data.citiesInfo', data?.citiesInfo)
             }
             else {
                 console.log("Fetch error")

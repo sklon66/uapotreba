@@ -10,7 +10,7 @@ import styles from './Checklist.module.css';
 
 // selectors
 import { selectLanguage, selectProducts } from "../../redux/AppReducer/selectors";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 
 function Checklist({setCurrentCategory}) {
     const productList = useSelector(selectProducts);
@@ -51,8 +51,8 @@ function Checklist({setCurrentCategory}) {
     }
 
     const handleAllClick = () => {
-        // you have to fix it properly
-        location.pathname.includes('region-') ? window.location.reload() : handleChange('all');
+        // really stupid fix
+        window.location.reload()
     }
 
     return (
