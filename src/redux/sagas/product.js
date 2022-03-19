@@ -6,7 +6,6 @@ import { selectActiveProduct } from '../AppReducer/selectors';
 function* setActiveProduct() {
     try {
         const product = yield select(selectActiveProduct);
-        console.log('activeProduct', product)
 
     } catch (error) {
         console.error(error)

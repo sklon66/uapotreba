@@ -16,7 +16,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // services
 import { getData } from "./api/apiData";
-import { useData } from "./hooks/useData";
 import ScrollToTop from "./services/ScrollToTop";
 
 
@@ -26,8 +25,6 @@ const App = () => {
   useEffect(() => {
       getData(dispatch);
   }, []);
-
-  useData();
 
   return (
       <>

@@ -14,7 +14,7 @@ import styles from './HomeContainer.module.css'
 
 // redux
 import { setCurrentRegion } from "../../redux/AppReducer/actions";
-import { selectActiveProduct, selectData, selectNeedsObject } from "../../redux/AppReducer/selectors";
+import { selectActiveProduct, selectData } from "../../redux/AppReducer/selectors";
 
 // translation
 import {KEYS_EN} from "../../locales/translationEn";
@@ -28,28 +28,28 @@ import { sortFromHighestToLowestPriorityByProperty, filterByCategory } from "../
 
 function HomeContainer () {
     const data = useSelector(selectData);
-    const activeProduct = useSelector(selectActiveProduct);
-    const needsObject = useSelector(selectNeedsObject);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const [sortedData, setSortedData] = useState(data);
     const [isMobile, setIsMobile] = useState(null);
+    const [currentCategory, setCurrentCategory] = useState('all');
 
-    const dataFiltred = filterByCategory(data, activeProduct, "home");
 
     useEffect(() => {
         setIsMobile(window.innerWidth < 768)
     }, [])
 
-    const indicatorIco = isMobile ? criticalIco : dots;
-
     useEffect(() => {
-        const sorted = sortFromHighestToLowestPriorityByProperty(dataFiltred, 'regionNeed');
-        setSortedData(sorted);
-    },[dataFiltred, activeProduct, needsObject]);
+        const dataFiltered = filterByCategory(data, currentCategory);
 
+        const sorted = sortFromHighestToLowestPriorityByProperty(dataFiltered, 'regionNeed');
+
+        setSortedData(sorted);
+    },[currentCategory]);
+
+    const indicatorIco = isMobile ? criticalIco : dots;
 
     const onRowClickHandler = (region) => {
         dispatch(setCurrentRegion(region));
@@ -84,7 +84,7 @@ function HomeContainer () {
                         <div className={styles.filterHeading}>
                             <Text text='product_search' />
                         </div>
-                        <Checklist />
+                        <Checklist setCurrentCategory={setCurrentCategory}/>
                     </div>
                     <div className={styles.tableContainer}>
                         <div className={styles.tableHeadingDesktop}>
@@ -101,9 +101,6 @@ function HomeContainer () {
                             <Text text='need_in_tons'/>
                             <Text text='criticality'/>
                         </div>
-                        {
-                            console.log('sortedData', sortedData)
-                        }
                         <Table withContact isClick iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
                     </div>
                 </div>

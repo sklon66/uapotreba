@@ -12,9 +12,13 @@ import ContactBox from "../../components/ContactBox";
 // redux
 import {selectCurrentCity, selectCurrentRegion, selectData} from "../../redux/AppReducer/selectors";
 import { sortFromHighestToLowestPriorityByProperty } from "../../services/helpers";
+import {KEYS_EN} from "../../locales/translationEn";
+import {useNavigate} from "react-router-dom";
 
 
 function CityContainer () {
+    const navigate = useNavigate()
+
     const currentRegion = useSelector(selectCurrentRegion)
     const currentCity = useSelector(selectCurrentCity)
     const data = useSelector(selectData);
@@ -32,6 +36,10 @@ function CityContainer () {
         if (item.name === currentCity) cityData = item;
     })
 
+    const goBackClickHandler = () => {
+        navigate(`/region-${KEYS_EN[currentRegion]}`);
+    }
+
     useEffect(()=>{
         const sorted = sortFromHighestToLowestPriorityByProperty(cityData?.needs, 'productNeed');
         setSortedNeeds(sorted)
@@ -42,6 +50,9 @@ function CityContainer () {
         <div className={styles.cityContainer}>
             <div className={styles.titlesContainer}>
                 <h1 className={styles.title}>
+                    <div className={styles.goBack} onClick={() => goBackClickHandler()}>
+                        <Text text={currentRegion} />
+                    </div>
                     <Text text={currentCity} />
                 </h1>
                 <div className={styles.contactBoxWrapper}>

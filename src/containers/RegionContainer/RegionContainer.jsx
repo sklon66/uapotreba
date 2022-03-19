@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 // styles
@@ -11,37 +11,42 @@ import Checklist from "../../components/Checklist";
 import Table from "../../components/Table";
 import ContactBox from "../../components/ContactBox";
 
-// selectors
-import { selectActiveProduct, selectCurrentRegion, selectData } from "../../redux/AppReducer/selectors";
-
 // translate
 import { KEYS_EN } from "../../locales/translationEn";
 
 // actions
 import { setCurrentCity } from "../../redux/AppReducer/actions";
 
-import { sortFromHighestToLowestPriorityByProperty, filterByCategory } from "../../services/helpers";
+// helpers
+import {filterByCategory, sortFromHighestToLowestPriorityByProperty} from "../../services/helpers";
+
+// selectors
+import { selectCurrentRegion, selectData} from "../../redux/AppReducer/selectors";
 
 
 function RegionContainer () {
-    const currentRegion = useSelector(selectCurrentRegion)
-    const data = useSelector(selectData);
-    let activeProduct = useSelector(selectActiveProduct);
-
-    const [sortedData, setSortedData] = useState([]);
-    const regionData = data.find(val => val.region === currentRegion);
-
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    filterByCategory(data, activeProduct, "city");
+    const data = useSelector(selectData);
+    const currentRegion = useSelector(selectCurrentRegion);
 
+    const [sortedData, setSortedData] = useState([]);
+    const [currentCategory, setCurrentCategory] = useState('all');
 
     useEffect(() => {
-            const sorted = sortFromHighestToLowestPriorityByProperty(regionData?.cities, 'cityNeed');
-            setSortedData(sorted);
+        setSortedData(data?.find(val => val.region === currentRegion).cities)
+    },[])
 
-    },[regionData, activeProduct]);
+    useEffect(() => {
+        const dataFiltered = filterByCategory(data, currentCategory);
+
+        const regionData = dataFiltered.find(val => val.region === currentRegion)
+
+        const sorted = sortFromHighestToLowestPriorityByProperty(regionData.cities, 'cityNeed');
+
+        setSortedData(sorted);
+    },[currentCategory])
 
     const onRowClickHandler = (city) => {
         dispatch(setCurrentCity(city));
@@ -49,14 +54,21 @@ function RegionContainer () {
         navigate(`/city-${KEYS_EN[city]}`);
     }
 
+    const goBackClickHandler = () => {
+        navigate('/');
+    }
+
     return (
         <div className={styles.regionContainer}>
             <div className={styles.titlesContainer}>
                 <h1 className={styles.title}>
+                    <div className={styles.goBack} onClick={() => goBackClickHandler()}>
+                        <Text text={'country'} />
+                    </div>
                     <Text text={currentRegion} />
                 </h1>
                 <div className={styles.contactBoxWrapper}>
-                    <ContactBox title='regional_contacts' contactList={regionData?.contacts} />
+                    {/*<ContactBox title='regional_contacts' contactList={regionData?.contacts} />*/}
                 </div>
             </div>
             <div className={styles.container}>
@@ -64,7 +76,7 @@ function RegionContainer () {
                     <div className={styles.filterHeading}>
                         <Text text='product_search' />
                     </div>
-                    <Checklist />
+                    <Checklist setCurrentCategory={setCurrentCategory} />
                 </div>
                 <div className={styles.tableContainer}>
                     <div className={styles.tableHeadingDesktop}>
