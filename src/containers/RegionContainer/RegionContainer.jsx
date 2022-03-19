@@ -23,6 +23,9 @@ import {filterByCategory, sortFromHighestToLowestPriorityByProperty} from "../..
 // selectors
 import { selectCurrentRegion, selectData} from "../../redux/AppReducer/selectors";
 
+// services
+import ScrollToTop from "../../services/ScrollToTop";
+
 
 function RegionContainer () {
     const navigate = useNavigate();
@@ -36,6 +39,7 @@ function RegionContainer () {
 
     useEffect(() => {
         setSortedData(data?.find(val => val.region === currentRegion).cities)
+        setCurrentCategory('all')
     },[])
 
     useEffect(() => {
@@ -60,6 +64,7 @@ function RegionContainer () {
 
     return (
         <div className={styles.regionContainer}>
+            <ScrollToTop />
             <div className={styles.titlesContainer}>
                 <h1 className={styles.title}>
                     <div className={styles.goBack} onClick={() => goBackClickHandler()}>

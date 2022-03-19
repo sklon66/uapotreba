@@ -12,7 +12,6 @@ export const sortFromHighestToLowestPriorityByProperty = (array, property) => {
 export const filterByCategory = (workData, category) => {
 
     if (category === "all") {
-        console.log(workData)
         return workData
     }
 

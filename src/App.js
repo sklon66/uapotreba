@@ -16,7 +16,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // services
 import { getData } from "./api/apiData";
-import ScrollToTop from "./services/ScrollToTop";
+import { useData } from "./hooks/useData";
 
 
 const App = () => {
@@ -30,7 +30,6 @@ const App = () => {
       <>
         <Header/>
         <Router>
-            <ScrollToTop />
             <Routes>
                 <Route path="/" element={<Home />} />
 

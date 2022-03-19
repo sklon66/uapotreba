@@ -17,6 +17,13 @@ function Table ({iterableData, withPagination, onRowClick, isClick, withContact}
     const [currentPage, setCurrentPage] = useState(2);
     const [rowsIndexToShow, setRowsIndexToShow] = useState(Array.from(Array(maxRowsPerPage).keys()));
 
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+
+        setIsLoading(!iterableData)
+    }, [iterableData])
+
     useEffect(() => {
         setRowsIndexToShow(Array.from(Array(maxRowsPerPage).keys()))
 
@@ -53,8 +60,9 @@ function Table ({iterableData, withPagination, onRowClick, isClick, withContact}
         <div className={styles.tableContainer}>
             <div className={styles.tableBody}>
                 <div className={styles.rows}>
+                    {console.log(isLoading,'isLoading')}
                     {
-                        !iterableData ? <Loader /> :
+                        isLoading ? <Loader /> :
                         iterableData?.map((row, index) => {
                             return (
                                 <TableRow
