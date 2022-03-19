@@ -35,6 +35,21 @@
     line-height: 56px;
     color: var(--title-color);
     margin-bottom: 4px;
+    display: flex;
+}
+
+.goBack {
+    opacity: 0.3;
+    cursor: pointer;
+    margin-right: 5px;
+    position: relative;
+    display: flex;
+}
+
+.goBack:after {
+    content: '>';
+    display: block;
+    position: relative;
 }
 
 .subtitle {

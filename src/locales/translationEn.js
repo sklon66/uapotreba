@@ -45,6 +45,7 @@ export const KEYS_EN = {
     t: 'T',
     per_one_day: "Per 1 day",
     optimal: "Optimal",
+    country: "Country",
     'Кондитерські вироби': 'Confectionery',
     'Крупи, макарони': 'Groats, Macaroni',
     'Консерви': 'Canned food',

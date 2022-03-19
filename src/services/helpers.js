@@ -3,25 +3,33 @@ import { KEYS_EN } from "../locales/translationEn";
 import { KEYS_UA } from "../locales/translationUa";
 
 
-
 export const sortFromHighestToLowestPriorityByProperty = (array, property) => {
     return array?.sort(function (a, b) {
         return a[property] - b[property];
     });
 }
 
-export const filterByCategory = (data, category, from) => {
-    if (category === "all") return data;
-    if (typeof category === "string") category = [category];
+export const filterByCategory = (workData, category) => {
+
+    if (category === "all") {
+        console.log(workData)
+        return workData
+    }
+
+    if (typeof category === "string") {
+        category = [category]
+    }
+
     const returnedArr = [];
-    for (let index = 0; index < data.length; index++) {
-        const r = { ...data[index] };
+    for (let index = 0; index < workData.length; index++) {
+        const r = { ...workData[index] };
         if (category.lenth === 0) return r;
         let reg = {
             needVolume1D: 0,
             optNeedVolume: 0,
             need: 0
         }
+
         r.cities = r.cities.map((c) => {
             let city = {
                 needVolume1D: 0,
@@ -50,6 +58,7 @@ export const filterByCategory = (data, category, from) => {
         r.regionNeed = Math.round(reg.need / r.cities.length)
         returnedArr.push(r);
     }
+
     return returnedArr;
 }
 

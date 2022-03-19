@@ -4,16 +4,14 @@ import { setData, setProducts } from "../redux/AppReducer/actions.js";
 export const getData = (dispatch) => {
 
     fetch(`https://uapotreba-back.herokuapp.com`)
-        .then(function (response) { 
-            console.log("response", response)
+        .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-        
+
             if (data) {
                 dispatch(setData(data?.citiesInfo));
                 dispatch(setProducts(data?.allProducts));
-                console.log('recieved data from API', data)
             }
             else {
                 console.log("Fetch error")

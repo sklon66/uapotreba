@@ -1,41 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-// actions
-import { setActiveProduct } from "../../redux/AppReducer/actions";
-
 // components
 import Checkbox from "../Checkbox";
+import Text from "../Text";
 
 // styles
 import styles from './Checklist.module.css';
 
 // selectors
-import { selectActiveProduct, selectLanguage, selectProducts } from "../../redux/AppReducer/selectors";
-import Text from "../Text";
-import Button from "../Button";
+import { selectLanguage, selectProducts } from "../../redux/AppReducer/selectors";
+import {useLocation, useNavigate} from "react-router-dom";
 
-function Checklist() {
+function Checklist({setCurrentCategory}) {
     const productList = useSelector(selectProducts);
     const language = useSelector(selectLanguage);
-    const activeProduct = useSelector(selectActiveProduct);
 
-    const allProductChecked = 'all';
-
-    const dispatch = useDispatch();
-
-    const [isCheckedName, setCheckedName] = useState(allProductChecked);
     const [list, setList] = useState(productList);
     const [search, setSearch] = useState("");
     const [isMobileWindow, setIsMobileWindow] = useState(true)
+
+    const location = useLocation();
 
     useEffect(() => {
         setList(productList);
     },[productList])
 
     useEffect(() => {
-        setCheckedName(activeProduct);
-        dispatch(setActiveProduct(activeProduct));
+        setCurrentCategory('all')
         setIsMobileWindow(window.innerWidth > 768)
     },[])
 
@@ -51,12 +43,16 @@ function Checklist() {
     }
 
     const handleChange = e => {
-        setCheckedName(e);
-        dispatch(setActiveProduct(e));
+        setCurrentCategory(e)
     };
 
     const mobileClickHandler = () => {
         setIsMobileWindow(!isMobileWindow);
+    }
+
+    const handleAllClick = () => {
+        // you have to fix it properly
+        location.pathname.includes('region-') ? window.location.reload() : handleChange('all');
     }
 
     return (
@@ -75,8 +71,8 @@ function Checklist() {
                                     name='product'
                                     value='all'
                                     type="radio"
-                                    onClick={() => handleChange('all')}
-                                    checked={activeProduct === 'all'}
+                                    onChange={handleAllClick}
+                                    defaultChecked
                                 />
                             </label>
                             <input
