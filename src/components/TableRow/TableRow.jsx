@@ -26,7 +26,7 @@ function TableRow ({region, product, name, criticality, cities, contact, perOneD
     }
 
     const getFirstLetter = (string) => {
-        return getTranslate(string, language)[0]
+        return getTranslate(string, language)?.[0];
     }
 
     return (

@@ -73,7 +73,7 @@ function RegionContainer () {
                     <Text text={currentRegion} />
                 </h1>
                 <div className={styles.contactBoxWrapper}>
-                    {/*<ContactBox title='regional_contacts' contactList={regionData?.contacts} />*/}
+                    <ContactBox title='regional_contacts' contactList={filterByCategory(data, currentCategory).find(val => val.region === currentRegion)?.contacts} />
                 </div>
             </div>
             <div className={styles.container}>
