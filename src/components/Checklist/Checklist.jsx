@@ -14,7 +14,7 @@ import { selectLanguage, selectProducts } from "../../redux/AppReducer/selectors
 import classNames from "classnames/bind";
 
 
-function Checklist({setCurrentCategory, currentCategory}) {
+function Checklist({setCurrentCategory}) {
     const productList = useSelector(selectProducts);
     const language = useSelector(selectLanguage);
 
@@ -22,7 +22,6 @@ function Checklist({setCurrentCategory, currentCategory}) {
     const [search, setSearch] = useState("");
     const [isMobileWindow, setIsMobileWindow] = useState(true)
 
-    const location = useLocation();
 
     useEffect(() => {
         setList(productList);
