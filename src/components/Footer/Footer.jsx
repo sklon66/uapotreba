@@ -75,7 +75,7 @@ function Footer () {
                     <a className={styles.facebook} target='_blank' rel="noreferrer" href='https://www.facebook.com/needuacom'>
                         <img alt='facebook' src={facebook} />
                     </a>
-                    <a className={styles.phone} href="mailto:support@potreba-ua.org">support@potreba-ua.org</a>
+                    <a className={styles.phone} href="mailto:support@need-ua.com">support@need-ua.com</a>
                 </div>
                 <p className={styles.footerText}>2022</p>
             </div>
