@@ -3,32 +3,24 @@ import { KEYS_EN } from "../locales/translationEn";
 import { KEYS_UA } from "../locales/translationUa";
 
 
+
 export const sortFromHighestToLowestPriorityByProperty = (array, property) => {
     return array?.sort(function (a, b) {
         return a[property] - b[property];
     });
 }
 
-export const filterByCategory = (workData, category) => {
-
-    if (category === "all") {
-        return workData
-    }
-
-    if (typeof category === "string") {
-        category = [category]
-    }
-
+export const filterByCategory = (data, category) => {
+    if (typeof category === "string") category = [category];
     const returnedArr = [];
-    for (let index = 0; index < workData.length; index++) {
-        const r = { ...workData[index] };
+    for (let index = 0; index < data.length; index++) {
+        const r = { ...data[index] };
         if (category.lenth === 0) return r;
         let reg = {
             needVolume1D: 0,
             optNeedVolume: 0,
             need: 0
         }
-
         r.cities = r.cities.map((c) => {
             let city = {
                 needVolume1D: 0,
@@ -36,7 +28,7 @@ export const filterByCategory = (workData, category) => {
                 need: 0
             }
             c.needs = c.needs.map((n) => {
-                if (category.find(e => e === n.name)) {
+                if (category.find(e => e === n.name) || category[0] === "all") {
                     city.optNeedVolume += n.optProductNeedVolume;
                     city.needVolume1D += n.productNeedVolume1D;
                     city.need += n.productNeed
@@ -46,10 +38,14 @@ export const filterByCategory = (workData, category) => {
             })
             reg.optNeedVolume += city.optNeedVolume;
             reg.needVolume1D += city.needVolume1D;
-            reg.need += city.need;
             c.optCityNeedVolume = city.optNeedVolume;
             c.cityNeedVolume1D = city.needVolume1D;
-            c.cityNeed = Math.round(city.need / category.length);
+            if (category[0] === "all") {
+                c.cityNeed = Math.round(city.need / c.needs.length);
+            } else {
+                c.cityNeed = Math.round(city.need / category.length);
+            }
+            reg.need += c.cityNeed;
             return c;
         });
         r.optRegNeedVolume = reg.optNeedVolume;
@@ -57,7 +53,6 @@ export const filterByCategory = (workData, category) => {
         r.regionNeed = Math.round(reg.need / r.cities.length)
         returnedArr.push(r);
     }
-
     return returnedArr;
 }
 
