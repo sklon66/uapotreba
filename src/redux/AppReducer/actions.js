@@ -4,12 +4,20 @@ import {
     SET_PRODUCTS, SET_REGIONS, SET_ACTIVE_PRODUCT,
     SET_CURRENT_REGION,
     SET_CURRENT_CITY, SET_NEEDS_OBJECT,
+    SET_LOADER
 } from './types';
 
 export function setLanguage(language) {
     return {
         type: SET_LANGUAGE,
         payload: language,
+    };
+}
+
+export function setLoader(state) {
+    return {
+        type: SET_LOADER,
+        payload: state,
     };
 }
 
