@@ -68,7 +68,7 @@ function RegionContainer () {
             <div className={styles.titlesContainer}>
                 <h1 className={styles.title}>
                     <div className={styles.goBack} onClick={() => goBackClickHandler()}>
-                        <Text text={'country'} />
+                        <Text text={'regions'} />
                     </div>
                     <Text text={currentRegion} />
                 </h1>

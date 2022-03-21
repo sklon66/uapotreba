@@ -35,21 +35,23 @@
     line-height: 56px;
     color: var(--title-color);
     margin-bottom: 4px;
-    display: flex;
 }
 
 .goBack {
-    opacity: 0.3;
-    cursor: pointer;
-    margin-right: 5px;
-    position: relative;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    margin: 0 5px 20px 0;
+    color: #5A5A5A;
     display: flex;
+    cursor: pointer;
 }
 
-.goBack:after {
-    content: '>';
+.goBack:before {
+    content: '<';
     display: block;
     position: relative;
+    margin-right: 6px;
 }
 
 .subtitle {

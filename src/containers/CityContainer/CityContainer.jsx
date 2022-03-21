@@ -45,13 +45,12 @@ function CityContainer () {
         setSortedNeeds(sorted)
     }, [cityData])
 
-
     return (
         <div className={styles.cityContainer}>
             <div className={styles.titlesContainer}>
                 <h1 className={styles.title}>
                     <div className={styles.goBack} onClick={() => goBackClickHandler()}>
-                        <Text text={currentRegion} />
+                        <Text text={'cities'} />
                     </div>
                     <Text text={currentCity} />
                 </h1>
