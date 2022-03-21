@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 // components
 import Checkbox from "../Checkbox";
@@ -10,7 +11,7 @@ import styles from './Checklist.module.css';
 
 // selectors
 import { selectLanguage, selectProducts } from "../../redux/AppReducer/selectors";
-import {useLocation} from "react-router-dom";
+
 
 function Checklist({setCurrentCategory}) {
     const productList = useSelector(selectProducts);
@@ -27,7 +28,6 @@ function Checklist({setCurrentCategory}) {
     },[productList])
 
     useEffect(() => {
-        setCurrentCategory('all')
         setIsMobileWindow(window.innerWidth > 768)
     },[])
 
@@ -50,8 +50,8 @@ function Checklist({setCurrentCategory}) {
         setIsMobileWindow(!isMobileWindow);
     }
 
+    // really stupid fix
     const handleAllClick = () => {
-        // really stupid fix
         window.location.reload()
     }
 
@@ -71,7 +71,7 @@ function Checklist({setCurrentCategory}) {
                                     name='product'
                                     value='all'
                                     type="radio"
-                                    onChange={handleAllClick}
+                                    onChange={() => handleChange('all')}
                                     defaultChecked
                                 />
                             </label>

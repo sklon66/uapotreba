@@ -46,6 +46,8 @@ export const KEYS_EN = {
     per_one_day: "Per 1 day",
     optimal: "Optimal",
     country: "Country",
+    regions: 'Regions',
+    cities: 'Сities',
     'Кондитерські вироби': 'Confectionery',
     'Крупи, макарони': 'Groats, Macaroni',
     'Консерви': 'Canned food',
