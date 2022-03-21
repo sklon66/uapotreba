@@ -1,8 +1,8 @@
-import { setData, setProducts } from "../redux/AppReducer/actions.js";
+import {setData, setLoader, setProducts} from "../redux/AppReducer/actions.js";
 
 
 export const getData = (dispatch) => {
-
+    dispatch(setLoader(true))
     fetch(`https://uapotreba-back.herokuapp.com`)
         .then(function (response) {
             return response.json();
@@ -13,6 +13,7 @@ export const getData = (dispatch) => {
                 dispatch(setData(data?.citiesInfo));
                 dispatch(setProducts(data?.allProducts));
                 console.log('fetch data.citiesInfo', data?.citiesInfo)
+                setTimeout(() => {dispatch(setLoader(false))}, 300)
             }
             else {
                 console.log("Fetch error")

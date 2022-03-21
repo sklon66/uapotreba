@@ -9,6 +9,7 @@ const selectCurrentRegion = createSelector(selectApp, (app) => app.currentRegion
 const selectCurrentCity = createSelector(selectApp, (app) => app.currentCity);
 const selectActiveProduct = createSelector(selectApp, (app) => app.activeProduct);
 const selectNeedsObject = createSelector(selectApp, (app) => app.needsObject);
+const selectIsLoader = createSelector(selectApp, (app) => app.selectIsLoader);
 
 export {
     selectLanguage,
@@ -18,4 +19,5 @@ export {
     selectCurrentCity,
     selectActiveProduct,
     selectNeedsObject,
+    selectIsLoader,
 };
