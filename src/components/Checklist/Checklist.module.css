@@ -75,6 +75,11 @@
         overflow-y: scroll;
     }
 
+    .isMobileWindow {
+        opacity: 0;
+        visibility: hidden;
+    }
+
     .mobileWrapper {
         display: block;
         margin-bottom: 10px;
