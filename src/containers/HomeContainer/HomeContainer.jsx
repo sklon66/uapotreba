@@ -14,7 +14,7 @@ import styles from './HomeContainer.module.css'
 
 // redux
 import { setCurrentRegion } from "../../redux/AppReducer/actions";
-import {selectActiveProduct, selectData, selectIsLoader} from "../../redux/AppReducer/selectors";
+import {  selectData } from "../../redux/AppReducer/selectors";
 
 // translation
 import {KEYS_EN} from "../../locales/translationEn";
@@ -25,7 +25,6 @@ import criticalIco from './img/criticalIco.png'
 
 // helpers
 import { sortFromHighestToLowestPriorityByProperty, filterByCategory } from "../../services/helpers";
-import Loader from "../../components/Loader";
 
 function HomeContainer () {
     const data = useSelector(selectData);
@@ -57,8 +56,6 @@ function HomeContainer () {
 
         navigate(`/region-${KEYS_EN[region]}`);
     }
-
-    const isLoader = useSelector((state) => state.app.isLoader);
 
     return (
         <>
@@ -104,7 +101,7 @@ function HomeContainer () {
                             <Text text='need_in_tons'/>
                             <Text text='criticality'/>
                         </div>
-                        {(isLoader && !data) ? <Loader /> : <Table withContact isClick iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>}
+                        <Table withContact isClick iterableData={sortedData} withPagination onRowClick={onRowClickHandler}/>
                     </div>
                 </div>
                 <About />

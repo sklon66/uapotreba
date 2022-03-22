@@ -11,6 +11,7 @@ import styles from './Checklist.module.css';
 
 // selectors
 import { selectLanguage, selectProducts } from "../../redux/AppReducer/selectors";
+import classNames from "classnames/bind";
 
 
 function Checklist({setCurrentCategory}) {
@@ -21,7 +22,6 @@ function Checklist({setCurrentCategory}) {
     const [search, setSearch] = useState("");
     const [isMobileWindow, setIsMobileWindow] = useState(true)
 
-    const location = useLocation();
 
     useEffect(() => {
         setList(productList);
@@ -55,52 +55,54 @@ function Checklist({setCurrentCategory}) {
         window.location.reload()
     }
 
+    const cx = classNames.bind(styles);
+    const mobileContentWrapperClasses = cx({
+        mobileContentWrapperClasses: true,
+        isMobileWindow: isMobileWindow,
+    })
+
     return (
         <div className={styles.checkList}>
             <div onClick={mobileClickHandler} className={styles.mobileWrapper}>
                 <Text text='filter_by_product' />
             </div>
-            {
-                isMobileWindow ? (
-                    <div className={styles.mobileContentWrapper}>
-                        <div className={styles.shadow} onClick={mobileClickHandler}/>
-                        <form className={styles.filterContent}>
-                            <label className={styles.searchAll}>
-                                <Text text='all_products' />
-                                <input
-                                    name='product'
-                                    value='all'
-                                    type="radio"
-                                    onChange={() => handleChange('all')}
-                                    defaultChecked
-                                />
-                            </label>
+                <div className={mobileContentWrapperClasses}>
+                    <div className={styles.shadow} onClick={mobileClickHandler}/>
+                    <form className={styles.filterContent}>
+                        <label className={styles.searchAll}>
+                            <Text text='all_products' />
                             <input
-                                type="text"
-                                className={styles.searchInput}
-                                value={search}
-                                placeholder={language === 'ua' ? "Пошук" : "Search"}
-                                onChange={(e) => handleSearch(e.target.value)}
+                                name='product'
+                                value='all'
+                                type="radio"
+                                onChange={() => handleChange('all')}
+                                defaultChecked
                             />
-                            <div className={styles.listContainer}>
-                                    { list?.length > 0
-                                        ? list?.map((name, index) => {
-                                            return (
-                                                <Checkbox
-                                                    key={index}
-                                                    value={name}
-                                                    handleChange={() => handleChange(name)}
-                                                />
-                                            )
-                                        })
-                                        : <div>Нічого не знайдено</div>
-                                    }
-
-                            </div>
-                        </form>
-                    </div>
-                ) : null
-            }
+                        </label>
+                        <input
+                            type="text"
+                            className={styles.searchInput}
+                            value={search}
+                            placeholder={language === 'ua' ? "Пошук" : "Search"}
+                            onChange={(e) => handleSearch(e.target.value)}
+                        />
+                        <div className={styles.listContainer}>
+                                { list?.length > 0
+                                    ? list?.map((name, index) => {
+                                        return (
+                                            <Checkbox
+                                                key={index}
+                                                value={name}
+                                                // checked={isChecked(name)}
+                                                handleChange={() => handleChange(name)}
+                                            />
+                                        )
+                                    })
+                                    : <div>Нічого не знайдено</div>
+                                }
+                        </div>
+                    </form>
+                </div>
         </div>
     );
 }
