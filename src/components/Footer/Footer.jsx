@@ -37,7 +37,7 @@ function Footer () {
                     <p className={styles.footerTitle}><Text text='have_idea'/></p>
                     <p className={styles.footerSubtitle}><Text text='help_us'/></p>
                 </div>
-                <a className={styles.feedbackBtn} target='_blank' rel="noreferrer" href='https://forms.gle/ZZy6MEBxejUTkKe27'>
+                <a className={styles.feedbackBtn} target='_blank' rel="noreferrer" href={language==='ua' ? 'https://forms.gle/4atY5Vx6Ro1anJea7' : 'https://forms.gle/DMcVaKZ6Sy551jGo7'}>
                     <Text text='leave_feedback'/>
                 </a>
             </div>
