@@ -70,6 +70,7 @@ export const KEYS_EN = {
     'Риба': 'Fish',
     'Цигарки': 'Cigarettes',
     'Гігієна': 'Hygiene',
+    'Олія': 'Oil',
     "Вінницька":"Vinnytska",
     "Волинська":"Volynska",
     "Дніпропетровська":"Dnipropetrovska",
