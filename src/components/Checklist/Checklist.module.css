@@ -62,6 +62,11 @@
     background-color: #E6F7FF;
 }
 
+.isMobileWindow {
+    opacity: 0;
+    visibility: hidden;
+}
+
 @media (max-width: 768px) {
     .checkList {
         max-width: 100%;
