@@ -91,7 +91,7 @@ function Checklist({setCurrentCategory}) {
                                             />
                                         )
                                     })
-                                    : <Text text={'Нічого не знайдено'}/>
+                                    : <Text text='nothing_found'/>
                                 }
                         </div>
                     </form>

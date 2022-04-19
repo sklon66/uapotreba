@@ -48,6 +48,7 @@ export const KEYS_EN = {
     country: "Country",
     regions: 'Regions',
     cities: 'Сities',
+    nothing_found: 'Nothing found',
     'Кондитерські вироби': 'Confectionery',
     'Крупи, макарони': 'Groats, Macaroni',
     'Консерви': 'Canned food',

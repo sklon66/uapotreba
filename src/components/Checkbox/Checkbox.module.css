@@ -1,0 +1,46 @@
+.label {
+    display: flex;
+    justify-content: start;
+    padding-left: 20px;
+    align-items: center;
+}
+
+.input {
+    width: 0;
+    height: 0;
+    position: absolute;
+    opacity: 0;
+}
+
+.inputDisplay {
+    width: 10px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: -10px;
+    background-color: #F8D5D1;
+    transform: rotate(45deg);
+}
+
+.inputDisplay:after {
+    content: '';
+    width: 60%;
+    height: 60%;
+    display: block;
+    position: absolute;
+    opacity: 0;
+    transition: .1s;
+    background-color: #F7441D;
+}
+
+.input:checked ~ .inputDisplay:after {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .label {
+        justify-content: center;
+    }
+}
