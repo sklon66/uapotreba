@@ -62,10 +62,16 @@
     background-color: #E6F7FF;
 }
 
+.isMobileWindow {
+    opacity: 0;
+    visibility: hidden;
+}
+
 @media (max-width: 768px) {
     .checkList {
         max-width: 100%;
         margin-bottom: 40px;
+        position: relative;
     }
 
     .listContainer {
@@ -73,6 +79,18 @@
         overflow: hidden;
         align-items: start;
         overflow-y: scroll;
+        padding-bottom: 25px;
+    }
+
+    .filterContent:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 30px;
+        bottom: 36px;
+        z-index: 3;
+        background: linear-gradient(0deg, white 0%, rgba(0, 0, 0, 0) 100%);
     }
 
     .isMobileWindow {

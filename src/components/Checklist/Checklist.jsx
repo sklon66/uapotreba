@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import classNames from "classnames/bind";
 
 // components
 import Checkbox from "../Checkbox";
@@ -11,7 +11,6 @@ import styles from './Checklist.module.css';
 
 // selectors
 import { selectLanguage, selectProducts } from "../../redux/AppReducer/selectors";
-import classNames from "classnames/bind";
 
 
 function Checklist({setCurrentCategory}) {
@@ -20,7 +19,7 @@ function Checklist({setCurrentCategory}) {
 
     const [list, setList] = useState(productList);
     const [search, setSearch] = useState("");
-    const [isMobileWindow, setIsMobileWindow] = useState(true)
+    const [isMobileWindow, setIsMobileWindow] = useState(false)
 
 
     useEffect(() => {
@@ -50,15 +49,10 @@ function Checklist({setCurrentCategory}) {
         setIsMobileWindow(!isMobileWindow);
     }
 
-    // really stupid fix
-    const handleAllClick = () => {
-        window.location.reload()
-    }
-
     const cx = classNames.bind(styles);
     const mobileContentWrapperClasses = cx({
         mobileContentWrapperClasses: true,
-        isMobileWindow: isMobileWindow,
+        isMobileWindow: !isMobileWindow,
     })
 
     return (
@@ -93,12 +87,11 @@ function Checklist({setCurrentCategory}) {
                                             <Checkbox
                                                 key={index}
                                                 value={name}
-                                                // checked={isChecked(name)}
                                                 handleChange={() => handleChange(name)}
                                             />
                                         )
                                     })
-                                    : <div>Нічого не знайдено</div>
+                                    : <Text text='nothing_found'/>
                                 }
                         </div>
                     </form>
